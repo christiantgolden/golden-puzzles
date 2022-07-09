@@ -21,6 +21,10 @@ tr td {
   resize: none;
   columns: 1;
 }
+#navbar tr td {
+  width: 33%;
+  text-align: center;
+}
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -44,8 +48,14 @@ input {
 body {
   text-align: center;
 }
-h1 {
+#prev,
+#next {
+  font-size: small;
+  opacity: 0.5;
+}
+#active {
   margin-bottom: auto;
+  font-size: 32;
   color: dimgrey !important;
 }
 select {
