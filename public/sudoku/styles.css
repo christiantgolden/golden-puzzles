@@ -1,0 +1,65 @@
+tr td {
+  width: 48;
+  height: 48;
+  font-size: 24;
+  text-align: center;
+  color: rgba(50, 50, 50, 0.7);
+  background-color: "rgba(255,255,255,0)";
+  overflow: hidden;
+  resize: none;
+  z-index: 0;
+}
+#cell {
+  width: 32;
+  height: 32;
+  font-size: 24;
+  text-align: center;
+  background-color: "rgba(200,200,200,0)";
+  opacity: 0.2;
+  color: black;
+  overflow: hidden;
+  resize: none;
+  columns: 1;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+form {
+  display: inline-block;
+  margin-top: 10px;
+}
+form select,
+input {
+  font-size: 24;
+  color: dimgray;
+  appearance: none;
+  background-color: "rgba(0,0,0,0)";
+}
+body {
+  text-align: center;
+}
+h1 {
+  margin-bottom: auto;
+  color: dimgrey !important;
+}
+select {
+  border: none;
+  outline: none;
+  background-color: "rgba(0,0,0,0)";
+  background: none;
+  text-align: center;
+  margin-top: 0.5em;
+}
+#gen_button {
+  background-color: lightgray;
+  outline: solid 1px;
+  border: 1px;
+  color: #555;
+  margin-top: 0.3em;
+}

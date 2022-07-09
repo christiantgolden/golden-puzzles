@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <meta charset="UTF-16" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <title>Sudoku</title>
+  </head>
+  <body>
+    <h1>SUDOKU</h1>
+    <table id="game_table"></table>
+    <form>
+      <input
+        id="gen_button"
+        type="submit"
+        value="GENERATE"
+        onclick="generateNewGame()"
+      />
+      <br />
+      <select name="diff" id="diff">
+        <option value="easy">EASY</option>
+        <option value="normal">NORMAL</option>
+        <option value="hard">HARD</option>
+        <option value="insane">INSANE</option>
+      </select>
+    </form>
+
+    <!--Start of Firebase Hosting Stuff-->
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyA6PPo2G4_f4anxQHnjNnheesYycB7jSDY",
+        authDomain: "golden-puzzles.firebaseapp.com",
+        projectId: "golden-puzzles",
+        storageBucket: "golden-puzzles.appspot.com",
+        messagingSenderId: "794515436462",
+        appId: "1:794515436462:web:2d447083006f21b7030e3f",
+        measurementId: "G-TP34EV7KWJ",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
+    <!--End of Firebase Hosting Stuff-->
+
+    <script src="sudoku/constants.js"></script>
+    <script src="sudoku/Game.js"></script>
+    <script src="sudoku/script.js"></script>
+    <link rel="stylesheet" href="sudoku/styles.css" />
+  </body>
+</html>
