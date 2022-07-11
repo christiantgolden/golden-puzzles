@@ -1,4 +1,4 @@
-class Game {
+class Sudoku {
   #board;
   #difficulty;
   constructor() {

@@ -9,10 +9,12 @@
   </head>
   <body>
     <table id="navbar">
-      <tr><td id="prev">BINARY</td>
-      <td id="active">SUDOKU</td>
-      <td id="next">MINESWEEPER</td></tr>
-      </tr></table>
+      <tr>
+        <td id="prev" onclick="setActiveGame('BINARY')">BINARY</td>
+        <td id="active">SUDOKU</td>
+        <td id="next">MINESWEEPER</td>
+      </tr>
+    </table>
     <table id="game_table"></table>
     <form>
       <input
@@ -55,10 +57,13 @@
       const analytics = getAnalytics(app);
     </script>
     <!--End of Firebase Hosting Stuff-->
-
+    <script src="constants.js"></script>
+    <script src="Game.js"></script>
     <script src="sudoku/constants.js"></script>
-    <script src="sudoku/Game.js"></script>
+    <script src="sudoku/Sudoku.js"></script>
     <script src="sudoku/script.js"></script>
+    <script src="main.js"></script>
+
     <link rel="stylesheet" href="sudoku/styles.css" />
   </body>
 </html>
