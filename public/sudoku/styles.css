@@ -23,7 +23,7 @@ tr td {
 }
 #navbar tr td {
   width: 33%;
-  text-align: center;
+  /* text-align: center; */
 }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -48,11 +48,19 @@ input {
 body {
   text-align: center;
 }
-#prev,
+#prev {
+  font-size: small;
+  opacity: 0.5;
+  text-align: left;
+  left: auto;
+}
 #next {
   font-size: small;
   opacity: 0.5;
+  text-align: right;
+  right: auto;
 }
+
 #active {
   margin-bottom: auto;
   font-size: 32;

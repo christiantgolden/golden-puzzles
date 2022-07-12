@@ -5,14 +5,14 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no"
     />
-    <title>Sudoku</title>
+    <title>Golden Puzzles</title>
   </head>
   <body>
     <table id="navbar">
       <tr>
-        <td id="prev" onclick="setActiveGame('BINARY')">BINARY</td>
+        <td id="prev" onclick="setActiveGame('prev')">BINARY</td>
         <td id="active">SUDOKU</td>
-        <td id="next">MINESWEEPER</td>
+        <td id="next" onclick="setActiveGame('next')">MINES</td>
       </tr>
     </table>
     <table id="game_table"></table>
@@ -61,9 +61,11 @@
     <script src="Game.js"></script>
     <script src="sudoku/constants.js"></script>
     <script src="sudoku/Sudoku.js"></script>
-    <script src="sudoku/script.js"></script>
+    <script src="binary/constants.js"></script>
+    <script src="binary/Binary.js"></script>
     <script src="main.js"></script>
 
     <link rel="stylesheet" href="sudoku/styles.css" />
+    <link rel="stylesheet" href="binary/styles.css" />
   </body>
 </html>

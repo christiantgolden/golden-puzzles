@@ -9,8 +9,8 @@ const Game = () => {
         case "SUDOKU":
           console.log("Creating new Sudoku game.");
           return new Sudoku();
-        case "MINESWEEPER":
-          return new Minesweeper();
+        case "MINES":
+          return new MINES();
         case "BINARY":
           return new Binary();
         case "CROSSBYTE":

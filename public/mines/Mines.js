@@ -1,9 +1,8 @@
-class Sudoku {
+class MINES {
   #board;
   #difficulty;
   constructor() {
-    this.#difficulty =
-      DIFFICULTY_MAP[document.getElementById("diff").value.toUpperCase()];
+    this.#difficulty = 3;
     this.#board = [""];
     this.#generate();
   }
@@ -68,7 +67,9 @@ class Sudoku {
         let new_cell = new_row.insertCell(i);
         row_string_array[i] == " "
           ? (new_cell.innerHTML =
-              "<input id='cell' maxlength=1 type='tel'>" + "" + "</textarea>")
+              "<input id='cell' maxlength=1 type='number'>" +
+              "" +
+              "</textarea>")
           : (new_cell.innerHTML = row_string_array[i]);
         if (
           ((r < 3 || r > 5) && (i < 3 || i > 5)) ||
