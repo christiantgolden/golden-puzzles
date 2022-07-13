@@ -5,7 +5,14 @@ const setActiveGame = (prevOrNext) => {
     if (GAMES[g].active) {
       GAMES[g].active = false;
       let oldGame = g.toUpperCase();
-      document.getElementById(prevOrNext).innerText = oldGame;
+      prevOrNext == "next"
+        ? (document.getElementById(prevOrNext).innerText =
+            document.getElementById("prev").innerText)
+        : (document.getElementById(prevOrNext).innerText =
+            document.getElementById("next").innerText);
+      document.getElementById(
+        prevOrNext == "next" ? "prev" : "next"
+      ).innerText = oldGame;
     }
   }
   GAMES[game].active = true;

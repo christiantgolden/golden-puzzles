@@ -7,7 +7,6 @@ const Game = () => {
     if (GAMES[g].active) {
       switch (g) {
         case "SUDOKU":
-          console.log("Creating new Sudoku game.");
           return new Sudoku();
         case "MINES":
           return new Mines();
@@ -16,7 +15,6 @@ const Game = () => {
         case "CROSSBYTE":
           return new Crossbyte();
         default:
-          console.log("defaulting to new sudoku");
           return new Sudoku();
       }
     }

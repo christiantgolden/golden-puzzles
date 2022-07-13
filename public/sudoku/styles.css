@@ -1,19 +1,23 @@
 tr td {
-  width: 48;
-  height: 48;
+  width: 36;
+  height: 36;
   font-size: 24;
   text-align: center;
   color: rgba(50, 50, 50, 0.7);
   background-color: "rgba(255,255,255,0)";
   overflow: hidden;
+  outline: none;
+  border: none;
   resize: none;
   z-index: 0;
 }
 #cell {
-  width: 32;
-  height: 32;
+  width: 100%;
+  height: 100%;
   font-size: 24;
   text-align: center;
+  outline: none;
+  border: none;
   background-color: "rgba(200,200,200,0)";
   opacity: 0.2;
   color: black;
@@ -37,6 +41,7 @@ table {
 form {
   display: inline-block;
   margin-top: 10px;
+  width: 100%;
 }
 form select,
 input {
@@ -47,6 +52,7 @@ input {
 }
 body {
   text-align: center;
+  -webkit-print-color-adjust: exact;
 }
 #prev {
   font-size: small;
@@ -71,13 +77,22 @@ select {
   outline: none;
   background-color: "rgba(0,0,0,0)";
   background: none;
-  text-align: center;
+  text-align: right;
   margin-top: 0.5em;
+  border-radius: 0;
 }
 #gen_button {
-  background-color: lightgray;
-  outline: solid 1px;
-  border: 1px;
+  background-color: #eee;
+  outline: none;
+  border: none;
   color: #555;
-  margin-top: 0.3em;
+}
+#diff-generate {
+  align-content: center;
+  align-self: center;
+}
+#instructions {
+  font-size: medium;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }

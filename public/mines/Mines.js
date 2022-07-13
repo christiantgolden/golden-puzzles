@@ -22,7 +22,6 @@ class Mines {
   setMines() {}
 
   unsolveBoard() {
-    console.log("difficulty of binary game: " + this.difficulty);
     for (let i = 0; i < this.size; i++) {
       let tempRow = "";
       let randNums = [];
@@ -41,15 +40,8 @@ class Mines {
       this.board[i] = [];
       for (let j = 0; j < this.size; j++) {
         this.board[i][j] = new Coord(Math.random() > 0.8);
-        console.log("this.board[i][j] has bomb? " + this.board[i][j].hasBomb);
         this.board[i][j].setX(j);
         this.board[i][j].setY(i);
-        console.log(
-          "Current Coord being checked x: " +
-            this.board[i][j].x +
-            ", y: " +
-            this.board[i][j].y
-        );
       }
     }
     for (let i = 0; i < this.size; i++) {
@@ -99,9 +91,7 @@ class Mines {
     for (let r = 0; r < this.size; r++) {
       game_table_html += "<tr>";
       for (let c = 0; c < this.size; c++) {
-        console.log("bombs nearby: " + this.board[r][c].bombsNearby);
         if (this.board[r][c].hasBomb || this.board[r][c].bombsNearby == 0) {
-          // game_table_html += "<td style='background-color:#ccc'>💣</td>";
           game_table_html +=
             "<td style='background-color:#ccc'><input id='cell' maxlength='1'></input></td>";
         } else {

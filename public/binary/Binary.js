@@ -41,7 +41,6 @@ class Binary {
     for (let i = 0; i < this.board[0].length; i++) {
       this.colTotals[i] = parseInt(this.board[0][i]);
     }
-    console.log(this.colTotals);
   }
   shiftRow(r) {
     let binString = r;
@@ -59,7 +58,6 @@ class Binary {
     return result;
   }
   unsolveBoard() {
-    console.log("difficulty of binary game: " + this.difficulty);
     for (let i = 0; i < this.size; i++) {
       let tempRow = "";
       let randNums = [];
@@ -118,7 +116,3 @@ class Binary {
     document.getElementById("instructions").innerHTML = instructions_html;
   }
 }
-
-// const game = new Binary(10);
-// game.generateBoard();
-// game.draw();

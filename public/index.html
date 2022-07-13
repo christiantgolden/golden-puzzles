@@ -1,6 +1,6 @@
 <html>
   <head>
-    <meta charset="UTF-16" />
+    <meta charset="UTF-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no"
@@ -17,21 +17,22 @@
       </tr>
     </table>
     <table id="game_table"></table>
-    <form>
-      <input
-        id="gen_button"
-        type="submit"
-        value="GENERATE"
-        onclick="generateNewGame()"
-      />
-      <br />
-      <select name="diff" id="diff">
-        <option value="easy">EASY</option>
-        <option value="normal">NORMAL</option>
-        <option value="hard">HARD</option>
-        <option value="insane">INSANE</option>
-      </select>
-    </form>
+    <div id="diff-generate">
+      <form>
+        <input
+          id="gen_button"
+          type="submit"
+          value="GENERATE"
+          onclick="generateNewGame()"
+        />
+        <select name="diff" id="diff">
+          <option value="easy">EASY</option>
+          <option value="normal">NORMAL</option>
+          <option value="hard">HARD</option>
+          <option value="insane">INSANE</option>
+        </select>
+      </form>
+    </div>
     <div id="instructions"></div>
 
     <!--Start of Firebase Hosting Stuff-->
@@ -68,10 +69,7 @@
     <script src="mines/coord.js"></script>
     <script src="mines/constants.js"></script>
     <script src="mines/Mines.js"></script>
-
     <script src="main.js"></script>
-
     <link rel="stylesheet" href="sudoku/styles.css" />
-    <link rel="stylesheet" href="binary/styles.css" />
   </body>
 </html>
