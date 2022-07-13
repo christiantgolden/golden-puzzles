@@ -22,6 +22,7 @@ tr td {
   columns: 1;
 }
 #navbar tr td {
+  cursor: pointer;
   width: 33%;
 }
 input[type="number"]::-webkit-inner-spin-button,

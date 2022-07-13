@@ -1,12 +1,12 @@
 let activeGame = {};
-const setActiveGame = (prevOrNext, initialGame = false) => {
+const setActiveGame = (prevOrNext) => {
   prevOrNext == "prev"
     ? console.log(document.getElementById("prev").innerText)
     : console.log(document.getElementById("next").innerText);
   const game = document.getElementById(prevOrNext).innerText;
-  if (game == "MINES") {
-    return;
-  }
+  // if (game == "MINES") {
+  //   return;
+  // }
   for (const g in GAMES) {
     if (GAMES[g].active) {
       GAMES[g].active = false;
@@ -21,8 +21,6 @@ const setActiveGame = (prevOrNext, initialGame = false) => {
   document.getElementById("active").innerText = newGame;
   activeGame = Game();
   activeGame.draw();
-  // var select = document.getElementById("diff");
-  // select.value = "easy";
 };
 
 activeGame = Game();

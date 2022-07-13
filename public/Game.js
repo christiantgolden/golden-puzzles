@@ -10,7 +10,7 @@ const Game = () => {
           console.log("Creating new Sudoku game.");
           return new Sudoku();
         case "MINES":
-          return new MINES();
+          return new Mines();
         case "BINARY":
           return new Binary();
         case "CROSSBYTE":
