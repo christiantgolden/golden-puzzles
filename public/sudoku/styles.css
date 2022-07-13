@@ -23,7 +23,6 @@ tr td {
 }
 #navbar tr td {
   width: 33%;
-  /* text-align: center; */
 }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
