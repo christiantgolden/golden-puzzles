@@ -4,9 +4,6 @@ const setActiveGame = (prevOrNext) => {
     ? console.log(document.getElementById("prev").innerText)
     : console.log(document.getElementById("next").innerText);
   const game = document.getElementById(prevOrNext).innerText;
-  // if (game == "MINES") {
-  //   return;
-  // }
   for (const g in GAMES) {
     if (GAMES[g].active) {
       GAMES[g].active = false;
