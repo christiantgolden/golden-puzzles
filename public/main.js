@@ -1,21 +1,15 @@
 let activeGame = {};
 const setActiveGame = (prevOrNext) => {
-  prevOrNext == "prev"
-    ? console.log(document.getElementById("prev").innerText)
-    : console.log(document.getElementById("next").innerText);
   const game = document.getElementById(prevOrNext).innerText;
   for (const g in GAMES) {
     if (GAMES[g].active) {
       GAMES[g].active = false;
-      console.log(g + " was active. Now deactivated.");
       let oldGame = g.toUpperCase();
       document.getElementById(prevOrNext).innerText = oldGame;
     }
   }
   GAMES[game].active = true;
-  console.log(game + " is now the active game.");
-  let newGame = game.toUpperCase();
-  document.getElementById("active").innerText = newGame;
+  document.getElementById("active").innerText = game.toUpperCase();
   activeGame = Game();
   activeGame.draw();
 };

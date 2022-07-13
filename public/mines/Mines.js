@@ -100,8 +100,10 @@ class Mines {
       game_table_html += "<tr>";
       for (let c = 0; c < this.size; c++) {
         console.log("bombs nearby: " + this.board[r][c].bombsNearby);
-        if (this.board[r][c].hasBomb) {
-          game_table_html += "<td style='background-color:#ccc'>💣</td>";
+        if (this.board[r][c].hasBomb || this.board[r][c].bombsNearby == 0) {
+          // game_table_html += "<td style='background-color:#ccc'>💣</td>";
+          game_table_html +=
+            "<td style='background-color:#ccc'><input id='cell' maxlength='1'></input></td>";
         } else {
           game_table_html +=
             "<td style='background-color:#aaa'>" +
