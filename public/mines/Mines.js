@@ -113,6 +113,11 @@ class Mines {
       }
       game_table_html += "</tr>";
     }
+    let instructions_html = "";
+    for (let i = 0; i < GAME_INSTRUCTIONS["MINES"].length; i++) {
+      instructions_html += "<p>" + GAME_INSTRUCTIONS["MINES"][i] + "</p>";
+    }
+    document.getElementById("instructions").innerHTML = instructions_html;
     document.getElementById("game_table").innerHTML = game_table_html;
   }
 }

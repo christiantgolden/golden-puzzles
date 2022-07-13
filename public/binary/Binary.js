@@ -111,6 +111,11 @@ class Binary {
       game_table_html += "</tr>";
     }
     document.getElementById("game_table").innerHTML = game_table_html;
+    let instructions_html = "";
+    for (let i = 0; i < GAME_INSTRUCTIONS["BINARY"].length; i++) {
+      instructions_html += "<p>" + GAME_INSTRUCTIONS["BINARY"][i] + "</p>";
+    }
+    document.getElementById("instructions").innerHTML = instructions_html;
   }
 }
 
