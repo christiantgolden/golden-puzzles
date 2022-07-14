@@ -111,7 +111,7 @@ class Binary {
     document.getElementById("game_table").innerHTML = game_table_html;
     let instructions_html = "";
     for (let i = 0; i < GAME_INSTRUCTIONS["BINARY"].length; i++) {
-      instructions_html += "<p>" + GAME_INSTRUCTIONS["BINARY"][i] + "</p>";
+      instructions_html += GAME_INSTRUCTIONS["BINARY"][i] + "<br/>";
     }
     document.getElementById("instructions").innerHTML = instructions_html;
   }

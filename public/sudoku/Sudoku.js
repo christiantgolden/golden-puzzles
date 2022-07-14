@@ -82,7 +82,7 @@ class Sudoku {
     }
     let instructions_html = "";
     for (let i = 0; i < GAME_INSTRUCTIONS["SUDOKU"].length; i++) {
-      instructions_html += "<p>" + GAME_INSTRUCTIONS["SUDOKU"][i] + "</p>";
+      instructions_html += GAME_INSTRUCTIONS["SUDOKU"][i] + "<br/>";
     }
     document.getElementById("instructions").innerHTML = instructions_html;
   }
