@@ -11,6 +11,19 @@ tr td {
   resize: none;
   z-index: 0;
 }
+#ten-x-ten-board {
+  width: 36;
+  height: 36;
+  font-size: 24;
+  text-align: center;
+  color: rgba(50, 50, 50, 0.7);
+  background-color: "rgba(255,255,255,0)";
+  overflow: hidden;
+  outline: none;
+  border: none;
+  resize: none;
+  z-index: 0;
+}
 #cell {
   width: 100%;
   height: 100%;

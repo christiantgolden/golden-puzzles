@@ -100,10 +100,12 @@ class Binary {
       for (let c = 0; c < this.size; c++) {
         if (this.board[r][c] == " ") {
           game_table_html +=
-            "<td style='background-color:#ccc'><input id='cell' maxlength='1' type='tel'></input></td>";
+            "<td id='ten-x-ten-board' style='background-color:#ccc'><input id='cell' maxlength='1' type='tel'></input></td>";
         } else {
           game_table_html +=
-            "<td style='background-color:#aaa'>" + this.board[r][c] + "</td>";
+            "<td id='ten-x-ten-board' style='background-color:#aaa'>" +
+            this.board[r][c] +
+            "</td>";
         }
       }
       game_table_html += "</tr>";
