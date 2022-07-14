@@ -11,6 +11,19 @@ tr td {
   resize: none;
   z-index: 0;
 }
+#nine-x-nine-board {
+  width: 40;
+  height: 40;
+  font-size: 24;
+  text-align: center;
+  color: rgba(50, 50, 50, 0.7);
+  background-color: "rgba(255,255,255,0)";
+  overflow: hidden;
+  outline: none;
+  border: none;
+  resize: none;
+  z-index: 0;
+}
 #ten-x-ten-board {
   width: 36;
   height: 36;
@@ -110,4 +123,66 @@ select {
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   opacity: 0.8;
   margin: auto;
+}
+@media print {
+  tr td {
+    width: 60;
+    height: 60;
+    font-size: 24;
+    text-align: center;
+    color: rgba(50, 50, 50, 1);
+    background-color: "rgba(255,255,255,0)";
+    overflow: hidden;
+    border: 1px solid black;
+    resize: none;
+    z-index: 0;
+  }
+  #nine-x-nine-board {
+    width: 60;
+    height: 60;
+    font-size: 24;
+    text-align: center;
+    color: rgba(50, 50, 50, 1);
+    background-color: "rgba(255,255,255,0)";
+    overflow: hidden;
+    border: 1px solid black;
+    resize: none;
+    z-index: 0;
+  }
+  #ten-x-ten-board {
+    width: 58;
+    height: 58;
+    font-size: 24;
+    text-align: center;
+    color: rgba(50, 50, 50, 1);
+    background-color: "rgba(255,255,255,0)";
+    overflow: hidden;
+    border: 1px solid black;
+    resize: none;
+    z-index: 0;
+  }
+  table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 600;
+  }
+  #prev {
+    display: none;
+  }
+  #next {
+    display: none;
+  }
+  select {
+    display: none;
+  }
+  #gen_button {
+    display: none;
+  }
+  #diff-generate {
+    display: none;
+  }
+  #instructions {
+    margin-top: 1em;
+    opacity: 1;
+  }
 }
