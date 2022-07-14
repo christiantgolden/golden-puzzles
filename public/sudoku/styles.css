@@ -1,6 +1,6 @@
 tr td {
-  width: 36;
-  height: 36;
+  width: 40;
+  height: 40;
   font-size: 24;
   text-align: center;
   color: rgba(50, 50, 50, 0.7);
@@ -55,16 +55,16 @@ body {
   -webkit-print-color-adjust: exact;
 }
 #prev {
-  font-size: small;
-  opacity: 0.5;
-  text-align: left;
+  font-size: medium;
+  opacity: 0.9;
   left: auto;
+  margin-right: 1em;
 }
 #next {
-  font-size: small;
-  opacity: 0.5;
-  text-align: right;
+  font-size: medium;
+  opacity: 0.9;
   right: auto;
+  margin-left: 1em;
 }
 
 #active {
