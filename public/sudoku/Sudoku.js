@@ -6,10 +6,6 @@ class Sudoku extends Game {
     this.generateRandomStart();
     this.fillBoard();
   }
-  regenerate() {
-    this.generateRandomStart();
-    this.fillBoard();
-  }
   fillBoard() {
     for (let i = 0; i < 9; i += 3) {
       i > 0 && (this.board[i] = this.board[i - 1]);
@@ -48,10 +44,6 @@ class Sudoku extends Game {
       );
     }
     return temp_board_row;
-  }
-  clearBoard(new_difficulty) {
-    this.setDifficulty(DIFFICULTY_MAP[new_difficulty]);
-    this.board = [""];
   }
   draw() {
     let table = document.getElementById("game_table");

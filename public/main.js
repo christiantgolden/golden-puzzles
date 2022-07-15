@@ -35,10 +35,6 @@ document
   });
 
 const generateNewGame = () => {
-  var select = document.getElementById("diff");
-  var selected_difficulty =
-    select.options[select.selectedIndex].value.toUpperCase();
-  activeGame.clearBoard(selected_difficulty);
-  activeGame.regenerate();
+  activeGame = CreateGame();
   activeGame.draw();
 };

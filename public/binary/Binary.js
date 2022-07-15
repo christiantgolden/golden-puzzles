@@ -8,14 +8,6 @@ class Binary extends Game {
     this.difficulty = difficulty;
     this.resetColumnTotals();
   }
-  clearBoard(difficulty) {
-    this.board = [];
-    this.setDifficulty(DIFFICULTY_MAP[difficulty]);
-  }
-  regenerate() {
-    this.board = [];
-    this.generateBoard();
-  }
   generateFirstRow(r) {
     this.board[0] = "";
     let repeatingPattern = true;
@@ -39,14 +31,12 @@ class Binary extends Game {
     let doubledDecimalModded = doubledDecimal % (2 ** this.size - 1);
     let decimalModdedToBinString = doubledDecimalModded.toString(2);
     let binPadded = ("00" + decimalModdedToBinString).slice(-this.size);
-
     return binPadded;
   }
   flipRow(r) {
     const tempFlip1 = r.replaceAll("0", "3");
     const tempFlip2 = tempFlip1.replaceAll("1", "0");
     const result = tempFlip2.replaceAll("3", "1");
-
     return result;
   }
   unsolveBoard() {

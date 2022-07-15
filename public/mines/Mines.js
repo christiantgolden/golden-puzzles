@@ -5,13 +5,6 @@ class Mines extends Game {
   setDifficulty(difficulty) {
     this.difficulty = difficulty;
   }
-  clearBoard(difficulty) {
-    this.board = [];
-    this.setDifficulty(DIFFICULTY_MAP[difficulty]);
-  }
-  regenerate() {
-    this.generateBoard();
-  }
   setMines() {}
 
   unsolveBoard() {
