@@ -65,7 +65,6 @@ class Binary extends Game {
       this.colTotals[ct] < 5 ? (finalRow += "1") : (finalRow += "0");
     }
     this.board[this.size - 1] = finalRow;
-
     this.unsolveBoard();
   }
   resetColumnTotals() {

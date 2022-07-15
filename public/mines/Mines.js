@@ -27,58 +27,61 @@ class Mines extends Game {
     }
     for (let i = 0; i < this.size; i++) {
       for (let j = 0; j < this.size; j++) {
-        this.board[i - 1] &&
-          this.board[i - 1][j - 1] &&
-          this.board[i - 1][j - 1].hasBomb &&
-          this.board[i][j].incrementBombsNearby();
-
-        this.board[i - 1] &&
-          this.board[i - 1][j] &&
-          this.board[i - 1][j].hasBomb &&
-          this.board[i][j].incrementBombsNearby();
-
-        this.board[i - 1] &&
-          this.board[i - 1][j + 1] &&
-          this.board[i - 1][j + 1].hasBomb &&
-          this.board[i][j].incrementBombsNearby();
-
-        this.board[i][j - 1] &&
-          this.board[i][j - 1].hasBomb &&
-          this.board[i][j].incrementBombsNearby();
-
-        this.board[i][j + 1] &&
-          this.board[i][j + 1].hasBomb &&
-          this.board[i][j].incrementBombsNearby();
-
-        this.board[i + 1] &&
-          this.board[i + 1][j - 1] &&
-          this.board[i + 1][j - 1].hasBomb &&
-          this.board[i][j].incrementBombsNearby();
-
-        this.board[i + 1] &&
-          this.board[i + 1][j] &&
-          this.board[i + 1][j].hasBomb &&
-          this.board[i][j].incrementBombsNearby();
-
-        this.board[i + 1] &&
-          this.board[i + 1][j + 1] &&
-          this.board[i + 1][j + 1].hasBomb &&
-          this.board[i][j].incrementBombsNearby();
+        this.setMinesNearby(i, j);
       }
     }
+  }
+  setMinesNearby(i, j) {
+    this.board[i - 1] &&
+      this.board[i - 1][j - 1] &&
+      this.board[i - 1][j - 1].hasMine &&
+      this.board[i][j].incrementMinesNearby();
+
+    this.board[i - 1] &&
+      this.board[i - 1][j] &&
+      this.board[i - 1][j].hasMine &&
+      this.board[i][j].incrementMinesNearby();
+
+    this.board[i - 1] &&
+      this.board[i - 1][j + 1] &&
+      this.board[i - 1][j + 1].hasMine &&
+      this.board[i][j].incrementMinesNearby();
+
+    this.board[i][j - 1] &&
+      this.board[i][j - 1].hasMine &&
+      this.board[i][j].incrementMinesNearby();
+
+    this.board[i][j + 1] &&
+      this.board[i][j + 1].hasMine &&
+      this.board[i][j].incrementMinesNearby();
+
+    this.board[i + 1] &&
+      this.board[i + 1][j - 1] &&
+      this.board[i + 1][j - 1].hasMine &&
+      this.board[i][j].incrementMinesNearby();
+
+    this.board[i + 1] &&
+      this.board[i + 1][j] &&
+      this.board[i + 1][j].hasMine &&
+      this.board[i][j].incrementMinesNearby();
+
+    this.board[i + 1] &&
+      this.board[i + 1][j + 1] &&
+      this.board[i + 1][j + 1].hasMine &&
+      this.board[i][j].incrementMinesNearby();
   }
   draw() {
     let game_table_html = "";
     for (let r = 0; r < this.size; r++) {
       game_table_html += "<tr>";
       for (let c = 0; c < this.size; c++) {
-        if (this.board[r][c].hasBomb || this.board[r][c].bombsNearby == 0) {
+        if (this.board[r][c].hasMine || this.board[r][c].minesNearby == 0) {
           game_table_html +=
             "<td id='nine-x-nine-board' style='background-color:#ccc'><input id='cell' maxlength='1'></input></td>";
         } else {
           game_table_html +=
             "<td id='nine-x-nine-board' style='background-color:#aaa'>" +
-            this.board[r][c].bombsNearby +
+            this.board[r][c].minesNearby +
             "</td>";
         }
       }

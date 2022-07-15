@@ -1,18 +1,18 @@
 class Coord {
   isFlagged;
-  hasBomb;
-  bombsNearby;
+  hasMine;
+  minesNearby;
   x;
   y;
-  constructor(hasBomb = false) {
-    this.hasBomb = hasBomb;
-    this.bombsNearby = 0;
+  constructor(hasMine = false) {
+    this.hasMine = hasMine;
+    this.minesNearby = 0;
   }
-  incrementBombsNearby() {
-    this.bombsNearby++;
+  incrementMinesNearby() {
+    this.minesNearby++;
   }
-  setHasBomb(hasBomb) {
-    this.hasBomb = hasBomb;
+  setHasMine(hasMine) {
+    this.hasMine = hasMine;
   }
   setX(x) {
     this.x = x;

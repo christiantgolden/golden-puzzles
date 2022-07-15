@@ -18,8 +18,8 @@ const GAME_INSTRUCTIONS = {
   ],
   MINES: [
     "This is a semi-clone of Minesweeper.",
-    "All 0's and Bombs have been hidden.",
-    "Discern which blanks are 0's and which are Bombs.",
+    "All 0's and mines have been hidden.",
+    "Discern which blanks are 0's and which are mines.",
   ],
   SUDOKU: ["Each row/column/box has each of the numbers 1-9."],
 };
