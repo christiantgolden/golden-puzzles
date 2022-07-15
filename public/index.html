@@ -7,8 +7,9 @@
     />
     <title>Golden Puzzles</title>
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
+    <link rel="stylesheet" href="sudoku/styles.css" />
   </head>
-  <body>
+  <body id="game" style="opacity: 0" onload="showGame()">
     <table id="navbar">
       <tr>
         <td id="prev" onclick="setActiveGame('prev')">BINARY</td>
@@ -70,6 +71,5 @@
     <script src="mines/constants.js"></script>
     <script src="mines/Mines.js"></script>
     <script src="main.js"></script>
-    <link rel="stylesheet" href="sudoku/styles.css" />
   </body>
 </html>

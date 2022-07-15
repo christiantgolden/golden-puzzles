@@ -2,13 +2,11 @@ class Binary extends Game {
   colTotals;
   constructor() {
     super(10);
-    this.colTotals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    this.resetColumnTotals();
   }
   setDifficulty(difficulty) {
     this.difficulty = difficulty;
-    for (let i = 0; i < this.colTotals.length; i++) {
-      this.colTotals[i] = 0;
-    }
+    this.resetColumnTotals();
   }
   clearBoard(difficulty) {
     this.board = [];
@@ -65,10 +63,7 @@ class Binary extends Game {
     }
   }
   generateBoard() {
-    this.colTotals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    for (let i = 0; i < this.colTotals.length; i++) {
-      this.colTotals[i] = 0;
-    }
+    this.resetColumnTotals();
     this.generateFirstRow(this.board[0]);
     for (let r = 1; r < this.size - 1; r += 2) {
       this.board[r] = this.shiftRow(this.board[r - 1]);
@@ -81,15 +76,17 @@ class Binary extends Game {
       }
     }
     for (let ct = 0; ct < this.colTotals.length; ct++) {
-      if (this.colTotals[ct] < 5) {
-        finalRow += "1";
-      } else {
-        finalRow += "0";
-      }
-      this.board[this.size - 1] = finalRow;
+      this.colTotals[ct] < 5 ? (finalRow += "1") : (finalRow += "0");
     }
+    this.board[this.size - 1] = finalRow;
 
     this.unsolveBoard();
+  }
+  resetColumnTotals() {
+    this.colTotals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    for (let i = 0; i < this.colTotals.length; i++) {
+      this.colTotals[i] = 0;
+    }
   }
   draw() {
     let game_table_html = "";

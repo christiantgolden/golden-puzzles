@@ -134,6 +134,7 @@ select option {
   opacity: 0.8;
   margin: auto;
 }
+
 @media print {
   tr td {
     width: 60;

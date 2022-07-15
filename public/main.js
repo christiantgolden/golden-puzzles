@@ -24,6 +24,10 @@ const setActiveGame = (prevOrNext) => {
 activeGame = CreateGame();
 activeGame.draw();
 
+const showGame = () => {
+  document.getElementById("game").style.setProperty("opacity", 1);
+};
+
 document
   .getElementById("gen_button")
   .addEventListener("click", function (event) {

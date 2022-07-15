@@ -30,5 +30,4 @@ class Game {
     this.size = size;
     this.generateBoard();
   }
-  // generateBoard() {}
 }
