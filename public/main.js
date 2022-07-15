@@ -17,12 +17,8 @@ const setActiveGame = (prevOrNext) => {
   }
   GAMES[game].active = true;
   document.getElementById("active").innerText = game.toUpperCase();
-  activeGame = CreateGame();
-  activeGame.draw();
+  generateNewGame();
 };
-
-activeGame = CreateGame();
-activeGame.draw();
 
 const showGame = () => {
   document.getElementById("game").style.setProperty("opacity", 1);
@@ -38,3 +34,5 @@ const generateNewGame = () => {
   activeGame = CreateGame();
   activeGame.draw();
 };
+
+generateNewGame();

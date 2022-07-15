@@ -2,11 +2,6 @@ class Mines extends Game {
   constructor() {
     super(9);
   }
-  setDifficulty(difficulty) {
-    this.difficulty = difficulty;
-  }
-  setMines() {}
-
   unsolveBoard() {
     for (let i = 0; i < this.size; i++) {
       let tempRow = "";

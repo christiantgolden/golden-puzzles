@@ -23,3 +23,4 @@ const GAME_INSTRUCTIONS = {
   ],
   SUDOKU: ["Each row/column/box has each of the numbers 1-9."],
 };
+const SUDOKU_NUMBERS = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];

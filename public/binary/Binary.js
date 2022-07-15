@@ -4,10 +4,6 @@ class Binary extends Game {
     super(10);
     this.resetColumnTotals();
   }
-  setDifficulty(difficulty) {
-    this.difficulty = difficulty;
-    this.resetColumnTotals();
-  }
   generateFirstRow(r) {
     this.board[0] = "";
     let repeatingPattern = true;

@@ -38,8 +38,4 @@ class Game {
     }
     document.getElementById("instructions").innerHTML = instructions_html;
   }
-  clearBoard(new_difficulty) {
-    this.setDifficulty(DIFFICULTY_MAP[new_difficulty]);
-    this.board = [""];
-  }
 }

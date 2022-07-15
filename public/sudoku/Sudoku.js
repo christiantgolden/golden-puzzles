@@ -26,20 +26,11 @@ class Sudoku extends Game {
       );
     }
   }
-  getBoard() {
-    return this.board;
-  }
-  setDifficulty(difficulty) {
-    this.difficulty = difficulty;
-  }
-  getDifficulty() {
-    return this.difficulty;
-  }
   unsolveRow(index, difficulty) {
     let temp_board_row = this.board[index];
     for (let d = 0; d < difficulty; d++) {
       temp_board_row = temp_board_row.replace(
-        NUMBERS[Math.floor(Math.random() * 9)],
+        SUDOKU_NUMBERS[Math.floor(Math.random() * 9)],
         " "
       );
     }
@@ -50,7 +41,7 @@ class Sudoku extends Game {
     table.innerHTML = "";
     for (let r = 0; r < 9; r++) {
       let new_row = table.insertRow(r);
-      let row_string_array = this.unsolveRow(r, this.getDifficulty()).split("");
+      let row_string_array = this.unsolveRow(r, this.difficulty).split("");
       for (let i = 0; i < 9; i++) {
         let new_cell = new_row.insertCell(i);
         row_string_array[i] == " "
