@@ -30,4 +30,12 @@ class Game {
     this.size = size;
     this.generateBoard();
   }
+  displayInstructions() {
+    const current_game = document.getElementById("active").innerText;
+    let instructions_html = "";
+    for (let i = 0; i < GAME_INSTRUCTIONS[current_game].length; i++) {
+      instructions_html += GAME_INSTRUCTIONS[current_game][i] + "<br/>";
+    }
+    document.getElementById("instructions").innerHTML = instructions_html;
+  }
 }

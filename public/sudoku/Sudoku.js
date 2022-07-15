@@ -1,7 +1,6 @@
 class Sudoku extends Game {
   constructor() {
     super();
-    // this.generateBoard();
   }
   generateBoard() {
     this.generateRandomStart();
@@ -76,10 +75,6 @@ class Sudoku extends Game {
         }
       }
     }
-    let instructions_html = "";
-    for (let i = 0; i < GAME_INSTRUCTIONS["SUDOKU"].length; i++) {
-      instructions_html += GAME_INSTRUCTIONS["SUDOKU"][i] + "<br/>";
-    }
-    document.getElementById("instructions").innerHTML = instructions_html;
+    this.displayInstructions();
   }
 }

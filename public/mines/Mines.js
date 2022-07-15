@@ -1,7 +1,6 @@
 class Mines extends Game {
   constructor() {
     super(9);
-    // this.generateBoard();
   }
   setDifficulty(difficulty) {
     this.difficulty = difficulty;
@@ -97,11 +96,7 @@ class Mines extends Game {
       }
       game_table_html += "</tr>";
     }
-    let instructions_html = "";
-    for (let i = 0; i < GAME_INSTRUCTIONS["MINES"].length; i++) {
-      instructions_html += GAME_INSTRUCTIONS["MINES"][i] + "<br/>";
-    }
-    document.getElementById("instructions").innerHTML = instructions_html;
     document.getElementById("game_table").innerHTML = game_table_html;
+    this.displayInstructions();
   }
 }
