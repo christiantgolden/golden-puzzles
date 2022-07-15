@@ -20,7 +20,15 @@ class Mines extends Game {
     for (let i = 0; i < this.size; i++) {
       this.board[i] = [];
       for (let j = 0; j < this.size; j++) {
-        this.board[i][j] = new Coord(Math.random() > 0.8, j, i);
+        this.board[i][j] = {
+          x: j,
+          y: i,
+          hasMine: Math.random() > 0.8,
+          minesNearby: 0,
+        };
+        this.board[i][j].incrementMinesNearby = () => {
+          this.board[i][j].minesNearby++;
+        };
       }
     }
     for (let i = 0; i < this.size; i++) {
