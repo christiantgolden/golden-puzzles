@@ -1,51 +1,47 @@
-class Sudoku {
-  #board;
-  #difficulty;
+class Sudoku extends Game {
   constructor() {
-    this.#difficulty =
-      DIFFICULTY_MAP[document.getElementById("diff").value.toUpperCase()];
-    this.#board = [""];
-    this.#generate();
+    super();
+    // this.generateBoard();
   }
-  #generate() {
-    this.#generateRandomStart();
-    this.#fillBoard();
+  generateBoard() {
+    this.generateRandomStart();
+    this.fillBoard();
   }
   regenerate() {
-    this.#generateRandomStart();
-    this.#fillBoard();
+    this.generateRandomStart();
+    this.fillBoard();
   }
-  #fillBoard() {
+  fillBoard() {
     for (let i = 0; i < 9; i += 3) {
-      i > 0 && (this.#board[i] = this.#board[i - 1]);
-      let shift_one_array = this.#board[i].split("");
+      i > 0 && (this.board[i] = this.board[i - 1]);
+      let shift_one_array = this.board[i].split("");
       let shift_one_first_char = shift_one_array.shift();
-      this.#board[i] = shift_one_array.join("") + shift_one_first_char;
-      this.#board[i + 1] = this.#board[i].slice(3) + this.#board[i].slice(0, 3);
-      this.#board[i + 2] =
-        this.#board[i + 1].slice(3) + this.#board[i + 1].slice(0, 3);
+      this.board[i] = shift_one_array.join("") + shift_one_first_char;
+      this.board[i + 1] = this.board[i].slice(3) + this.board[i].slice(0, 3);
+      this.board[i + 2] =
+        this.board[i + 1].slice(3) + this.board[i + 1].slice(0, 3);
     }
   }
-  #generateRandomStart() {
+  generateRandomStart() {
     let temp_num_array = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
     for (let n = 0; n < 9; n++) {
-      this.#board[0] += temp_num_array.splice(
+      this.board[0] += temp_num_array.splice(
         Math.floor(Math.random() * (9 - n)),
         1
       );
     }
   }
   getBoard() {
-    return this.#board;
+    return this.board;
   }
   setDifficulty(difficulty) {
-    this.#difficulty = difficulty;
+    this.difficulty = difficulty;
   }
   getDifficulty() {
-    return this.#difficulty;
+    return this.difficulty;
   }
   unsolveRow(index, difficulty) {
-    let temp_board_row = this.#board[index];
+    let temp_board_row = this.board[index];
     for (let d = 0; d < difficulty; d++) {
       temp_board_row = temp_board_row.replace(
         NUMBERS[Math.floor(Math.random() * 9)],
@@ -56,7 +52,7 @@ class Sudoku {
   }
   clearBoard(new_difficulty) {
     this.setDifficulty(DIFFICULTY_MAP[new_difficulty]);
-    this.#board = [""];
+    this.board = [""];
   }
   draw() {
     let table = document.getElementById("game_table");

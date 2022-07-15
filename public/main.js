@@ -17,11 +17,11 @@ const setActiveGame = (prevOrNext) => {
   }
   GAMES[game].active = true;
   document.getElementById("active").innerText = game.toUpperCase();
-  activeGame = Game();
+  activeGame = CreateGame();
   activeGame.draw();
 };
 
-activeGame = Game();
+activeGame = CreateGame();
 activeGame.draw();
 
 document

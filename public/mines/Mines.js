@@ -1,13 +1,7 @@
-class Mines {
-  size;
-  board;
-  difficulty;
-  constructor(size = 9) {
-    this.size = size;
-    this.board = [];
-    this.difficulty =
-      DIFFICULTY_MAP[document.getElementById("diff").value.toUpperCase()];
-    this.generateBoard();
+class Mines extends Game {
+  constructor() {
+    super(9);
+    // this.generateBoard();
   }
   setDifficulty(difficulty) {
     this.difficulty = difficulty;

@@ -1,17 +1,8 @@
-class Binary {
-  size;
-  board;
-  colTotals = [10];
-  difficulty;
-  constructor(size = 10) {
-    this.size = size;
-    this.board = [];
-    this.difficulty =
-      DIFFICULTY_MAP[document.getElementById("diff").value.toUpperCase()];
-    for (let i = 0; i < this.colTotals.length; i++) {
-      this.colTotals[i] = 0;
-    }
-    this.generateBoard();
+class Binary extends Game {
+  colTotals;
+  constructor() {
+    super(10);
+    this.colTotals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   }
   setDifficulty(difficulty) {
     this.difficulty = difficulty;
@@ -24,6 +15,7 @@ class Binary {
     this.setDifficulty(DIFFICULTY_MAP[difficulty]);
   }
   regenerate() {
+    this.board = [];
     this.generateBoard();
   }
   generateFirstRow(r) {
@@ -49,12 +41,14 @@ class Binary {
     let doubledDecimalModded = doubledDecimal % (2 ** this.size - 1);
     let decimalModdedToBinString = doubledDecimalModded.toString(2);
     let binPadded = ("00" + decimalModdedToBinString).slice(-this.size);
+
     return binPadded;
   }
   flipRow(r) {
     const tempFlip1 = r.replaceAll("0", "3");
     const tempFlip2 = tempFlip1.replaceAll("1", "0");
     const result = tempFlip2.replaceAll("3", "1");
+
     return result;
   }
   unsolveBoard() {
@@ -71,7 +65,10 @@ class Binary {
     }
   }
   generateBoard() {
-    this.board = [];
+    this.colTotals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    for (let i = 0; i < this.colTotals.length; i++) {
+      this.colTotals[i] = 0;
+    }
     this.generateFirstRow(this.board[0]);
     for (let r = 1; r < this.size - 1; r += 2) {
       this.board[r] = this.shiftRow(this.board[r - 1]);
@@ -91,6 +88,7 @@ class Binary {
       }
       this.board[this.size - 1] = finalRow;
     }
+
     this.unsolveBoard();
   }
   draw() {
@@ -110,6 +108,7 @@ class Binary {
       }
       game_table_html += "</tr>";
     }
+
     document.getElementById("game_table").innerHTML = game_table_html;
     let instructions_html = "";
     for (let i = 0; i < GAME_INSTRUCTIONS["BINARY"].length; i++) {

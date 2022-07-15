@@ -101,11 +101,21 @@ body {
 select {
   border: none;
   outline: none;
-  background-color: "rgba(0,0,0,0)";
-  background: none;
+  /* background-color: "rgba(0,0,0,0)"; */
+  /* background: none; */
   text-align: right;
   margin-top: 0.5em;
   border-radius: 0;
+  text-align-last: right;
+  background-color: transparent;
+  -webkit-appearance: none !important;
+}
+select option {
+  text-align: center;
+  opacity: 0;
+  accent-color: white;
+  background-color: transparent;
+  -webkit-appearance: none !important;
 }
 #gen_button {
   background-color: #eee;
