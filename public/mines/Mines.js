@@ -20,9 +20,7 @@ class Mines extends Game {
     for (let i = 0; i < this.size; i++) {
       this.board[i] = [];
       for (let j = 0; j < this.size; j++) {
-        this.board[i][j] = new Coord(Math.random() > 0.8);
-        this.board[i][j].setX(j);
-        this.board[i][j].setY(i);
+        this.board[i][j] = new Coord(Math.random() > 0.8, j, i);
       }
     }
     for (let i = 0; i < this.size; i++) {
