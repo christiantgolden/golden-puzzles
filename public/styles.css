@@ -113,6 +113,9 @@ select option {
   opacity: 0.8;
   margin: auto;
 }
+#hidden {
+  display: none;
+}
 
 @media print {
   tr td {

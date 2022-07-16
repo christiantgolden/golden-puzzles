@@ -13,7 +13,6 @@ const CreateGame = () => {
         case "BINARY":
           return new Binary();
         case "TENTS":
-          console.log("Creating new Tents game...");
           return new Tents();
         default:
           return new Tents();
