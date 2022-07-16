@@ -1,6 +1,6 @@
 class Tents extends Game {
   constructor() {
-    super(10);
+    super(9);
   }
   generateBoard() {
     for (let i = 0; i < this.size; i++) {
@@ -25,7 +25,7 @@ class Tents extends Game {
         ) {
           this.board[i][j] = "";
         } else {
-          this.board[i][j] = random_obj > 0.7 ? TENT : "";
+          this.board[i][j] = random_obj > 0.5 ? TENT : "";
         }
       }
     }
