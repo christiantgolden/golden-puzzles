@@ -4,11 +4,16 @@ const setActiveGame = (prevOrNext) => {
   for (const g in GAMES) {
     if (GAMES[g].active) {
       GAMES[g].active = false;
+      console.log("Deactivating: " + g);
       let oldGame = g.toUpperCase();
       prevOrNext == "next"
         ? (document.getElementById(prevOrNext).innerText =
+            document.getElementById("hidden").innerText) &&
+          (document.getElementById("hidden").innerText =
             document.getElementById("prev").innerText)
         : (document.getElementById(prevOrNext).innerText =
+            document.getElementById("hidden").innerText) &&
+          (document.getElementById("hidden").innerText =
             document.getElementById("next").innerText);
       document.getElementById(
         prevOrNext == "next" ? "prev" : "next"
