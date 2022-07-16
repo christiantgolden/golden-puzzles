@@ -12,8 +12,11 @@ const CreateGame = () => {
           return new Mines();
         case "BINARY":
           return new Binary();
+        case "TENTS":
+          console.log("Creating new Tents game...");
+          return new Tents();
         default:
-          return new Sudoku();
+          return new Tents();
       }
     }
   }

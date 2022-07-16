@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <title>Golden Puzzles</title>
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body id="game" style="opacity: 0" onload="showGame()">
+    <table id="navbar">
+      <tr>
+        <td id="prev" onclick="setActiveGame('prev')">BINARY</td>
+        <td id="active">TENTS</td>
+        <td id="next" onclick="setActiveGame('next')">MINES</td>
+      </tr>
+    </table>
+    <table id="game_table"></table>
+    <div id="diff-generate">
+      <form>
+        <input
+          id="gen_button"
+          type="submit"
+          value="GENERATE"
+          onclick="generateNewGame()"
+        />
+        <select name="diff" id="diff">
+          <option value="easy">EASY</option>
+          <option value="normal">NORMAL</option>
+          <option value="hard">HARD</option>
+          <option value="insane">INSANE</option>
+        </select>
+      </form>
+    </div>
+    <div id="instructions"></div>
+
+    <!--End of Firebase Hosting Stuff-->
+    <script src="../tents/tents-test-constants.js"></script>
+    <script src="../Game.js"></script>
+    <script src="Tents.js"></script>
+    <script src="../sudoku/Sudoku.js"></script>
+    <script src="../binary/Binary.js"></script>
+    <script src="../mines/Mines.js"></script>
+    <script src="../main.js"></script>
+  </body>
+</html>
