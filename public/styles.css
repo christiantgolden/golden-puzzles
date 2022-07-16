@@ -116,6 +116,9 @@ select option {
 #hidden {
   display: none;
 }
+* {
+  -webkit-tap-highlight-color: transparent;
+}
 
 @media print {
   tr td {
