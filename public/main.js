@@ -4,7 +4,6 @@ const setActiveGame = (prevOrNext) => {
   for (const g in GAMES) {
     if (GAMES[g].active) {
       GAMES[g].active = false;
-      console.log("Deactivating: " + g);
       let oldGame = g.toUpperCase();
       prevOrNext == "next"
         ? (document.getElementById(prevOrNext).innerText =
@@ -41,3 +40,19 @@ const generateNewGame = () => {
 };
 
 generateNewGame();
+function TENTSClickHandler(e) {
+  // Here, `this` refers to the element the event was hooked on
+  switch (this.innerText) {
+    case GRASS:
+      this.innerText = TENT;
+      break;
+    case TENT:
+      this.innerText = " ";
+      break;
+    case "":
+      this.innerText = GRASS;
+      break;
+    default:
+      break;
+  }
+}

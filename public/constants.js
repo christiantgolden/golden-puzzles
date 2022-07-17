@@ -29,7 +29,7 @@ const GAME_INSTRUCTIONS = {
     "<a href='https://en.wikipedia.org/wiki/Sudoku' target='_blank' rel='noopener noreferrer'>Sudoku Wikipedia Page</a>",
   ],
   TENTS: [
-    "Place tents in the grid.",
+    "Place tents/grass in the grid.",
     "Each tree has at least one adjacent tent.",
     "Tents do not touch each other, even diagonally.",
     "Numbers indicate how many tents per row/column.",
@@ -38,6 +38,8 @@ const GAME_INSTRUCTIONS = {
 const SUDOKU_NUMBERS = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 const TREE = "🌳";
 const TENT = "⛺";
+const GRASS = "🟩";
+let terrain = GRASS;
 const TOP_LEFT = (board, i, j) => {
   return board[i - 1] && board[i - 1][j - 1];
 };
