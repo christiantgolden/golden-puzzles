@@ -16,18 +16,23 @@ const GAME_INSTRUCTIONS = {
     "Each row/column has five 0's and five 1's.",
     "No more than two 0's or 1's adjacent to one another.",
     "No two rows or columns may be identical.",
+    "<a href='https://en.wikipedia.org/wiki/Takuzu' target='_blank' rel='noopener noreferrer'>Binary Wikipedia Page</a>",
   ],
   MINES: [
     "This is a semi-clone of Minesweeper.",
     "All 0's and mines have been hidden.",
     "Discern which blanks are 0's and which are mines.",
+    "<a href='https://en.wikipedia.org/wiki/Minesweeper_(video_game)' target='_blank' rel='noopener noreferrer'>Minesweeper Wikipedia Page</a>",
   ],
-  SUDOKU: ["Each row/column/box has each of the numbers 1-9."],
+  SUDOKU: [
+    "Each row/column/box has each of the numbers 1-9.",
+    "<a href='https://en.wikipedia.org/wiki/Sudoku' target='_blank' rel='noopener noreferrer'>Sudoku Wikipedia Page</a>",
+  ],
   TENTS: [
     "Place tents in the grid.",
-    "Each tree has one tent next to it (horizontally or vertically)",
-    "Tents do not touch each other, not even diagonally.",
-    "The numbers outside the grid show how many tents in that row or column.",
+    "Each tree has at least one adjacent tent.",
+    "Tents do not touch each other, even diagonally.",
+    "Numbers indicate how many tents per row/column.",
   ],
 };
 const SUDOKU_NUMBERS = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
