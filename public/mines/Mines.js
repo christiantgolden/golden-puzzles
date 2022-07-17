@@ -83,7 +83,7 @@ class Mines extends Game {
       for (let c = 0; c < this.size; c++) {
         if (this.board[r][c].hasMine || this.board[r][c].minesNearby == 0) {
           game_table_html +=
-            "<td id='nine-x-nine-board' style='background-color:#ccc'><input id='cell' maxlength='1'></input></td>";
+            "<td id='nine-x-nine-board' style='background-color:#ccc'><input id='cell' type='text' maxlength='1'></input></td>";
         } else {
           game_table_html +=
             "<td id='nine-x-nine-board' style='background-color:#aaa'>" +

@@ -47,7 +47,7 @@ class Tents extends Game {
           ((this.board[r][c] == TENT && (this.board[r][c] = "")) ||
             this.board[r][c]) +
           (this.board[r][c] != TREE
-            ? "<input id='cell' maxlength='1'></input>"
+            ? "<input id='cell' type='text' maxlength='1'></input>"
             : "");
         ("</td>");
       }
