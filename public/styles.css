@@ -1,3 +1,14 @@
+* {
+  -webkit-tap-highlight-color: transparent;
+  text-align: center;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
 table {
   table-layout: fixed;
   margin-left: auto;
@@ -10,7 +21,6 @@ tr td,
 #nine-x-nine-board {
   width: 40;
   height: 40;
-  text-align: center;
   color: rgba(50, 50, 50, 0.7);
   background-color: "rgba(255,255,255,0)";
 }
@@ -21,27 +31,22 @@ tr td,
 #cell {
   width: 100%;
   height: 100%;
-  text-align: center;
   background-color: "rgba(200,200,200,0)";
   opacity: 0.2;
   color: black;
   columns: 1;
 }
 #navbar tr td {
-  cursor: pointer;
+  font-size: larger;
   width: 33%;
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
+}
+#prev,
+#next {
+  cursor: pointer;
 }
 #navbar tr {
   width: 33%;
   align-items: stretch;
-  /* font-size: 24; */
 }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -61,31 +66,27 @@ input {
   background-color: "rgba(0,0,0,0)";
 }
 body {
-  text-align: center;
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
 }
 #prev {
   opacity: 0.6;
-  width: 33%;
+  width: 25%;
   margin-right: 1em;
 }
 #next {
   opacity: 0.6;
-  width: 33%;
+  width: 25%;
   margin-left: 1em;
 }
 
 #active {
-  width: 33%;
-  font-size: 24px;
-  margin-bottom: auto;
+  width: 25%;
   color: dimgrey !important;
 }
 select {
   border: none;
   outline: none;
-  /* text-align: left; */
   margin-top: 0.5em;
   border-radius: 0;
   text-align-last: right;
@@ -99,6 +100,10 @@ select option {
   accent-color: white;
   background-color: transparent;
   -webkit-appearance: none !important;
+}
+#gen_button,
+#diff-generate {
+  font-size: larger;
 }
 #gen_button {
   background-color: #eee;
@@ -120,9 +125,6 @@ select option {
 #hidden {
   display: none;
 }
-* {
-  -webkit-tap-highlight-color: transparent;
-}
 a {
   color: inherit;
 }
@@ -130,7 +132,6 @@ a {
   tr td {
     width: 60;
     height: 60;
-    text-align: center;
     color: rgba(50, 50, 50, 1);
     background-color: "rgba(255,255,255,0)";
     overflow: hidden;

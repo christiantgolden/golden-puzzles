@@ -46,10 +46,7 @@ class Tents extends Game {
           "<td id='ten-x-ten-board' style='background-color:#aaa'>" +
           ((this.board[r][c] == TENT && (this.board[r][c] = "")) ||
             this.board[r][c]) +
-          (this.board[r][c] != TREE
-            ? "<input id='cell' type='text' maxlength='1'></input>"
-            : "");
-        ("</td>");
+          "</td>";
       }
       game_table_html +=
         "<td id='ten-x-ten-board' style='background-color:#ddd'>" +
@@ -68,5 +65,8 @@ class Tents extends Game {
     game_table_html += final_row_html;
     document.getElementById("game_table").innerHTML = game_table_html;
     this.displayInstructions();
+    document
+      .querySelectorAll("#game_table td")
+      .forEach((e) => e.addEventListener("click", TENTSClickHandler));
   }
 }
