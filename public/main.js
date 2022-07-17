@@ -56,3 +56,19 @@ function TENTSClickHandler(e) {
       break;
   }
 }
+function MINESClickHandler(e) {
+  // Here, `this` refers to the element the event was hooked on
+  switch (this.innerText) {
+    case PERSON_SAFE:
+      this.innerText = PERSON_MINE;
+      break;
+    case PERSON_MINE:
+      this.innerText = "";
+      break;
+    case "":
+      this.innerText = PERSON_SAFE;
+      break;
+    default:
+      break;
+  }
+}

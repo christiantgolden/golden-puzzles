@@ -20,7 +20,7 @@ const GAME_INSTRUCTIONS = {
   ],
   MINES: [
     "This is a semi-clone of Minesweeper.",
-    "All 0's and mines have been hidden.",
+    "All 0's 😊 and mines 🤯 have been hidden.",
     "Discern which blanks are 0's and which are mines.",
     "<a href='https://en.wikipedia.org/wiki/Minesweeper_(video_game)' target='_blank' rel='noopener noreferrer'>Minesweeper Wikipedia Page</a>",
   ],
@@ -29,8 +29,8 @@ const GAME_INSTRUCTIONS = {
     "<a href='https://en.wikipedia.org/wiki/Sudoku' target='_blank' rel='noopener noreferrer'>Sudoku Wikipedia Page</a>",
   ],
   TENTS: [
-    "Place tents/grass in the grid.",
-    "Each tree has at least one adjacent tent.",
+    "Place tents⛺/grass🟩 in the grid.",
+    "Each tree🌳 has at least one adjacent tent.",
     "Tents do not touch each other, even diagonally.",
     "Numbers indicate how many tents per row/column.",
   ],
@@ -39,7 +39,8 @@ const SUDOKU_NUMBERS = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 const TREE = "🌳";
 const TENT = "⛺";
 const GRASS = "🟩";
-let terrain = GRASS;
+const PERSON_SAFE = "😊";
+const PERSON_MINE = "🤯";
 const TOP_LEFT = (board, i, j) => {
   return board[i - 1] && board[i - 1][j - 1];
 };
