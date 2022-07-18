@@ -4,6 +4,8 @@ const GAMES = {
   TENTS: { active: false, visible: false },
   SUDOKU: { active: true, visible: true },
 };
+const BLANK_CELL_COLOR = "#ddd";
+const FILLED_CELL_COLOR = "#aaa";
 const AVAILABLE_GAMES = ["BINARY", "TENTS", "MINES"];
 const DIFFICULTY_MAP = {
   EASY: 3,

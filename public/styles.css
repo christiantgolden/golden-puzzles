@@ -143,7 +143,6 @@ a {
     height: 60;
   }
   #ten-x-ten-board {
-    /*TODO #9 adjust background-color of blank cells to be lighter for printing*/
     width: 54;
     height: 54;
   }

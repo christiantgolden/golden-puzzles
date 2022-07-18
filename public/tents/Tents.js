@@ -43,13 +43,13 @@ class Tents extends Game {
         this.board[r][c] == TENT && final_row[c]++;
         this.board[r][c] == TENT && rowTotal++;
         game_table_html +=
-          "<td id='ten-x-ten-board' style='background-color:#aaa'>" +
+          `<td id='ten-x-ten-board' style='background-color:${BLANK_CELL_COLOR}'>` +
           ((this.board[r][c] == TENT && (this.board[r][c] = "")) ||
             this.board[r][c]) +
           "</td>";
       }
       game_table_html +=
-        "<td id='ten-x-ten-board' style='background-color:#ddd'>" +
+        `<td id='ten-x-ten-board' style='background-color:${FILLED_CELL_COLOR}'>` +
         rowTotal +
         "</td>" +
         "</tr>";
@@ -57,7 +57,7 @@ class Tents extends Game {
     let final_row_html = "<tr>";
     for (let i = 0; i < this.size; i++) {
       final_row_html +=
-        "<td id='ten-x-ten-board' style='background-color:#ddd'>" +
+        `<td id='ten-x-ten-board' style='background-color:${FILLED_CELL_COLOR}'>` +
         final_row[i] +
         "</td>";
     }

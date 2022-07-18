@@ -82,11 +82,10 @@ class Mines extends Game {
       game_table_html += "<tr>";
       for (let c = 0; c < this.size; c++) {
         if (this.board[r][c].hasMine || this.board[r][c].minesNearby == 0) {
-          game_table_html +=
-            "<td id='nine-x-nine-board' style='background-color:#ccc'></td>";
+          game_table_html += `<td id='nine-x-nine-board' style='background-color:${BLANK_CELL_COLOR}'></td>`;
         } else {
           game_table_html +=
-            "<td id='nine-x-nine-board' style='background-color:#aaa'>" +
+            `<td id='nine-x-nine-board' style='background-color:${FILLED_CELL_COLOR}'>` +
             this.board[r][c].minesNearby +
             "</td>";
         }
