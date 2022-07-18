@@ -143,8 +143,9 @@ a {
     height: 60;
   }
   #ten-x-ten-board {
-    width: 58;
-    height: 58;
+    /*TODO #9 adjust background-color of blank cells to be lighter for printing*/
+    width: 54;
+    height: 54;
   }
   table {
     width: 600;
