@@ -52,9 +52,9 @@ class Sudoku extends Game {
           ((r < 3 || r > 5) && (i < 3 || i > 5)) ||
           (r > 2 && r < 6 && i > 2 && i < 6)
         ) {
-          new_cell.style.background = "#aaa";
+          new_cell.style.background = FILLED_CELL_COLOR;
         } else {
-          new_cell.style.background = "#ccc";
+          new_cell.style.background = BLANK_CELL_COLOR;
         }
       }
     }

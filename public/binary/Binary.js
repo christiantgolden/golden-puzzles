@@ -79,11 +79,10 @@ class Binary extends Game {
       game_table_html += "<tr>";
       for (let c = 0; c < this.size; c++) {
         if (this.board[r][c] == " ") {
-          game_table_html +=
-            "<td id='ten-x-ten-board' style='background-color:#ccc'></input></td>";
+          game_table_html += `<td id='ten-x-ten-board' style='background-color:${BLANK_CELL_COLOR}'></input></td>`;
         } else {
           game_table_html +=
-            "<td id='ten-x-ten-board' style='background-color:#aaa'>" +
+            `<td id='ten-x-ten-board' style='background-color:${FILLED_CELL_COLOR}'>` +
             this.board[r][c] +
             "</td>";
         }
