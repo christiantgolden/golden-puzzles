@@ -72,3 +72,19 @@ function MINESClickHandler(e) {
       break;
   }
 }
+function BINARYClickHandler(e) {
+  // Here, `this` refers to the element the event was hooked on
+  switch (this.innerText) {
+    case "0":
+      this.innerText = "1";
+      break;
+    case "1":
+      this.innerText = "";
+      break;
+    case "":
+      this.innerText = "0";
+      break;
+    default:
+      break;
+  }
+}

@@ -80,7 +80,7 @@ class Binary extends Game {
       for (let c = 0; c < this.size; c++) {
         if (this.board[r][c] == " ") {
           game_table_html +=
-            "<td id='ten-x-ten-board' style='background-color:#ccc'><input id='cell' maxlength='1' type='tel'></input></td>";
+            "<td id='ten-x-ten-board' style='background-color:#ccc'></input></td>";
         } else {
           game_table_html +=
             "<td id='ten-x-ten-board' style='background-color:#aaa'>" +
@@ -92,5 +92,11 @@ class Binary extends Game {
     }
     document.getElementById("game_table").innerHTML = game_table_html;
     this.displayInstructions();
+    document
+      .querySelectorAll("#game_table td")
+      .forEach(
+        (e) =>
+          e.innerText == "" && e.addEventListener("click", BINARYClickHandler)
+      );
   }
 }
