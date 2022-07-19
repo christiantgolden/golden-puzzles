@@ -53,6 +53,9 @@ class Box16 extends Game {
           new_cell.style.border = "5px solid";
           new_cell.style.borderColor = "#777";
           new_cell.innerHTML = temp_num;
+        } else {
+          new_cell.innerHTML =
+            "<input id='cell' maxlength=1 type='tel'>" + "" + "</textarea>";
         }
         if (
           ((r < 3 || r > 5) && (i < 3 || i > 5)) ||
