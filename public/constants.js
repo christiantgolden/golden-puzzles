@@ -38,9 +38,7 @@ const GAME_INSTRUCTIONS = {
     "Numbers indicate how many tents per row/column.",
   ],
   BOXES: [
-    "The number in the center of each 3x3 box is the sum of its eight surrounding cells.",
-    "Starting with the first, every other column/row follows Sudoku rules.",
-    "Fill the empty cells, making sure to satisfy the above conditions",
+    "Sudoku, but the center cell of each box is the sum of its surrounding cells.",
   ],
 };
 const SUDOKU_NUMBERS = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
