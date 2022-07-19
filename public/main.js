@@ -1,5 +1,7 @@
 let activeGame = {};
+let prevGameIndex = 2;
 let activeGameIndex = 3;
+let nextGameIndex = 4;
 const setActiveGame = (prevOrNext) => {
   const game = document.getElementById(prevOrNext).innerText;
   for (const g in GAMES) {
@@ -7,26 +9,23 @@ const setActiveGame = (prevOrNext) => {
       GAMES[g].active = false;
       switch (prevOrNext) {
         case "prev":
-          activeGameIndex = (activeGameIndex + 1) % AVAILABLE_GAMES.length;
-          document.getElementById("prev").innerText = AVAILABLE_GAMES.at(
-            (activeGameIndex + 1) % AVAILABLE_GAMES.length
-          );
-          document.getElementById("next").innerText = AVAILABLE_GAMES.at(
-            (activeGameIndex - 1) % AVAILABLE_GAMES.length
-          );
+          prevGameIndex = (prevGameIndex - 1) % AVAILABLE_GAMES.length;
+          activeGameIndex = (activeGameIndex - 1) % AVAILABLE_GAMES.length;
+          nextGameIndex = (nextGameIndex - 1) % AVAILABLE_GAMES.length;
           break;
         case "next":
-          activeGameIndex = (activeGameIndex - 1) % AVAILABLE_GAMES.length;
-          document.getElementById("prev").innerText = AVAILABLE_GAMES.at(
-            (activeGameIndex - 1) % AVAILABLE_GAMES.length
-          );
-          document.getElementById("next").innerText = AVAILABLE_GAMES.at(
-            (activeGameIndex + 1) % AVAILABLE_GAMES.length
-          );
+          prevGameIndex = (prevGameIndex + 1) % AVAILABLE_GAMES.length;
+          activeGameIndex = (activeGameIndex + 1) % AVAILABLE_GAMES.length;
+          nextGameIndex = (nextGameIndex + 1) % AVAILABLE_GAMES.length;
+
           break;
       }
+      document.getElementById("prev").innerText =
+        AVAILABLE_GAMES.at(prevGameIndex);
       document.getElementById("active").innerText =
         AVAILABLE_GAMES.at(activeGameIndex);
+      document.getElementById("next").innerText =
+        AVAILABLE_GAMES.at(nextGameIndex);
     }
   }
   GAMES[game].active = true;
