@@ -4,10 +4,18 @@ const GAMES = {
   TENTS: { active: false, visible: false },
   BOXES: { active: false, visible: false },
   SUDOKU: { active: true, visible: true },
+  BOX16: { active: false, visible: false },
 };
 const BLANK_CELL_COLOR = "#ddd";
 const FILLED_CELL_COLOR = "#aaa";
-const AVAILABLE_GAMES = ["BINARY", "TENTS", "MINES", "SUDOKU", "BOXES"];
+const AVAILABLE_GAMES = [
+  "BINARY",
+  "TENTS",
+  "MINES",
+  "SUDOKU",
+  "BOXES",
+  "BOX16",
+];
 const DIFFICULTY_MAP = {
   EASY: 3,
   NORMAL: 5,
@@ -39,6 +47,10 @@ const GAME_INSTRUCTIONS = {
   ],
   BOXES: [
     "Sudoku, but the center cell of each box is the sum of its surrounding cells.",
+  ],
+  BOX16: [
+    "This is a cleared, valid Sudoku board.",
+    "Numbers indicate sum of surrounding cells.",
   ],
 };
 const SUDOKU_NUMBERS = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];

@@ -16,6 +16,8 @@ const CreateGame = () => {
           return new Tents();
         case "BOXES":
           return new Boxes();
+        case "BOX16":
+          return new Box16();
         default:
           return new Tents();
       }

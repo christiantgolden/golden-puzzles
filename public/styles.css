@@ -123,7 +123,8 @@ select option {
   margin: auto;
 }
 #hidden,
-#hidden2 {
+#hidden2,
+#hidden3 {
   display: none;
 }
 a {
