@@ -50,7 +50,6 @@ const generateNewGame = () => {
 
 generateNewGame();
 function TENTSClickHandler(e) {
-  // Here, `this` refers to the element the event was hooked on
   switch (this.innerText) {
     case GRASS:
       this.innerText = TENT;
@@ -66,7 +65,6 @@ function TENTSClickHandler(e) {
   }
 }
 function MINESClickHandler(e) {
-  // Here, `this` refers to the element the event was hooked on
   switch (this.innerText) {
     case PERSON_SAFE:
       this.innerText = PERSON_MINE;
@@ -82,7 +80,6 @@ function MINESClickHandler(e) {
   }
 }
 function BINARYClickHandler(e) {
-  // Here, `this` refers to the element the event was hooked on
   switch (this.innerText) {
     case "0":
       this.innerText = "1";

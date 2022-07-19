@@ -40,11 +40,11 @@ class Box16 extends Game {
     return result;
   }
   draw() {
+    this.randomize();
     let table = document.getElementById("game_table");
     table.innerHTML = "";
     for (let r = 0; r < 9; r++) {
       let new_row = table.insertRow(r);
-      let row_string_array = this.board[r].split("");
       for (let i = 0; i < 9; i++) {
         let new_cell = new_row.insertCell(i);
         let temp_num = 0;
