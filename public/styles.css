@@ -122,7 +122,8 @@ select option {
   opacity: 0.8;
   margin: auto;
 }
-#hidden {
+#hidden,
+#hidden2 {
   display: none;
 }
 a {

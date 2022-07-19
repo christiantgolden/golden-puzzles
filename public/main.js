@@ -9,8 +9,12 @@ const setActiveGame = (prevOrNext) => {
         ? (document.getElementById(prevOrNext).innerText =
             document.getElementById("hidden").innerText) &&
           (document.getElementById("hidden").innerText =
+            document.getElementById("hidden2").innerText) &&
+          (document.getElementById("hidden2").innerText =
             document.getElementById("prev").innerText)
         : (document.getElementById(prevOrNext).innerText =
+            document.getElementById("hidden2").innerText) &&
+          (document.getElementById("hidden2").innerText =
             document.getElementById("hidden").innerText) &&
           (document.getElementById("hidden").innerText =
             document.getElementById("next").innerText);

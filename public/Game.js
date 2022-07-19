@@ -14,6 +14,8 @@ const CreateGame = () => {
           return new Binary();
         case "TENTS":
           return new Tents();
+        case "BOXES":
+          return new Boxes();
         default:
           return new Tents();
       }

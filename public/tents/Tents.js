@@ -30,9 +30,6 @@ class Tents extends Game {
       }
     }
   }
-  placeTent(element) {
-    element.innerText = TENT;
-  }
   draw() {
     let game_table_html = "";
     let final_row = new Array(this.size).fill(0);
