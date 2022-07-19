@@ -122,11 +122,6 @@ select option {
   opacity: 0.8;
   margin: auto;
 }
-#hidden,
-#hidden2,
-#hidden3 {
-  display: none;
-}
 a {
   color: inherit;
 }

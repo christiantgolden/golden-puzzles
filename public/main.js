@@ -1,30 +1,32 @@
 let activeGame = {};
+let activeGameIndex = 3;
 const setActiveGame = (prevOrNext) => {
   const game = document.getElementById(prevOrNext).innerText;
   for (const g in GAMES) {
     if (GAMES[g].active) {
       GAMES[g].active = false;
-      let oldGame = g.toUpperCase();
-      prevOrNext == "next"
-        ? (document.getElementById(prevOrNext).innerText =
-            document.getElementById("hidden").innerText) &&
-          (document.getElementById("hidden").innerText =
-            document.getElementById("hidden2").innerText) &&
-          (document.getElementById("hidden2").innerText =
-            document.getElementById("hidden3").innerText) &&
-          (document.getElementById("hidden3").innerText =
-            document.getElementById("prev").innerText)
-        : (document.getElementById(prevOrNext).innerText =
-            document.getElementById("hidden3").innerText) &&
-          (document.getElementById("hidden3").innerText =
-            document.getElementById("hidden2").innerText) &&
-          (document.getElementById("hidden2").innerText =
-            document.getElementById("hidden").innerText) &&
-          (document.getElementById("hidden").innerText =
-            document.getElementById("next").innerText);
-      document.getElementById(
-        prevOrNext == "next" ? "prev" : "next"
-      ).innerText = oldGame;
+      switch (prevOrNext) {
+        case "prev":
+          activeGameIndex = (activeGameIndex + 1) % AVAILABLE_GAMES.length;
+          document.getElementById("prev").innerText = AVAILABLE_GAMES.at(
+            (activeGameIndex + 1) % AVAILABLE_GAMES.length
+          );
+          document.getElementById("next").innerText = AVAILABLE_GAMES.at(
+            (activeGameIndex - 1) % AVAILABLE_GAMES.length
+          );
+          break;
+        case "next":
+          activeGameIndex = (activeGameIndex - 1) % AVAILABLE_GAMES.length;
+          document.getElementById("prev").innerText = AVAILABLE_GAMES.at(
+            (activeGameIndex - 1) % AVAILABLE_GAMES.length
+          );
+          document.getElementById("next").innerText = AVAILABLE_GAMES.at(
+            (activeGameIndex + 1) % AVAILABLE_GAMES.length
+          );
+          break;
+      }
+      document.getElementById("active").innerText =
+        AVAILABLE_GAMES.at(activeGameIndex);
     }
   }
   GAMES[game].active = true;
