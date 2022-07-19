@@ -27,7 +27,9 @@ class Sudoku extends Game {
     }
   }
   unsolveRow(index, difficulty) {
-    let temp_board_row = this.board[index];
+    let temp_board_row = Array.isArray(this.board[index])
+      ? this.board[index].join("")
+      : this.board[index];
     for (let d = 0; d < difficulty; d++) {
       temp_board_row = temp_board_row.replace(
         SUDOKU_NUMBERS[Math.floor(Math.random() * 9)],
@@ -37,6 +39,7 @@ class Sudoku extends Game {
     return temp_board_row;
   }
   draw() {
+    this.randomize();
     let table = document.getElementById("game_table");
     table.innerHTML = "";
     for (let r = 0; r < 9; r++) {

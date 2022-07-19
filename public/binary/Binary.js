@@ -74,6 +74,7 @@ class Binary extends Game {
     }
   }
   draw() {
+    this.randomize();
     let game_table_html = "";
     for (let r = 0; r < this.size; r++) {
       game_table_html += "<tr>";
