@@ -2,11 +2,12 @@ const GAMES = {
   BINARY: { active: false, visible: false },
   MINES: { active: false, visible: false },
   TENTS: { active: false, visible: false },
+  BOXES: { active: false, visible: false },
   SUDOKU: { active: true, visible: true },
 };
 const BLANK_CELL_COLOR = "#ddd";
 const FILLED_CELL_COLOR = "#aaa";
-const AVAILABLE_GAMES = ["BINARY", "TENTS", "MINES"];
+const AVAILABLE_GAMES = ["BINARY", "TENTS", "MINES", "SUDOKU", "BOXES"];
 const DIFFICULTY_MAP = {
   EASY: 3,
   NORMAL: 5,
@@ -35,6 +36,11 @@ const GAME_INSTRUCTIONS = {
     "Each tree🌳 has at least one adjacent tent.",
     "Tents do not touch each other, even diagonally.",
     "Numbers indicate how many tents per row/column.",
+  ],
+  BOXES: [
+    "The number in the center of each 3x3 box is the sum of its eight surrounding cells.",
+    "Starting with the first, every other column/row follows Sudoku rules.",
+    "Fill the empty cells, making sure to satisfy the above conditions",
   ],
 };
 const SUDOKU_NUMBERS = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
