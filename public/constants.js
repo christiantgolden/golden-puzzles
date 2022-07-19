@@ -6,7 +6,7 @@ const GAMES = {
   SUDOKU: { active: true, visible: true },
   BOX16: { active: false, visible: false },
 };
-const BOARD_OPERATIONS = ["transpose", "reverse", "transpose-reverse"];
+const BOARD_OPERATIONS = ["transpose", "reverse", "transpose-reverse", "none"];
 const BLANK_CELL_COLOR = "#ddd";
 const FILLED_CELL_COLOR = "#aaa";
 const AVAILABLE_GAMES = [

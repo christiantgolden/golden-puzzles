@@ -63,6 +63,8 @@ class Game {
         this.transpose();
         this.board = this.board.reverse();
         break;
+      case "none":
+        break;
     }
   }
 }
