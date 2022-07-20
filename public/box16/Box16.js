@@ -45,6 +45,9 @@ class Box16 extends Game {
     table.innerHTML = "";
     for (let r = 0; r < 9; r++) {
       let new_row = table.insertRow(r);
+      let row_string_array = !Array.isArray(this.board[r])
+        ? this.board[r].split("")
+        : this.board[r];
       for (let i = 0; i < 9; i++) {
         let new_cell = new_row.insertCell(i);
         let temp_num = 0;
@@ -55,7 +58,9 @@ class Box16 extends Game {
           new_cell.innerHTML = temp_num;
         } else {
           new_cell.innerHTML =
-            "<input id='cell' maxlength=1 type='tel'>" + "" + "</textarea>";
+            Math.random() > 2 / this.difficulty
+              ? "<input id='cell' maxlength=1 type='tel'>" + "" + "</textarea>"
+              : row_string_array[i];
         }
         if (
           ((r < 3 || r > 5) && (i < 3 || i > 5)) ||

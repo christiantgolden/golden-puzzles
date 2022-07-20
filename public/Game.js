@@ -18,6 +18,8 @@ const CreateGame = () => {
           return new Boxes();
         case "BOX16":
           return new Box16();
+        case "HEXOKU":
+          return new Hexoku();
         default:
           return new Tents();
       }
