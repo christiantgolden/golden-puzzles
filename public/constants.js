@@ -3,8 +3,9 @@ const GAMES = {
   MINES: { active: false, visible: false },
   TENTS: { active: false, visible: false },
   BOXES: { active: false, visible: false },
-  SUDOKU: { active: true, visible: true },
+  SUDOKU: { active: false, visible: false },
   BOX16: { active: false, visible: false },
+  HEXOKU: { active: true, visible: true },
 };
 const BOARD_OPERATIONS = ["transpose", "reverse", "transpose-reverse", "none"];
 const BLANK_CELL_COLOR = "#ddd";
@@ -13,9 +14,10 @@ const AVAILABLE_GAMES = [
   "BINARY",
   "TENTS",
   "MINES",
-  "SUDOKU",
+  "HEXOKU",
   "BOXES",
   "BOX16",
+  "SUDOKU",
 ];
 const DIFFICULTY_MAP = {
   EASY: 3,
@@ -53,8 +55,27 @@ const GAME_INSTRUCTIONS = {
     "This is a cleared, valid Sudoku board.",
     "Numbers indicate sum of surrounding cells.",
   ],
+  HEXOKU: ["Sudoku, but hexadecimal"],
 };
 const SUDOKU_NUMBERS = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const HEXOKU_NUMBERS = [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+];
 const TREE = "🌳";
 const TENT = "⛺";
 const GRASS = "🟩";
