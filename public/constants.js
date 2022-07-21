@@ -52,8 +52,7 @@ const GAME_INSTRUCTIONS = {
     "Sudoku, but the center cell of each box is the sum of its surrounding cells.",
   ],
   BOX16: [
-    "This is a cleared, valid Sudoku board.",
-    "Numbers indicate sum of surrounding cells.",
+    "Sudoku, but each white cell contains the sum of its surrounding cells",
   ],
   HEXOKU: ["Sudoku, but hexadecimal"],
 };

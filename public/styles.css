@@ -1,29 +1,23 @@
+/*BUG: input boxes don't fit text, difficulty select blue */
 * {
   -webkit-tap-highlight-color: transparent;
   text-align: center;
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
+  -webkit-touch-callout: text; /* iOS Safari */
+  -webkit-user-select: text; /* Safari */
+  -khtml-user-select: text; /* Konqueror HTML */
+  -moz-user-select: text; /* Old versions of Firefox */
+  -ms-user-select: text; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
-table {
-  table-layout: fixed;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 tr td {
   width: 36;
   height: 36;
   color: rgba(50, 50, 50, 0.7);
   background-color: "rgba(255,255,255,0)";
 }
-
 #navbar tr td {
-  font-size: medium;
+  font-size: x-large;
   width: 25%;
 }
 #prev,
@@ -37,18 +31,6 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-form {
-  display: inline-block;
-  margin-top: 10px;
-  width: 100%;
-}
-form select,
-input {
-  font-size: 16;
-  color: dimgray;
-  appearance: none;
-  background-color: "rgba(0,0,0,0)";
 }
 body {
   -webkit-print-color-adjust: exact;
@@ -67,39 +49,8 @@ body {
   width: 25%;
   color: dimgrey !important;
 }
-select {
-  border: none;
-  outline: none;
-  margin-top: 0.5em;
-  border-radius: 0;
-  text-align-last: right;
-  background-color: transparent;
-  -webkit-appearance: none !important;
-}
-select option {
-  font-size: 16px;
-  text-align: left;
-  opacity: 0;
-  accent-color: white;
-  background-color: transparent;
-  -webkit-appearance: none !important;
-}
-#gen_button,
-#diff-generate {
-  font-size: medium;
-}
-#gen_button {
-  background-color: #eee;
-  outline: none;
-  border: none;
-  color: #555;
-}
-#diff-generate {
-  align-content: center;
-  align-self: center;
-}
 #instructions {
-  width: 100%;
+  width: 90%;
   font-size: medium;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -126,24 +77,51 @@ a {
   color: black;
   columns: 1;
 }
+div {
+  margin-left: auto;
+  margin-right: auto;
+  display: table;
+  max-width: none;
+  width: auto;
+  min-width: 100%;
+}
+* {
+  table-layout: fixed;
+}
+input {
+  padding: 0;
+}
+
+form,
+select,
+select option,
+option,
+button,
+#gen_button {
+  color: black;
+  margin-top: 1em;
+  border: none;
+  outline: none;
+  border-radius: 0;
+  text-align-last: center;
+  background-color: transparent;
+  -webkit-appearance: none !important;
+}
+#gen_button {
+  padding: 0.2rem;
+  border-radius: 0;
+  border: 2px solid #aaa;
+}
+#game_table {
+  margin-left: auto;
+  margin-right: auto;
+}
+#navbar {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media print {
-  tr td {
-    width: 60;
-    height: 60;
-    color: rgba(50, 50, 50, 1);
-    background-color: "rgba(255,255,255,0)";
-    overflow: hidden;
-    border: 1px solid black;
-    resize: none;
-  }
-  #nine-x-nine-board {
-    width: 60;
-    height: 60;
-  }
-  #ten-x-ten-board {
-    width: 54;
-    height: 54;
-  }
   table {
     width: 600;
   }
@@ -155,7 +133,15 @@ a {
     display: none;
   }
   #instructions {
-    margin-top: 1em;
+    margin-top: 2em;
+    opacity: 0.6;
+  }
+  #navbar,
+  #navbar tr,
+  #navbar tr td,
+  #active {
+    font-size: 32;
     opacity: 1;
+    margin-bottom: 25px;
   }
 }
