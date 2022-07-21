@@ -41,37 +41,43 @@ class Box16 extends Game {
   }
   draw() {
     this.randomize();
-    let table = document.getElementById("game_table");
-    table.innerHTML = "";
+    let game_table_html = `<div style='width:${this.table_width}'>`;
     for (let r = 0; r < 9; r++) {
-      let new_row = table.insertRow(r);
+      game_table_html += `<tr>`;
       let row_string_array = !Array.isArray(this.board[r])
         ? this.board[r].split("")
         : this.board[r];
       for (let i = 0; i < 9; i++) {
-        let new_cell = new_row.insertCell(i);
         let temp_num = 0;
+        let cell_background = "";
+        let is_center = false;
         if ([1, 3, 5, 7].indexOf(i) != -1 && [1, 3, 5, 7].indexOf(r) != -1) {
           temp_num = this.sumOfSurrounding(r, i);
-          new_cell.style.border = "5px solid";
-          new_cell.style.borderColor = "#777";
-          new_cell.innerHTML = temp_num;
+          is_center = true;
         } else {
-          new_cell.innerHTML =
+          temp_num =
             Math.random() > 2 / this.difficulty
-              ? "<input id='cell' maxlength=1 type='tel'>" + "" + "</textarea>"
+              ? `<input class='cell' maxlength=1 type='tel' style='font-size:${this.font_size}'></input>`
               : row_string_array[i];
         }
         if (
           ((r < 3 || r > 5) && (i < 3 || i > 5)) ||
           (r > 2 && r < 6 && i > 2 && i < 6)
         ) {
-          new_cell.style.background = FILLED_CELL_COLOR;
+          cell_background = is_center ? "white" : FILLED_CELL_COLOR;
         } else {
-          new_cell.style.background = BLANK_CELL_COLOR;
+          cell_background = is_center ? "white" : BLANK_CELL_COLOR;
         }
+        game_table_html += `<td class='board' 
+                            style='background:${cell_background};
+                            width:${this.cell_width};
+                            height:${this.cell_height};
+                            font-size:${this.font_size}'>${temp_num}</td>`;
       }
+      game_table_html += "</tr>";
     }
+    game_table_html += "</div>";
+    document.getElementById("game_table").innerHTML = game_table_html;
     this.displayInstructions();
   }
 }
