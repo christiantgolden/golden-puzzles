@@ -71,17 +71,12 @@ class Hexoku extends Game {
   }
   draw() {
     this.randomize();
-    let table = document.getElementById("game_table");
-    table.innerHTML = "";
+    let game_table_html = "<div id='hexoku'>";
     for (let r = 0; r < this.size; r++) {
-      let new_row = table.insertRow(r);
+      game_table_html += "<tr>";
       let row_string_array = this.unsolveRow(r, this.difficulty).split("");
       for (let i = 0; i < this.size; i++) {
-        let new_cell = new_row.insertCell(i);
-        row_string_array[i] == " "
-          ? (new_cell.innerHTML =
-              "<input id='cell' maxlength=1>" + "" + "</textarea>")
-          : (new_cell.innerHTML = row_string_array[i]);
+        let bgColor = "";
         if (
           ((r < Math.sqrt(this.size) || (r > 7 && r < 12)) &&
             (i < Math.sqrt(this.size) || (i > 7 && i < 12))) ||
@@ -94,12 +89,19 @@ class Hexoku extends Game {
             i <= 7) ||
           (r >= Math.sqrt(this.size) * 3 && i >= Math.sqrt(this.size) * 3)
         ) {
-          new_cell.style.background = FILLED_CELL_COLOR;
+          bgColor = FILLED_CELL_COLOR;
         } else {
-          new_cell.style.background = BLANK_CELL_COLOR;
+          bgColor = BLANK_CELL_COLOR;
         }
+        game_table_html += `<td id='sixteen-x-sixteen-board' style='background:${bgColor}'>`;
+        row_string_array[i] == " "
+          ? (game_table_html += `<input id='cell16' maxlength=1'></textarea>`)
+          : (game_table_html += row_string_array[i]);
+        game_table_html += `</td>`;
       }
+      game_table_html += `</tr></div>`;
     }
+    document.getElementById("game_table").innerHTML = game_table_html;
     this.displayInstructions();
   }
 }
