@@ -7,7 +7,7 @@ class Boxes extends Game {
     this.fillBoard();
   }
   fillBoard() {
-    for (let i = 0; i < 9; i += 3) {
+    for (let i = 0; i < this.size; i += 3) {
       i > 0 && (this.board[i] = this.board[i - 1]);
       let shift_one_array = this.board[i].split("");
       let shift_one_first_char = shift_one_array.shift();
@@ -19,9 +19,9 @@ class Boxes extends Game {
   }
   generateRandomStart() {
     let temp_num_array = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
-    for (let n = 0; n < 9; n++) {
+    for (let n = 0; n < this.size; n++) {
       this.board[0] += temp_num_array.splice(
-        Math.floor(Math.random() * (9 - n)),
+        Math.floor(Math.random() * (this.size - n)),
         1
       );
     }
@@ -41,37 +41,42 @@ class Boxes extends Game {
   }
   draw() {
     this.randomize();
-    let table = document.getElementById("game_table");
-    table.innerHTML = "";
-    for (let r = 0; r < 9; r++) {
-      let new_row = table.insertRow(r);
+    let game_table_html = `<div style='width:${this.table_width}'>`;
+    for (let r = 0; r < this.size; r++) {
+      game_table_html += `<tr>`;
       let row_string_array = !Array.isArray(this.board[r])
         ? this.board[r].split("")
         : this.board[r];
-      for (let i = 0; i < 9; i++) {
-        let new_cell = new_row.insertCell(i);
+      for (let i = 0; i < this.size; i++) {
+        let cell_background = "";
         let temp_num = 0;
+        let is_center = false;
         if ([1, 4, 7].indexOf(i) != -1 && [1, 4, 7].indexOf(r) != -1) {
           temp_num = this.sumOfSurrounding(r, i);
-          new_cell.style.border = "5px solid";
-          new_cell.style.borderColor = "#777";
-          new_cell.innerHTML = temp_num;
+          is_center = true;
         } else {
-          new_cell.innerHTML =
+          temp_num =
             Math.random() > 2 / this.difficulty
-              ? "<input id='cell' maxlength=1 type='tel'>" + "" + "</textarea>"
+              ? `<input class='cell' maxlength=1 type='tel' style='font-size:${this.font_size}'></input>`
               : row_string_array[i];
         }
         if (
           ((r < 3 || r > 5) && (i < 3 || i > 5)) ||
           (r > 2 && r < 6 && i > 2 && i < 6)
         ) {
-          new_cell.style.background = FILLED_CELL_COLOR;
+          cell_background = is_center ? "white" : FILLED_CELL_COLOR;
         } else {
-          new_cell.style.background = BLANK_CELL_COLOR;
+          cell_background = is_center ? "white" : BLANK_CELL_COLOR;
         }
+        game_table_html += `<td class='board' style='background:${cell_background};
+                            width:${this.cell_width};
+                            height:${this.cell_height};
+                            font-size:${this.font_size}'>${temp_num}</td>`;
       }
+      game_table_html += "</tr>";
     }
+    game_table_html += "</div>";
+    document.getElementById("game_table").innerHTML = game_table_html;
     this.displayInstructions();
   }
 }

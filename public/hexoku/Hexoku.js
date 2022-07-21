@@ -71,9 +71,9 @@ class Hexoku extends Game {
   }
   draw() {
     this.randomize();
-    let game_table_html = "<div id='hexoku'>";
+    let game_table_html = `<div style='width:${this.table_width}'>`;
     for (let r = 0; r < this.size; r++) {
-      game_table_html += "<tr>";
+      game_table_html += `<tr>`;
       let row_string_array = this.unsolveRow(r, this.difficulty).split("");
       for (let i = 0; i < this.size; i++) {
         let bgColor = "";
@@ -93,9 +93,12 @@ class Hexoku extends Game {
         } else {
           bgColor = BLANK_CELL_COLOR;
         }
-        game_table_html += `<td id='sixteen-x-sixteen-board' style='background:${bgColor}'>`;
+        game_table_html += `<td class='board' style='background:${bgColor};
+                            width:${this.cell_width};
+                            height:${this.cell_height};
+                            font-size:${this.font_size}'>`;
         row_string_array[i] == " "
-          ? (game_table_html += `<input id='cell16' maxlength=1'></textarea>`)
+          ? (game_table_html += `<input class='cell' style='font-size:${this.font_size}' maxlength=1'></input>`)
           : (game_table_html += row_string_array[i]);
         game_table_html += `</td>`;
       }

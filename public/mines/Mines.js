@@ -77,21 +77,27 @@ class Mines extends Game {
       this.board[i][j].incrementMinesNearby();
   }
   draw() {
-    let game_table_html = "";
+    let game_table_html = `<div style='width:${this.table_width}'>`;
     for (let r = 0; r < this.size; r++) {
-      game_table_html += "<tr>";
+      game_table_html += `<tr>`;
       for (let c = 0; c < this.size; c++) {
         if (this.board[r][c].hasMine || this.board[r][c].minesNearby == 0) {
-          game_table_html += `<td id='nine-x-nine-board' style='background-color:${BLANK_CELL_COLOR}'></td>`;
+          game_table_html += `<td class='board' style='background-color:${BLANK_CELL_COLOR};width:${this.cell_width};
+                                              height:${this.cell_height};
+                                              font-size:${this.font_size}'></td>`;
         } else {
           game_table_html +=
-            `<td id='nine-x-nine-board' style='background-color:${FILLED_CELL_COLOR}'>` +
+            `<td class='board' style='background-color:${FILLED_CELL_COLOR};
+                                              width:${this.cell_width};
+                                              height:${this.cell_height};
+                                              font-size:${this.font_size}'>` +
             this.board[r][c].minesNearby +
             "</td>";
         }
       }
       game_table_html += "</tr>";
     }
+    game_table_html += "</div>";
     document.getElementById("game_table").innerHTML = game_table_html;
     this.displayInstructions();
     document

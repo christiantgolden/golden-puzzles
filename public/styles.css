@@ -13,48 +13,24 @@ table {
   table-layout: fixed;
   margin-left: auto;
   margin-right: auto;
-  width: 600px;
-  font-size: 24;
 }
 
-tr td,
-#nine-x-nine-board {
-  width: 65;
-  height: 65;
+tr td {
+  width: 36;
+  height: 36;
   color: rgba(50, 50, 50, 0.7);
   background-color: "rgba(255,255,255,0)";
 }
 
-#ten-x-ten-board {
-  width: 58;
-  height: 58;
-}
-#cell {
-  width: 100%;
-  height: 100%;
-  background-color: "rgba(200,200,200,0)";
-  opacity: 0.2;
-  color: black;
-  columns: 1;
-}
-#cell16 {
-  width: 100%;
-  height: 100%;
-  background-color: "rgba(200,200,200,0)";
-  opacity: 0.2;
-  color: black;
-  columns: 1;
-}
 #navbar tr td {
-  font-size: larger;
-  width: 33%;
+  font-size: medium;
+  width: 25%;
 }
 #prev,
 #next {
   cursor: pointer;
 }
 #navbar tr {
-  width: 33%;
   align-items: stretch;
 }
 input[type="number"]::-webkit-inner-spin-button,
@@ -69,7 +45,7 @@ form {
 }
 form select,
 input {
-  font-size: 24;
+  font-size: 16;
   color: dimgray;
   appearance: none;
   background-color: "rgba(0,0,0,0)";
@@ -81,12 +57,10 @@ body {
 #prev {
   opacity: 0.6;
   width: 25%;
-  margin-right: 1em;
 }
 #next {
   opacity: 0.6;
   width: 25%;
-  margin-left: 1em;
 }
 
 #active {
@@ -112,7 +86,7 @@ select option {
 }
 #gen_button,
 #diff-generate {
-  font-size: larger;
+  font-size: medium;
 }
 #gen_button {
   background-color: #eee;
@@ -125,22 +99,32 @@ select option {
   align-self: center;
 }
 #instructions {
+  width: 100%;
   font-size: medium;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   opacity: 0.8;
   margin: auto;
+  align-self: center;
+  text-align: center;
 }
 a {
   color: inherit;
 }
-#sixteen-x-sixteen-board {
-  width: 24;
-  height: 24;
-  font-size: 24;
+.board {
+  outline: none;
+  border: none;
 }
-#hexoku {
-  max-width: 100;
+.cell {
+  outline: none;
+  border: none;
+  vertical-align: middle;
+  width: 100%;
+  height: 100%;
+  background: rgba(100, 100, 100, 0.1);
+  opacity: 0.8;
+  color: black;
+  columns: 1;
 }
 @media print {
   tr td {

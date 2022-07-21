@@ -1,11 +1,11 @@
 class Tents extends Game {
   constructor() {
-    super(9);
+    super(10);
   }
   generateBoard() {
-    for (let i = 0; i < this.size; i++) {
+    for (let i = 0; i < this.size - 1; i++) {
       this.board[i] = [];
-      for (let j = 0; j < this.size; j++) {
+      for (let j = 0; j < this.size - 1; j++) {
         let random_obj = Math.random();
         if (
           (TOP(this.board, i, j) && TOP(this.board, i, j) == TENT) ||
@@ -31,35 +31,42 @@ class Tents extends Game {
     }
   }
   draw() {
-    let game_table_html = "";
-    let final_row = new Array(this.size).fill(0);
-    for (let r = 0; r < this.size; r++) {
+    let game_table_html = `<div style='width:${this.table_width}'>`;
+    let final_row = new Array(this.size - 1).fill(0);
+    for (let r = 0; r < this.size - 1; r++) {
       game_table_html += "<tr>";
       let rowTotal = 0;
-      for (let c = 0; c < this.size; c++) {
+      for (let c = 0; c < this.size - 1; c++) {
         this.board[r][c] == TENT && final_row[c]++;
         this.board[r][c] == TENT && rowTotal++;
         game_table_html +=
-          `<td id='ten-x-ten-board' style='background-color:${BLANK_CELL_COLOR}'>` +
+          `<td class='board' style='background-color:${BLANK_CELL_COLOR};width:${this.cell_width};
+                            height:${this.cell_height};
+                            font-size:${this.font_size}'>` +
           ((this.board[r][c] == TENT && (this.board[r][c] = "")) ||
             this.board[r][c]) +
           "</td>";
       }
       game_table_html +=
-        `<td id='ten-x-ten-board' style='background-color:${FILLED_CELL_COLOR}'>` +
+        `<td class='board' style='background-color:${FILLED_CELL_COLOR};width:${this.cell_width};
+                            height:${this.cell_height};
+                            font-size:${this.font_size}'>` +
         rowTotal +
         "</td>" +
         "</tr>";
     }
     let final_row_html = "<tr>";
-    for (let i = 0; i < this.size; i++) {
+    for (let i = 0; i < this.size - 1; i++) {
       final_row_html +=
-        `<td id='ten-x-ten-board' style='background-color:${FILLED_CELL_COLOR}'>` +
+        `<td class='board' style='background-color:${FILLED_CELL_COLOR};width:${this.cell_width};
+                            height:${this.cell_height};
+                            font-size:${this.font_size}'>` +
         final_row[i] +
         "</td>";
     }
     final_row_html += "</tr>";
     game_table_html += final_row_html;
+    game_table_html += "</div>";
     document.getElementById("game_table").innerHTML = game_table_html;
     this.displayInstructions();
     document
