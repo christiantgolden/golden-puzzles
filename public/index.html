@@ -26,6 +26,7 @@
     <table id="game_table"></table>
     <div id="diff-generate">
       <form>
+        <label id="timer">0h 0m 0s</label>
         <input
           id="gen_button"
           type="submit"
@@ -38,6 +39,9 @@
           <option value="hard">HARD</option>
           <option value="insane">INSANE</option>
         </select>
+        <label id="completed" onclick="check_alert()">✅</label>
+        <label id="share" onclick="share()">💌</label>
+        <label id="print" onclick="printGame()">🖨️</label>
       </form>
     </div>
     <div id="instructions"></div>

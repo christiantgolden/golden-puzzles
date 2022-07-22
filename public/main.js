@@ -2,7 +2,15 @@ let activeGame = {};
 let prevGameIndex = 2;
 let activeGameIndex = 3;
 let nextGameIndex = 4;
+let now = new Date().getTime();
+let elapsed = now;
+
+const resetTime = () => {
+  now = new Date().getTime();
+  elapsed = now;
+};
 const setActiveGame = (prevOrNext) => {
+  resetTime();
   const game = document.getElementById(prevOrNext).innerText;
   for (const g in GAMES) {
     if (GAMES[g].active) {
@@ -43,10 +51,57 @@ document
     event.preventDefault();
   });
 
-const generateNewGame = () => {
+const generateNewGame = async () => {
+  resetTime();
   activeGame = CreateGame();
   activeGame.draw();
 };
+
+const printGame = () => {
+  window.print();
+};
+
+const share = () => {
+  const message = "[finished game board plus stats or something]";
+  window.open(
+    `mailto:?subject='omg look how cool i am cuz i solved a puzzle'&body=${message}`,
+    "_self"
+  );
+};
+
+const check_alert = () => {
+  alert(
+    "Sorry, this doesn't do anything yet, but will eventually turn opaque green upon successful completion of current puzzle"
+  );
+};
+
+//eventually this will allow users to specify game in url
+//also allow for passing in seed?
+//allow for passing in a board?
+//maybe allow user to obtain a hash of current board
+//which they can later pass in through url param
+//to retrieve prior board
+const queryString = window.location.search.replace("?", "");
+const queryStringArray = queryString.split("&");
+queryStringArray.forEach((i) => {
+  const key_val_pair = i.split("=");
+  console.log("Param: " + key_val_pair[0] + " = " + key_val_pair[1]);
+  if (key_val_pair[0]?.toUpperCase() == "GAME") {
+    switch (key_val_pair[1]?.toUpperCase()) {
+      case "HEXOKU":
+        console.log("User selected Hexoku");
+        break;
+      case "SUDOKU":
+        console.log("User selected Sudoku");
+        break;
+      case "TENTS":
+        console.log("User selected Tents");
+        break;
+    }
+  }
+});
+
+console.log(queryStringArray);
 
 generateNewGame();
 function TENTSClickHandler(e) {
@@ -94,3 +149,15 @@ function BINARYClickHandler(e) {
       break;
   }
 }
+
+const timer_tick = setInterval(function () {
+  elapsed = new Date().getTime() - now;
+  // const days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
+  const hours = Math.floor(
+    (elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  );
+  const minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
+  document.getElementById("timer").innerText =
+    hours + "h " + minutes + "m " + seconds + "s ";
+}, 1000);
