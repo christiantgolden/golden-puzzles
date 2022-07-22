@@ -8,14 +8,7 @@ class Hexoku extends Game {
   }
   fillBoard() {
     for (let i = 0; i < this.size; i += Math.sqrt(this.size)) {
-      console.log(
-        "Math.sqrt(this.size) = " +
-          Math.sqrt(this.size) +
-          " , this.size = " +
-          this.size
-      );
       i > 0 && (this.board[i] = this.board[i - 1]);
-      console.log("this.board[" + i + "] = " + this.board[i]);
       let shift_one_array = this.board[i].split("");
       let shift_one_first_char = shift_one_array.shift();
       this.board[i] = shift_one_array.join("") + shift_one_first_char;
@@ -61,7 +54,6 @@ class Hexoku extends Game {
       ? this.board[index].join("")
       : this.board[index];
     for (let d = 0; d < difficulty * 2; d++) {
-      console.log(temp_board_row);
       temp_board_row = temp_board_row.replace(
         HEXOKU_NUMBERS[Math.floor(Math.random() * this.size)],
         " "
