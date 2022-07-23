@@ -41,16 +41,28 @@ td input {
   width: 25%;
 }
 form * {
-  width: 25%;
-  font-size: larger;
+  width: 30%;
+  font-size: large;
   color: black;
   margin-top: 1em;
   border: none;
   outline: none;
   border-radius: 0;
-  text-align-last: center;
   background-color: transparent;
   -webkit-appearance: none !important;
+}
+#timer {
+  font-size: medium;
+  text-align: center;
+}
+#print {
+  margin-right: 0.05rem;
+}
+#instructions {
+  margin-top: 1em;
+}
+#diff {
+  width: 20%;
 }
 @media print {
   * {
