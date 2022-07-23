@@ -62,11 +62,12 @@ const printGame = () => {
 };
 
 const share = () => {
-  const message = "[finished game board plus stats or something]";
-  window.open(
-    `mailto:?subject='omg look how cool i am cuz i solved a puzzle'&body=${message}`,
-    "_self"
-  );
+  const shareData = {
+    title: "Golden Puzzles",
+    text: `Check out the growing collection of logic puzzles over at Golden Puzzles`,
+    url: `http://golden-puzzles.web.app`,
+  };
+  navigator.share(shareData);
 };
 
 const check_alert = () => {
