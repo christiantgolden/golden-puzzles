@@ -3,6 +3,7 @@
   table-layout: fixed;
   margin-left: auto;
   margin-right: auto;
+  width: 100%;
   -webkit-tap-highlight-color: transparent;
   text-align: center;
   -webkit-touch-callout: text; /* iOS Safari */
@@ -13,63 +14,15 @@
   user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
-tr td {
-  width: 36;
-  height: 36;
-  color: rgba(50, 50, 50, 0.7);
-  background-color: "rgba(255,255,255,0)";
-}
-#navbar tr td {
-  font-size: x-large;
-  width: 25%;
-}
-#prev,
-#next {
-  cursor: pointer;
-}
-#navbar tr {
-  align-items: stretch;
-}
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-body {
-  -webkit-print-color-adjust: exact;
-  print-color-adjust: exact;
-}
-#prev {
-  opacity: 0.6;
-  width: 25%;
-}
-#next {
-  opacity: 0.6;
-  width: 25%;
-}
-
-#active {
-  width: 25%;
-  color: dimgrey !important;
-}
-#instructions {
-  width: 90%;
-  font-size: large;
-  opacity: 1;
-  margin: auto;
-  align-self: center;
-  text-align: center;
-}
-a {
-  color: inherit;
-}
-.board {
+td input {
+  padding: 0;
+  border: 0;
   outline: none;
-  border: none;
-}
-.cell {
-  outline: none;
-  border: none;
   vertical-align: middle;
   width: 100%;
   height: 100%;
@@ -78,24 +31,17 @@ a {
   color: black;
   columns: 1;
 }
-div {
-  margin-left: auto;
-  margin-right: auto;
-  display: table;
-  max-width: none;
-  width: auto;
-  min-width: 100%;
+#navbar tr td {
+  font-size: x-large;
+  width: 25%;
 }
-input {
-  padding: 0;
+#prev,
+#next {
+  opacity: 0.6;
+  width: 25%;
 }
-
-form,
-select,
-select option,
-option,
-button,
-#gen_button {
+form * {
+  width: 25%;
   font-size: larger;
   color: black;
   margin-top: 1em;
@@ -106,24 +52,11 @@ button,
   background-color: transparent;
   -webkit-appearance: none !important;
 }
-#gen_button {
-  padding: 0.2rem;
-  border-radius: 0;
-}
-#timer {
-  color: black;
-  margin-right: 0.2em;
-}
-#completed {
-  margin-left: 0.2em;
-  opacity: 0.2;
-}
-#share,
-#print {
-  margin-left: 0.2em;
-}
-
 @media print {
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
   table {
     width: 600;
   }
