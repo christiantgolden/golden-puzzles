@@ -5,6 +5,24 @@ let nextGameIndex = 4;
 let now = new Date().getTime();
 let elapsed = now;
 
+async function shareCanvas() {
+  const canvas = await html2canvas(document.getElementById("game"));
+  const dataUrl = canvas.toDataURL();
+  const blob = await (await fetch(dataUrl)).blob();
+  const filesArray = [
+    new File([blob], `${AVAILABLE_GAMES[activeGameIndex]}.png`, {
+      type: blob.type,
+      lastModified: new Date().getTime(),
+    }),
+  ];
+  const shareData = {
+    url: "http://golden-puzzles.web.app",
+    text: `I'm enjoying the ${AVAILABLE_GAMES[activeGameIndex]} puzzles over at Golden Puzzles!`,
+    files: filesArray,
+  };
+  navigator.share(shareData);
+}
+
 const resetTime = () => {
   now = new Date().getTime();
   elapsed = now;
@@ -59,15 +77,6 @@ const generateNewGame = async () => {
 
 const printGame = () => {
   window.print();
-};
-
-const share = () => {
-  const shareData = {
-    title: "Golden Puzzles",
-    text: `Check out the growing collection of logic puzzles over at Golden Puzzles`,
-    url: `http://golden-puzzles.web.app`,
-  };
-  navigator.share(shareData);
 };
 
 const check_alert = () => {
@@ -153,7 +162,6 @@ function BINARYClickHandler(e) {
 
 const timer_tick = setInterval(function () {
   elapsed = new Date().getTime() - now;
-  // const days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
   const hours = Math.floor(
     (elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
   );

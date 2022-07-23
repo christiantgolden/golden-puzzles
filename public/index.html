@@ -40,7 +40,7 @@
           <option value="insane">INSANE</option>
         </select>
         <label id="completed" onclick="check_alert()">✅</label>
-        <label id="share" onclick="share()">💌</label>
+        <label id="share" onclick="shareCanvas()">💌</label>
         <label id="print" onclick="printGame()">🖨️</label>
       </form>
     </div>
@@ -71,6 +71,7 @@
       const analytics = getAnalytics(app);
     </script>
     <!--End of Firebase Hosting Stuff-->
+    <script src="html2canvas.min.js"></script>
     <script src="constants.js"></script>
     <script src="Game.js"></script>
     <script src="box16/Box16.js"></script>
