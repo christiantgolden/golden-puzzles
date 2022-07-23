@@ -168,5 +168,10 @@ const timer_tick = setInterval(function () {
   const minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
   document.getElementById("timer").innerText =
-    hours + "h " + minutes + "m " + seconds + "s ";
+    hours.toString().padStart(2, "0") +
+    "h " +
+    minutes.toString().padStart(2, "0") +
+    "m " +
+    seconds.toString().padStart(2, "0") +
+    "s ";
 }, 1000);
