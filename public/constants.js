@@ -33,9 +33,9 @@ const GAME_INSTRUCTIONS = {
     "<a href='https://en.wikipedia.org/wiki/Takuzu' target='_blank' rel='noopener noreferrer'>Binary Wikipedia Page</a>",
   ],
   MINES: [
-    "This is a semi-clone of Minesweeper.",
-    "All 0's 😊 and mines 🤯 have been hidden.",
-    "Discern which blanks are 0's and which are mines.",
+    "A semi-clone of Minesweeper.",
+    "All 0's 😊 and mines 🤯 are hidden.",
+    "Discern which blanks are 😊 and which are 🤯.",
     "<a href='https://en.wikipedia.org/wiki/Minesweeper_(video_game)' target='_blank' rel='noopener noreferrer'>Minesweeper Wikipedia Page</a>",
   ],
   SUDOKU: [
@@ -43,10 +43,10 @@ const GAME_INSTRUCTIONS = {
     "<a href='https://en.wikipedia.org/wiki/Sudoku' target='_blank' rel='noopener noreferrer'>Sudoku Wikipedia Page</a>",
   ],
   TENTS: [
-    "Place tents⛺/grass🟩 in the grid.",
-    "Each tree🌳 has at least one adjacent tent.",
-    "Tents do not touch each other, even diagonally.",
-    "Numbers indicate how many tents per row/column.",
+    "Place⛺/🟩 in the grid.",
+    "Each 🌳 has at least one adjacent ⛺.",
+    "⛺ do not touch each other, even diagonally.",
+    "Numbers indicate how many ⛺ per row/column.",
   ],
   BOXES: [
     "Sudoku, but the center cell of each box is the sum of its surrounding cells.",

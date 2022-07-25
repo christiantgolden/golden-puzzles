@@ -60,6 +60,7 @@ form * {
 #instructions {
   width: 80%;
   font-size: larger;
+  max-width: 500px;
 }
 @media print {
   * {

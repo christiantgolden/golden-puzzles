@@ -6,7 +6,7 @@ let now = new Date().getTime();
 let elapsed = now;
 
 async function shareCanvas() {
-  const canvas = await html2canvas(document.getElementById("game"));
+  const canvas = await html2canvas(document.getElementById("game_table"));
   const dataUrl = canvas.toDataURL();
   const blob = await (await fetch(dataUrl)).blob();
   const filesArray = [
@@ -17,7 +17,7 @@ async function shareCanvas() {
   ];
   const shareData = {
     url: "http://golden-puzzles.web.app",
-    text: `I'm enjoying the ${AVAILABLE_GAMES[activeGameIndex]} puzzles over at Golden Puzzles!`,
+    text: `Check out this ${AVAILABLE_GAMES[activeGameIndex]} puzzle I just completed over at Golden Puzzles!`,
     files: filesArray,
   };
   navigator.share(shareData);
