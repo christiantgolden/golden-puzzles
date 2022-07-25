@@ -23,7 +23,6 @@ const DIFFICULTY_MAP = {
   EASY: 3,
   NORMAL: 5,
   HARD: 8,
-  INSANE: 10,
 };
 const GAME_INSTRUCTIONS = {
   BINARY: [
