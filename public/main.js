@@ -6,7 +6,10 @@ let now = new Date().getTime();
 let elapsed = now;
 
 async function shareCanvas() {
-  const canvas = await html2canvas(document.getElementById("game_table"));
+  document.getElementById("diff-generate").style.display = "none";
+  document.getElementById("prev").style.display = "none";
+  document.getElementById("next").style.display = "none";
+  const canvas = await html2canvas(document.getElementById("game"));
   const dataUrl = canvas.toDataURL();
   const blob = await (await fetch(dataUrl)).blob();
   const filesArray = [
@@ -21,6 +24,9 @@ async function shareCanvas() {
     files: filesArray,
   };
   navigator.share(shareData);
+  document.getElementById("diff-generate").style.display = "block";
+  document.getElementById("prev").style.display = "table-cell";
+  document.getElementById("next").style.display = "table-cell";
 }
 
 const resetTime = () => {
