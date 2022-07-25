@@ -26,25 +26,27 @@
     <table id="game_table"></table>
     <div id="diff-generate">
       <form>
-        <input
+        <i
+          class="fa-solid fa-repeat"
           id="gen_button"
-          type="submit"
-          value="NEW"
           onclick="generateNewGame()"
-        />
-        <select name="diff" id="diff">
+        ></i>
+        <select name="diff" id="diff" onchange="generateNewGame()">
           <option value="easy">EASY</option>
-          <option value="normal">NORMAL</option>
+          <option value="normal">NORM</option>
           <option value="hard">HARD</option>
-          <option value="insane">INSANE</option>
+          <option value="insane">INSN</option>
         </select>
         <label id="timer">00h 00m 00s</label>
 
-        <label id="completed" onclick="check_alert()">✅</label>
-        <label id="share" onclick="shareCanvas()">💌</label>
-        <label id="print" onclick="printGame()">🖨️</label>
+        <i class="fa-solid fa-check" id="completed" onclick="check_alert()"></i>
+        <i
+          class="fa-solid fa-share-nodes"
+          id="share"
+          onclick="shareCanvas()"
+        ></i>
+        <i class="fa-solid fa-print" id="print" onclick="printGame()"></i>
       </form>
-      <!-- <label id="timer">00h 00m 00s</label> -->
     </div>
     <div id="instructions"></div>
 
@@ -84,5 +86,9 @@
     <script src="mines/Mines.js"></script>
     <script src="tents/Tents.js"></script>
     <script src="main.js"></script>
+    <script
+      src="https://kit.fontawesome.com/1d3416c2e7.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
