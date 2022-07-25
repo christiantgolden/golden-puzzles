@@ -1,5 +1,9 @@
+@font-face {
+  font-family: roboto;
+  src: url(assets/fonts/Roboto-Thin.ttf);
+}
 * {
-  font-family: monospace;
+  font-family: roboto;
   table-layout: fixed;
   margin-left: auto;
   margin-right: auto;
@@ -40,7 +44,7 @@ td input {
   opacity: 0.4;
 }
 form * {
-  width: 3rem;
+  width: 2rem;
   font-size: medium;
   color: black;
   margin-top: 1em;
@@ -51,16 +55,35 @@ form * {
   -webkit-appearance: none !important;
 }
 #diff,
-#timer {
+#timer,
+#gen_button,
+#completed,
+#share,
+#print,
+#get_info {
   font-size: larger;
+  opacity: 0.7;
+}
+#timer,
+#diff {
+  opacity: 1;
+}
+#share,
+#print {
+  margin-top: 0;
 }
 #diff {
-  width: 4rem;
+  width: 5rem;
 }
 #instructions {
   width: 80%;
   font-size: larger;
   max-width: 500px;
+  display: none;
+}
+#get_info {
+  margin-top: 0;
+  font-size: larger;
 }
 @media print {
   * {

@@ -175,3 +175,9 @@ const timer_tick = setInterval(function () {
     seconds.toString().padStart(2, "0") +
     "s ";
 }, 1000);
+
+const toggle_information = () => {
+  this.document.getElementById("instructions").style.display == "block"
+    ? (this.document.getElementById("instructions").style.display = "none")
+    : (this.document.getElementById("instructions").style.display = "block");
+};

@@ -27,26 +27,14 @@ const DIFFICULTY_MAP = {
 };
 const GAME_INSTRUCTIONS = {
   BINARY: [
-    "Each row/column has five 0's and five 1's.",
-    "No more than two 0's or 1's adjacent to one another.",
-    "No two rows or columns may be identical.",
-    "<a href='https://en.wikipedia.org/wiki/Takuzu' target='_blank' rel='noopener noreferrer'>Binary Wikipedia Page</a>",
+    "Each row/column has five 0's and five 1's. No more than two 0's or 1's adjacent to one another. No two rows or columns may be identical.",
   ],
   MINES: [
-    "A semi-clone of Minesweeper.",
-    "All 0's 😊 and mines 🤯 are hidden.",
-    "Discern which blanks are 😊 and which are 🤯.",
-    "<a href='https://en.wikipedia.org/wiki/Minesweeper_(video_game)' target='_blank' rel='noopener noreferrer'>Minesweeper Wikipedia Page</a>",
+    "A semi-clone of Minesweeper. All 0's 😊 and mines 🤯 are hidden.Discern which blanks are 😊 and which are 🤯.",
   ],
-  SUDOKU: [
-    "Each row/column/box has each of the numbers 1-9.",
-    "<a href='https://en.wikipedia.org/wiki/Sudoku' target='_blank' rel='noopener noreferrer'>Sudoku Wikipedia Page</a>",
-  ],
+  SUDOKU: ["Each row/column/box has each of the numbers 1-9."],
   TENTS: [
-    "Place⛺/🟩 in the grid.",
-    "Each 🌳 has at least one adjacent ⛺.",
-    "⛺ do not touch each other, even diagonally.",
-    "Numbers indicate how many ⛺ per row/column.",
+    "Place⛺/🟩 in the grid. Each 🌳 has at least one adjacent ⛺. ⛺ do not touch each other, even diagonally. Numbers indicate how many ⛺ per row/column.",
   ],
   BOXES: [
     "Sudoku, but the center cell of each box is the sum of its surrounding cells.",
