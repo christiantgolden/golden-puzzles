@@ -112,15 +112,16 @@ function TENTSClickHandler(e) {
   }
 }
 function MINESClickHandler(e) {
-  switch (this.innerText) {
+  console.log(this.innerHTML);
+  switch (this.innerHTML) {
     case PERSON_SAFE:
-      this.innerText = PERSON_MINE;
+      this.innerHTML = PERSON_MINE;
       break;
     case PERSON_MINE:
-      this.innerText = "";
+      this.innerHTML = "";
       break;
     case "":
-      this.innerText = PERSON_SAFE;
+      this.innerHTML = PERSON_SAFE;
       break;
     default:
       break;

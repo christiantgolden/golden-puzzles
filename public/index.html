@@ -27,23 +27,33 @@
     <table id="game_table"></table>
     <div id="diff-generate">
       <form>
-        <i
-          class="fa-solid fa-circle-question"
-          id="get_info"
-          onclick="toggle_information()"
-        ></i>
-        <i
-          class="fa-solid fa-repeat"
-          id="gen_button"
-          onclick="generateNewGame()"
-        ></i>
-        <select name="diff" id="diff" onchange="generateNewGame()">
-          <option value="easy">EASY</option>
-          <option value="normal">NORM</option>
-          <option value="hard">HARD</option>
-        </select>
-        <i class="fa-solid fa-print" id="print" onclick="printGame()"></i>
-        <i class="fa-solid fa-mug-saucer" id="donate"></i>
+        <a
+          ><i
+            class="fa-solid fa-circle-question"
+            id="get_info"
+            onclick="toggle_information()"
+          ></i
+        ></a>
+        <a
+          ><i
+            class="fa-solid fa-repeat"
+            id="gen_button"
+            onclick="generateNewGame()"
+          ></i
+        ></a>
+        <a
+          ><select name="diff" id="diff" onchange="generateNewGame()">
+            <option value="easy">EASY</option>
+            <option value="normal">NORM</option>
+            <option value="hard">HARD</option>
+          </select></a
+        >
+        <a
+          ><i class="fa-solid fa-print" id="print" onclick="printGame()"></i
+        ></a>
+        <a href="https://www.buymeacoffee.com/christiangolden" target="_blank"
+          ><i class="fa-solid fa-mug-saucer" id="donate"></i
+        ></a>
         <div></div>
         <label id="timer">00h 00m 00s</label>
       </form>
@@ -75,7 +85,6 @@
       const analytics = getAnalytics(app);
     </script>
     <!--End of Firebase Hosting Stuff-->
-    <script src="./html2canvas.min.js"></script>
     <script src="constants.js"></script>
     <script src="./games/Game.js"></script>
     <script src="./games/box16/Box16.js"></script>
