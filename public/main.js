@@ -5,30 +5,6 @@ let nextGameIndex = 4;
 let now = new Date().getTime();
 let elapsed = now;
 
-async function shareCanvas() {
-  document.getElementById("diff-generate").style.display = "none";
-  document.getElementById("prev").style.display = "none";
-  document.getElementById("next").style.display = "none";
-  const canvas = await html2canvas(document.getElementById("game"));
-  const dataUrl = canvas.toDataURL();
-  const blob = await (await fetch(dataUrl)).blob();
-  const filesArray = [
-    new File([blob], `${AVAILABLE_GAMES[activeGameIndex]}.png`, {
-      type: blob.type,
-      lastModified: new Date().getTime(),
-    }),
-  ];
-  const shareData = {
-    url: "http://golden-puzzles.web.app",
-    text: `Check out this ${AVAILABLE_GAMES[activeGameIndex]} puzzle I just completed over at Golden Puzzles!`,
-    files: filesArray,
-  };
-  navigator.share(shareData);
-  document.getElementById("diff-generate").style.display = "block";
-  document.getElementById("prev").style.display = "table-cell";
-  document.getElementById("next").style.display = "table-cell";
-}
-
 const resetTime = () => {
   now = new Date().getTime();
   elapsed = now;
@@ -121,15 +97,15 @@ console.log(queryStringArray);
 
 generateNewGame();
 function TENTSClickHandler(e) {
-  switch (this.innerText) {
+  switch (this.innerHTML) {
     case GRASS:
-      this.innerText = TENT;
+      this.innerHTML = TENT;
       break;
     case TENT:
-      this.innerText = " ";
+      this.innerHTML = "";
       break;
     case "":
-      this.innerText = GRASS;
+      this.innerHTML = GRASS;
       break;
     default:
       break;

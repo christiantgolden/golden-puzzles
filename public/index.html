@@ -28,6 +28,11 @@
     <div id="diff-generate">
       <form>
         <i
+          class="fa-solid fa-circle-question"
+          id="get_info"
+          onclick="toggle_information()"
+        ></i>
+        <i
           class="fa-solid fa-repeat"
           id="gen_button"
           onclick="generateNewGame()"
@@ -37,20 +42,10 @@
           <option value="normal">NORM</option>
           <option value="hard">HARD</option>
         </select>
-        <label id="timer">00h 00m 00s</label>
-        <i class="fa-solid fa-check" id="completed" onclick="check_alert()"></i>
-        <i
-          class="fa-solid fa-share-nodes"
-          id="share"
-          onclick="shareCanvas()"
-        ></i>
         <i class="fa-solid fa-print" id="print" onclick="printGame()"></i>
+        <i class="fa-solid fa-mug-saucer" id="donate"></i>
         <div></div>
-        <i
-          class="fa-solid fa-circle-question"
-          id="get_info"
-          onclick="toggle_information()"
-        ></i>
+        <label id="timer">00h 00m 00s</label>
       </form>
     </div>
     <div id="instructions"></div>

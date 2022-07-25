@@ -37,15 +37,23 @@ td input {
 }
 #navbar {
   font-size: x-large;
-  width: 20rem;
+  width: 24rem;
+}
+#navbar td {
+  width: 25%;
 }
 #prev,
 #next {
   opacity: 0.4;
+  min-width: 5rem;
+}
+#next {
+  margin-right: 0;
 }
 form * {
-  width: 2rem;
-  font-size: medium;
+  width: 4rem;
+  font-size: larger;
+  opacity: 0.6;
   color: black;
   margin-top: 1em;
   border: none;
@@ -54,37 +62,18 @@ form * {
   background-color: transparent;
   -webkit-appearance: none !important;
 }
-#diff,
-#timer,
-#gen_button,
-#completed,
-#share,
-#print,
-#get_info {
-  font-size: larger;
-  opacity: 0.7;
-}
-#timer,
-#diff {
-  opacity: 1;
-}
-#share,
-#print {
-  margin-top: 0;
-}
-#diff {
-  width: 5rem;
-}
 #instructions {
   width: 80%;
   font-size: larger;
   max-width: 500px;
   display: none;
 }
-#get_info {
-  margin-top: 0;
-  font-size: larger;
+.tree,
+.tent,
+.grass {
+  opacity: 0.3;
 }
+
 @media print {
   * {
     -webkit-print-color-adjust: exact;
