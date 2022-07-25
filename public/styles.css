@@ -31,18 +31,17 @@ td input {
   color: black;
   columns: 1;
 }
-#navbar tr td {
+#navbar {
   font-size: x-large;
-  width: 25%;
+  width: 20rem;
 }
 #prev,
 #next {
-  opacity: 0.6;
-  width: 25%;
+  opacity: 0.4;
 }
 form * {
-  width: 30%;
-  font-size: large;
+  width: 4rem;
+  font-size: larger;
   color: black;
   margin-top: 1em;
   border: none;
@@ -51,18 +50,16 @@ form * {
   background-color: transparent;
   -webkit-appearance: none !important;
 }
-#timer {
-  font-size: medium;
+#gen_button {
+  border: 1px solid black;
   text-align: center;
 }
-#print {
-  margin-right: 0.05rem;
+#diff {
+  font-style: italic;
 }
 #instructions {
-  margin-top: 1em;
-}
-#diff {
-  width: 20%;
+  width: 80%;
+  font-size: larger;
 }
 @media print {
   * {

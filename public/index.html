@@ -29,7 +29,7 @@
         <input
           id="gen_button"
           type="submit"
-          value="GENERATE"
+          value="NEW"
           onclick="generateNewGame()"
         />
         <select name="diff" id="diff">
@@ -38,11 +38,13 @@
           <option value="hard">HARD</option>
           <option value="insane">INSANE</option>
         </select>
+        <label id="timer">00h 00m 00s</label>
+
         <label id="completed" onclick="check_alert()">✅</label>
         <label id="share" onclick="shareCanvas()">💌</label>
         <label id="print" onclick="printGame()">🖨️</label>
       </form>
-      <label id="timer">00h 00m 00s</label>
+      <!-- <label id="timer">00h 00m 00s</label> -->
     </div>
     <div id="instructions"></div>
 
