@@ -48,8 +48,9 @@ td input {
   opacity: 0.4;
   min-width: 5rem;
 }
-#next {
-  margin-right: 0;
+#prev:hover,
+#next:hover {
+  cursor: pointer;
 }
 form * {
   width: 4rem;
@@ -93,10 +94,21 @@ a {
 }
 body {
   background-color: #000;
-  background-image: linear-gradient(rgba(80, 63, 31, 0.2), rgb(243, 227, 174));
+  background-image: linear-gradient(
+    rgba(80, 63, 31, 0.2),
+    rgb(168, 161, 136),
+    rgb(241, 232, 205)
+  );
 }
 #game_table td:hover {
   outline: 1px solid white;
+}
+i:hover,
+a:hover {
+  opacity: 1;
+}
+#timer:hover {
+  text-decoration: underline;
 }
 @media print {
   * {
