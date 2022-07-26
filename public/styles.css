@@ -53,7 +53,7 @@ td input {
   cursor: pointer;
 }
 form * {
-  width: 4rem;
+  width: 3.2rem;
   font-size: large;
   opacity: 0.9;
   color: #222;
@@ -66,12 +66,8 @@ form * {
   cursor: pointer;
   padding: 0;
 }
-select {
-  width: 4.2rem;
-  font-size: large;
-}
-select * {
-  font-size: medium;
+#diff {
+  width: 3.6rem;
 }
 #instructions {
   width: 80%;
@@ -112,24 +108,15 @@ a:hover {
   text-decoration: underline;
 }
 #game_table {
-  /* padding-bottom: 0rem; */
+  padding-bottom: 1rem;
   padding-top: 0.25rem;
 }
 #navbar {
   padding-top: 0.25rem;
 }
 hr {
-  width: 50%;
+  width: 75%;
   max-width: 400px;
-}
-#diff_time {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
-form {
-  width: 100%;
 }
 @media print {
   * {
