@@ -110,11 +110,13 @@ a:hover {
 #timer:hover {
   text-decoration: underline;
 }
+#game_table {
+  padding-top: 0.5rem;
+}
+#navbar {
+  padding-top: 0.25rem;
+}
 @media print {
-  * {
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
   table {
     width: 600;
   }
@@ -136,5 +138,16 @@ a:hover {
     font-size: 32;
     opacity: 1;
     margin-bottom: 25px;
+    color: #333;
+  }
+  body {
+    background-color: white;
+    background-image: none;
+  }
+  * {
+    background-color: white;
+    background-image: none;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 }
