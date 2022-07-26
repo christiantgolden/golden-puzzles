@@ -38,7 +38,7 @@ td input {
 #navbar {
   font-size: x-large;
   width: 24rem;
-  color: rgba(243, 227, 174, 0.7);
+  color: rgba(255, 255, 255, 0.7);
 }
 #navbar td {
   width: 25%;
@@ -95,9 +95,8 @@ a {
 body {
   background-color: #000;
   background-image: linear-gradient(
-    rgba(80, 63, 31, 0.2),
-    rgb(168, 161, 136),
-    rgb(241, 232, 205)
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 1)
   );
 }
 #game_table td:hover {
@@ -111,15 +110,17 @@ a:hover {
   text-decoration: underline;
 }
 #game_table {
-  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+  padding-top: 0.25rem;
 }
 #navbar {
   padding-top: 0.25rem;
 }
+hr {
+  width: 50%;
+  max-width: 400px;
+}
 @media print {
-  table {
-    width: 600;
-  }
   #prev,
   #next,
   select,
@@ -127,32 +128,14 @@ a:hover {
   #diff-generate {
     display: none;
   }
-  #instructions {
-    margin-top: 2em;
-    opacity: 0.6;
-  }
-  #navbar,
-  #navbar tr,
-  #navbar tr td,
   #active {
     font-size: 32;
     opacity: 1;
     margin-bottom: 25px;
     color: #333;
   }
-  body,
-  body *,
-  #game_table,
-  #game_table * {
-    background-color: white;
-    background-image: none;
-    opacity: 1;
-    filter: grayscale(100%);
-  }
   * {
-    background-color: white;
-    background-image: none;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
   }
 }
