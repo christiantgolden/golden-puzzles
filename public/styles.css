@@ -4,6 +4,7 @@
 }
 * {
   font-family: roboto;
+  font-weight: bolder;
   table-layout: fixed;
   margin-left: auto;
   margin-right: auto;
@@ -37,6 +38,7 @@ td input {
 #navbar {
   font-size: x-large;
   width: 24rem;
+  color: rgba(243, 227, 174, 0.7);
 }
 #navbar td {
   width: 25%;
@@ -52,14 +54,15 @@ td input {
 form * {
   width: 4rem;
   font-size: large;
-  opacity: 0.7;
-  color: black;
+  opacity: 0.9;
+  color: #222;
   margin-top: 1em;
   border: none;
   outline: none;
   border-radius: 0;
   background-color: transparent;
   -webkit-appearance: none !important;
+  cursor: pointer;
 }
 select {
   width: 4.2rem;
@@ -73,6 +76,8 @@ select * {
   font-size: larger;
   max-width: 500px;
   display: none;
+  opacity: 0.9;
+  color: #222;
 }
 .tree,
 .tent,
@@ -85,6 +90,13 @@ select * {
 }
 a {
   opacity: 0.9;
+}
+body {
+  background-color: #000;
+  background-image: linear-gradient(rgba(80, 63, 31, 0.2), rgb(243, 227, 174));
+}
+#game_table td:hover {
+  outline: 1px solid white;
 }
 @media print {
   * {

@@ -8,8 +8,8 @@ const GAMES = {
   HEXOKU: { active: true, visible: true },
 };
 const BOARD_OPERATIONS = ["transpose", "reverse", "transpose-reverse", "none"];
-const BLANK_CELL_COLOR = "#ddd";
-const FILLED_CELL_COLOR = "#aaa";
+const BLANK_CELL_COLOR = "rgba(243, 227, 174,.4)";
+const FILLED_CELL_COLOR = "rgba(243, 227, 174,.9)";
 const AVAILABLE_GAMES = [
   "BINARY",
   "TENTS",
