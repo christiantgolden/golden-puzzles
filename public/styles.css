@@ -143,4 +143,8 @@ hr {
   * * * {
     opacity: 1;
   }
+  body {
+    height: auto;
+    background-color: white;
+  }
 }

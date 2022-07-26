@@ -5,13 +5,10 @@ let nextGameIndex = 4;
 let now = new Date().getTime();
 let elapsed = now;
 let paused = false;
-// let elapsed_since_pause = 0;
-// let time_at_pause = 0;
-// let elapsed_at_pause = 0;
 const resetTime = () => {
   now = new Date().getTime();
   elapsed = now;
-  document.getElementById("timer").innerText = "00h 00m 00s";
+  document.getElementById("timer").innerText = "00:00:00";
   paused && pause();
 };
 const setActiveGame = (prevOrNext) => {
@@ -163,11 +160,10 @@ const timer_tick = setInterval(function () {
     const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
     document.getElementById("timer").innerText =
       hours.toString().padStart(2, "0") +
-      "h " +
+      ":" +
       minutes.toString().padStart(2, "0") +
-      "m " +
-      seconds.toString().padStart(2, "0") +
-      "s ";
+      ":" +
+      seconds.toString().padStart(2, "0");
   }
 }, 1000);
 
