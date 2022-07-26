@@ -4,7 +4,10 @@ let activeGameIndex = 3;
 let nextGameIndex = 4;
 let now = new Date().getTime();
 let elapsed = now;
-
+let paused = false;
+// let elapsed_since_pause = 0;
+// let time_at_pause = 0;
+// let elapsed_at_pause = 0;
 const resetTime = () => {
   now = new Date().getTime();
   elapsed = now;
@@ -144,20 +147,36 @@ function BINARYClickHandler(e) {
 }
 
 const timer_tick = setInterval(function () {
-  elapsed = new Date().getTime() - now;
-  const hours = Math.floor(
-    (elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  );
-  const minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
-  document.getElementById("timer").innerText =
-    hours.toString().padStart(2, "0") +
-    "h " +
-    minutes.toString().padStart(2, "0") +
-    "m " +
-    seconds.toString().padStart(2, "0") +
-    "s ";
+  if (paused) {
+    return;
+  } else {
+    elapsed = new Date().getTime() - now;
+    const hours = Math.floor(
+      (elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
+    document.getElementById("timer").innerText =
+      hours.toString().padStart(2, "0") +
+      "h " +
+      minutes.toString().padStart(2, "0") +
+      "m " +
+      seconds.toString().padStart(2, "0") +
+      "s ";
+  }
 }, 1000);
+
+const pause = () => {
+  if (paused) {
+    document.getElementById("game_table").style.opacity = 1;
+    now = new Date().getTime() - elapsed;
+  } else {
+    document.getElementById("game_table").style.opacity = 0.3;
+  }
+  paused = !paused;
+};
+
+document.addEventListener("visibilitychange", pause);
 
 const toggle_information = () => {
   this.document.getElementById("instructions").style.display == "block"
