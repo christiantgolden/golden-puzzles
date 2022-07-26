@@ -140,9 +140,14 @@ a:hover {
     margin-bottom: 25px;
     color: #333;
   }
-  body {
+  body,
+  body *,
+  #game_table,
+  #game_table * {
     background-color: white;
     background-image: none;
+    opacity: 1;
+    filter: grayscale(100%);
   }
   * {
     background-color: white;
