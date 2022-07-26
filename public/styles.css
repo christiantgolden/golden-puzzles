@@ -112,7 +112,7 @@ a:hover {
   text-decoration: underline;
 }
 #game_table {
-  padding-bottom: 1rem;
+  /* padding-bottom: 0rem; */
   padding-top: 0.25rem;
 }
 #navbar {
@@ -121,6 +121,15 @@ a:hover {
 hr {
   width: 50%;
   max-width: 400px;
+}
+#diff_time {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+form {
+  width: 100%;
 }
 @media print {
   * {

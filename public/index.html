@@ -36,6 +36,16 @@
     </table>
     <hr />
     <table id="game_table"></table>
+    <form id="diff_time">
+      <a
+        ><select name="diff" id="diff" onchange="generateNewGame()">
+          <option value="easy">EASY</option>
+          <option value="normal">NORM</option>
+          <option value="hard">HARD</option>
+        </select></a
+      >
+      <label id="timer" onclick="javascript:pause()">00:00:00</label>
+    </form>
     <hr />
     <div id="diff-generate">
       <form>
@@ -53,13 +63,13 @@
             onclick="generateNewGame()"
           ></i
         ></a>
-        <a
+        <!-- <a
           ><select name="diff" id="diff" onchange="generateNewGame()">
             <option value="easy">EASY</option>
             <option value="normal">NORM</option>
             <option value="hard">HARD</option>
           </select></a
-        >
+        > -->
         <a
           ><i class="fa-solid fa-print" id="print" onclick="printGame()"></i
         ></a>
@@ -67,7 +77,14 @@
           ><i class="fa-solid fa-mug-saucer" id="donate"></i
         ></a>
         <div></div>
-        <label id="timer" onclick="javascript:pause()">00:00:00</label>
+        <!-- <a
+          ><select name="diff" id="diff" onchange="generateNewGame()">
+            <option value="easy">EASY</option>
+            <option value="normal">NORM</option>
+            <option value="hard">HARD</option>
+          </select></a
+        >
+        <label id="timer" onclick="javascript:pause()">00:00:00</label> -->
       </form>
     </div>
     <div id="instructions"></div>
