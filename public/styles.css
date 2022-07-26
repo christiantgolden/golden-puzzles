@@ -64,6 +64,7 @@ form * {
   background-color: transparent;
   -webkit-appearance: none !important;
   cursor: pointer;
+  padding: 0;
 }
 select {
   width: 4.2rem;
@@ -95,9 +96,10 @@ a {
 body {
   background-color: #000;
   background-image: linear-gradient(
-    rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 1)
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.9)
   );
+  height: 100%;
 }
 #game_table td:hover {
   outline: 1px solid white;
@@ -137,5 +139,8 @@ hr {
     opacity: 1;
     margin-bottom: 25px;
     color: #333;
+  }
+  * * * {
+    opacity: 1;
   }
 }

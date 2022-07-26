@@ -12,6 +12,7 @@ const resetTime = () => {
   now = new Date().getTime();
   elapsed = now;
   document.getElementById("timer").innerText = "00h 00m 00s";
+  paused && pause();
 };
 const setActiveGame = (prevOrNext) => {
   paused && pause();
@@ -57,14 +58,15 @@ document
   });
 
 const generateNewGame = async () => {
+  paused && pause();
   resetTime();
   activeGame = CreateGame();
   activeGame.draw();
 };
 
 const printGame = () => {
-  window.print();
   !paused && pause();
+  window.print();
 };
 
 const check_alert = () => {
@@ -170,11 +172,18 @@ const timer_tick = setInterval(function () {
 }, 1000);
 
 const pause = () => {
+  const cells = document.getElementsByClassName("cell");
   if (paused) {
-    document.getElementById("game_table").style.opacity = 1;
+    for (let c = 0; c < cells.length; c++) {
+      cells[c].removeAttribute("readonly");
+    }
+    document.getElementById("timer").style.opacity = 1;
     now = new Date().getTime() - elapsed;
   } else {
-    document.getElementById("game_table").style.opacity = 0.3;
+    for (let c = 0; c < cells.length; c++) {
+      cells[c].setAttribute("readonly", true);
+    }
+    document.getElementById("timer").style.opacity = 0.5;
   }
   paused = !paused;
 };
@@ -186,3 +195,20 @@ const toggle_information = () => {
     ? (this.document.getElementById("instructions").style.display = "none")
     : (this.document.getElementById("instructions").style.display = "block");
 };
+
+(function () {
+  var beforePrint = function () {
+    !paused && pause();
+  };
+
+  if (window.matchMedia) {
+    var mediaQueryList = window.matchMedia("print");
+    mediaQueryList.addListener(function (mql) {
+      if (mql.matches) {
+        beforePrint();
+      }
+    });
+  }
+
+  window.onbeforeprint = beforePrint;
+})();
