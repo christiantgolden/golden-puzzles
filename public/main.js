@@ -11,8 +11,10 @@ let paused = false;
 const resetTime = () => {
   now = new Date().getTime();
   elapsed = now;
+  document.getElementById("timer").innerText = "00h 00m 00s";
 };
 const setActiveGame = (prevOrNext) => {
+  paused && pause();
   resetTime();
   const game = document.getElementById(prevOrNext).innerText;
   for (const g in GAMES) {
@@ -62,6 +64,7 @@ const generateNewGame = async () => {
 
 const printGame = () => {
   window.print();
+  !paused && pause();
 };
 
 const check_alert = () => {

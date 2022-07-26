@@ -121,6 +121,10 @@ hr {
   max-width: 400px;
 }
 @media print {
+  * {
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+  }
   #prev,
   #next,
   select,
@@ -133,9 +137,5 @@ hr {
     opacity: 1;
     margin-bottom: 25px;
     color: #333;
-  }
-  * {
-    print-color-adjust: exact !important;
-    -webkit-print-color-adjust: exact !important;
   }
 }
