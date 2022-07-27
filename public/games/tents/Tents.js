@@ -5,6 +5,7 @@ class Tents extends Game {
   generateBoard() {
     for (let i = 0; i < this.size - 1; i++) {
       this.board[i] = [];
+      this.solved_board[i] = [];
       for (let j = 0; j < this.size - 1; j++) {
         let random_obj = Math.random();
         if (
@@ -14,6 +15,7 @@ class Tents extends Game {
           (LEFT(this.board, i, j) && LEFT(this.board, i, j) == TENT)
         ) {
           this.board[i][j] = TREE;
+          this.solved_board[i][j] = TREE;
         } else if (
           (TOP_LEFT(this.board, i, j) && TOP_LEFT(this.board, i, j) == TENT) ||
           (TOP_RIGHT(this.board, i, j) &&
@@ -24,8 +26,10 @@ class Tents extends Game {
             BOTTOM_LEFT(this.board, i, j) == TENT)
         ) {
           this.board[i][j] = "";
+          this.solved_board[i][j] = GRASS;
         } else {
           this.board[i][j] = random_obj > 0.5 ? TENT : "";
+          this.solved_board[i][j] = random_obj > 0.5 ? TENT : GRASS;
         }
       }
     }

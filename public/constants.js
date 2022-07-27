@@ -10,6 +10,7 @@ const GAMES = {
 const BOARD_OPERATIONS = ["transpose", "reverse", "transpose-reverse", "none"];
 const BLANK_CELL_COLOR = "#c9c9c9";
 const FILLED_CELL_COLOR = "#efefef";
+const SOLVED_COLOR = "#25dd99";
 
 const AVAILABLE_GAMES = [
   "BINARY",

@@ -140,6 +140,10 @@ function TENTSClickHandler(e) {
     default:
       break;
   }
+  const i = this.closest("tr").rowIndex;
+  const j = this.cellIndex;
+  activeGame.board[i][j] = this.innerHTML;
+  activeGame.check_correct();
 }
 function MINESClickHandler(e) {
   console.log(this.innerHTML);
@@ -199,6 +203,8 @@ const pause = () => {
       cells[c].removeAttribute("readonly");
     }
     document.getElementById("timer").style.opacity = 1;
+    document.getElementById("timer").classList.remove("fa-beat-fade");
+    document.getElementById("timer").style.color = "#ffffffaa";
     now = new Date().getTime() - elapsed;
   } else {
     for (let c = 0; c < cells.length; c++) {

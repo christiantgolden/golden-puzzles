@@ -44,9 +44,9 @@ class Game {
     this.difficulty =
       DIFFICULTY_MAP[document.getElementById("activediff").innerText];
     this.board = [""];
-    this.solved_board = this.board;
-    this.unsolved_board = this.board;
-    this.current_board = this.board;
+    this.solved_board = [];
+    this.unsolved_board = [];
+    this.current_board = [];
     this.size = size;
     this.game_table = document.getElementById("game_table");
     this.table_width = Math.min(
@@ -60,6 +60,19 @@ class Game {
     this.font_size = this.cell_height / 2;
     this.is_solved = false;
     this.generateBoard();
+  }
+  check_correct() {
+    for (var i = 0; i < this.solved_board.length; i++) {
+      for (var j = 0; j < this.solved_board[i].length; j++) {
+        if (this.solved_board[i][j] !== this.board[i][j]) {
+          return false;
+        }
+      }
+    }
+    pause();
+    document.getElementById("timer").style.color = SOLVED_COLOR;
+    document.getElementById("timer").classList.add("fa-beat-fade");
+    return true;
   }
   displayInstructions() {
     const current_game = document.getElementById("active").innerText;
