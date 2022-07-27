@@ -42,7 +42,7 @@ class Game {
   is_solved;
   constructor(size) {
     this.difficulty =
-      DIFFICULTY_MAP[document.getElementById("diff").value.toUpperCase()];
+      DIFFICULTY_MAP[document.getElementById("activediff").innerText];
     this.board = [""];
     this.solved_board = this.board;
     this.unsolved_board = this.board;

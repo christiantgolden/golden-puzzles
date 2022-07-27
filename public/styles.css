@@ -35,21 +35,31 @@ td input {
   color: black;
   columns: 1;
 }
-#navbar {
+.navbar {
   font-size: x-large;
   width: 24rem;
   color: rgba(255, 255, 255, 0.7);
 }
-#navbar td {
+.diffbar {
+  padding-top: 0.5rem;
+  font-size: large;
+  width: 24rem;
+  color: rgba(0, 0, 0, 0.7);
+}
+.navbar td {
   width: 25%;
 }
 #prev,
-#next {
+#next,
+#prevdiff,
+#nextdiff {
   opacity: 0.4;
   min-width: 5rem;
 }
 #prev:hover,
-#next:hover {
+#next:hover,
+#prevdiff:hover,
+#nextdiff:hover {
   cursor: pointer;
 }
 form * {
@@ -68,10 +78,12 @@ form * {
 }
 #diff {
   width: 3.6rem;
+  background-color: #00000055;
+  display: none;
 }
 #instructions {
   width: 80%;
-  font-size: larger;
+  font-size: large;
   max-width: 500px;
   display: none;
   opacity: 0.9;
@@ -105,18 +117,29 @@ a:hover {
   opacity: 1;
 }
 #timer:hover {
-  text-decoration: underline;
+  opacity: 1;
+  color: white;
 }
 #game_table {
-  padding-bottom: 1rem;
+  padding-bottom: 0rem;
   padding-top: 0.25rem;
 }
-#navbar {
+.navbar {
   padding-top: 0.25rem;
 }
 hr {
   width: 75%;
   max-width: 400px;
+}
+#playtime,
+#playtime * {
+  color: #ffffff99;
+  margin-top: 0;
+  margin-bottom: 0;
+  display: none;
+}
+#timer {
+  color: #ffffffaa;
 }
 @media print {
   * {
@@ -127,7 +150,11 @@ hr {
   #next,
   select,
   #gen_button,
-  #diff-generate {
+  #diff-generate,
+  #prevdiff,
+  #nextdiff,
+  a,
+  i {
     display: none;
   }
   #active {
@@ -142,5 +169,8 @@ hr {
   body {
     height: auto;
     background-color: white;
+  }
+  #instructions {
+    display: block;
   }
 }

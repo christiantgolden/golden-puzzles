@@ -44,6 +44,31 @@ const setActiveGame = (prevOrNext) => {
   generateNewGame();
 };
 
+const setActiveDiff = (prevOrNext) => {
+  paused && pause();
+  resetTime();
+  let temp_diff;
+  switch (prevOrNext) {
+    case "prevdiff":
+      temp_diff = document.getElementById("nextdiff").innerText;
+      document.getElementById("nextdiff").innerText =
+        document.getElementById("activediff").innerText;
+      document.getElementById("activediff").innerText =
+        document.getElementById("prevdiff").innerText;
+      document.getElementById("prevdiff").innerText = temp_diff;
+      break;
+    case "nextdiff":
+      temp_diff = document.getElementById("prevdiff").innerText;
+      document.getElementById("prevdiff").innerText =
+        document.getElementById("activediff").innerText;
+      document.getElementById("activediff").innerText =
+        document.getElementById("nextdiff").innerText;
+      document.getElementById("nextdiff").innerText = temp_diff;
+      break;
+  }
+  generateNewGame();
+};
+
 const showGame = () => {
   document.getElementById("game").style.setProperty("opacity", 1);
 };
