@@ -64,8 +64,18 @@ class Game {
   check_correct() {
     for (var i = 0; i < this.solved_board.length; i++) {
       for (var j = 0; j < this.solved_board[i].length; j++) {
-        if (this.solved_board[i][j] !== this.board[i][j]) {
-          return false;
+        switch (activeGame.constructor.name) {
+          case "Mines":
+            if (this.solved_board[i][j].hasMine !== this.board[i][j].hasMine) {
+              return false;
+            }
+            break;
+          case "Tents":
+          default:
+            if (this.solved_board[i][j] !== this.board[i][j]) {
+              return false;
+            }
+            break;
         }
       }
     }

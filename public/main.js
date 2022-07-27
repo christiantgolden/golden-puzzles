@@ -146,20 +146,33 @@ function TENTSClickHandler(e) {
   activeGame.check_correct();
 }
 function MINESClickHandler(e) {
+  let cellHasMine;
   console.log(this.innerHTML);
   switch (this.innerHTML) {
     case PERSON_SAFE:
       this.innerHTML = PERSON_MINE;
+      cellHasMine = true;
       break;
     case PERSON_MINE:
       this.innerHTML = "";
+      cellHasMine = 3;
       break;
     case "":
       this.innerHTML = PERSON_SAFE;
+      cellHasMine = false;
       break;
     default:
       break;
   }
+  const i = this.closest("tr").rowIndex;
+  const j = this.cellIndex;
+  console.log("cellHasMine: " + cellHasMine);
+  console.log(
+    "activeGame.solved_board.cellHasMine[i][j]: " +
+      activeGame.solved_board[i][j].hasMine
+  );
+  activeGame.board[i][j].hasMine = cellHasMine;
+  console.log(activeGame.check_correct());
 }
 function BINARYClickHandler(e) {
   switch (this.innerText) {

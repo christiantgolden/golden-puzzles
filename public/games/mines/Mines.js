@@ -17,15 +17,23 @@ class Mines extends Game {
   }
   generateBoard() {
     this.board = [];
+    this.solved_board = [];
     for (let i = 0; i < this.size; i++) {
       this.board[i] = [];
+      this.solved_board[i] = [];
       for (let j = 0; j < this.size; j++) {
+        const isMine = Math.random() > 0.8;
         this.board[i][j] = {
-          x: j,
-          y: i,
-          hasMine: Math.random() > 0.8,
+          hasMine: isMine,
+          hasZero: !isMine,
           minesNearby: 0,
         };
+        this.solved_board[i][j] = {
+          hasMine: isMine,
+          hasZero: !isMine,
+          minesNearby: 0,
+        };
+
         this.board[i][j].incrementMinesNearby = () => {
           this.board[i][j].minesNearby++;
         };
@@ -85,6 +93,7 @@ class Mines extends Game {
           game_table_html += `<td class='board' style='background-color:${BLANK_CELL_COLOR};width:${this.cell_width};
                                               height:${this.cell_height};
                                               font-size:${this.font_size}'></td>`;
+          this.board[r][c].hasMine = 3;
         } else {
           game_table_html +=
             `<td class='board' style='background-color:${FILLED_CELL_COLOR};
