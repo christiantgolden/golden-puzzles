@@ -55,7 +55,7 @@ const GAME_INSTRUCTIONS = {
     "Each row/column has five 0's and five 1's. No more than two 0's or 1's adjacent to one another. No two rows or columns may be identical.",
   ],
   MINES: [
-    "A semi-clone of Minesweeper. All 0's (hearts) and mines are hidden.Discern which blanks are hearts and which are mines.",
+    "A semi-clone of Minesweeper. All 0's (hearts) and mines are hidden. Discern which blanks are hearts and which are mines.",
   ],
   SUDOKU: ["Each row/column/box has each of the numbers 1-9."],
   TENTS: [
@@ -65,9 +65,9 @@ const GAME_INSTRUCTIONS = {
     "Sudoku, but the center cell of each box is the sum of its surrounding cells.",
   ],
   BOX16: [
-    "Sudoku, but each white cell contains the sum of its surrounding cells",
+    "Sudoku, but each white cell contains the sum of its surrounding cells.",
   ],
-  HEXOKU: ["Sudoku, but hexadecimal"],
+  HEXOKU: ["Sudoku, but hexadecimal."],
 };
 const TOP_LEFT = (board, i, j) => {
   return board[i - 1] && board[i - 1][j - 1];

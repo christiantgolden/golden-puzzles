@@ -49,7 +49,11 @@ class Game {
     this.current_board = this.board;
     this.size = size;
     this.game_table = document.getElementById("game_table");
-    this.table_width = Math.min(window.innerWidth, 500);
+    this.table_width = Math.min(
+      window.innerWidth,
+      window.innerHeight * 0.5,
+      480
+    );
     this.game_table.style.width = this.table_width * 0.95;
     this.cell_width = this.table_width / this.size;
     this.cell_height = this.cell_width;

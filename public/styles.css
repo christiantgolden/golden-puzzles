@@ -73,6 +73,9 @@ form * {
   display: none;
   opacity: 0.9;
   color: #222;
+  max-width: 400px;
+  text-align: justify;
+  text-align-last: center;
 }
 .tree,
 .tent,
