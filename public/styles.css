@@ -19,11 +19,6 @@
   user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
 td input {
   padding: 0;
   border: 0;
@@ -39,15 +34,13 @@ td input {
   font-size: x-large;
   width: 24rem;
   color: rgba(255, 255, 255, 0.7);
+  padding-top: 0.25rem;
 }
 .diffbar {
   padding-top: 0.5rem;
   font-size: large;
   width: 24rem;
   color: rgba(0, 0, 0, 0.7);
-}
-.navbar td {
-  width: 25%;
 }
 #prev,
 #next,
@@ -70,16 +63,8 @@ form * {
   margin-top: 1em;
   border: none;
   outline: none;
-  border-radius: 0;
   background-color: transparent;
-  -webkit-appearance: none !important;
   cursor: pointer;
-  padding: 0;
-}
-#diff {
-  width: 3.6rem;
-  background-color: #00000055;
-  display: none;
 }
 #instructions {
   width: 80%;
@@ -91,15 +76,10 @@ form * {
 }
 .tree,
 .tent,
-.grass {
-  opacity: 0.4;
-}
+.grass,
 .safe,
 .mine {
   opacity: 0.6;
-}
-a {
-  opacity: 0.9;
 }
 body {
   background-color: #000;
@@ -124,19 +104,9 @@ a:hover {
   padding-bottom: 0rem;
   padding-top: 0.25rem;
 }
-.navbar {
-  padding-top: 0.25rem;
-}
 hr {
   width: 75%;
   max-width: 400px;
-}
-#playtime,
-#playtime * {
-  color: #ffffff99;
-  margin-top: 0;
-  margin-bottom: 0;
-  display: none;
 }
 #timer {
   color: #ffffffaa;
