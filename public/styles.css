@@ -163,14 +163,9 @@ hr {
     margin-bottom: 25px;
     color: #333;
   }
-  * * * {
-    opacity: 1;
-  }
   body {
     height: auto;
     background-color: white;
-  }
-  #instructions {
-    display: block;
+    background-image: none;
   }
 }
