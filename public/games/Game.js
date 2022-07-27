@@ -51,8 +51,8 @@ class Game {
     this.game_table = document.getElementById("game_table");
     this.table_width = Math.min(
       window.innerWidth,
-      window.innerHeight * 0.5,
-      480
+      window.innerHeight * 0.6,
+      500
     );
     this.game_table.style.width = this.table_width * 0.95;
     this.cell_width = this.table_width / this.size;
