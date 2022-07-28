@@ -80,6 +80,7 @@ class Binary extends Game {
       game_table_html += `<tr>`;
       for (let c = 0; c < this.size; c++) {
         if (this.board[r][c] == " ") {
+          this.remaining_blanks++;
           game_table_html += `<td class='board' style='background-color:${BLANK_CELL_COLOR};width:${this.cell_width};
                                               height:${this.cell_height};
                                               font-size:${this.font_size}'></input></td>`;
@@ -103,5 +104,26 @@ class Binary extends Game {
         (e) =>
           e.innerText == "" && e.addEventListener("click", BINARYClickHandler)
       );
+    for (let i = 0; i < this.board.length; i++) {
+      !Array.isArray(this.board[i]) &&
+        (this.board[i] = this.board[i].split(""));
+    }
+  }
+  checkCorrect() {
+    let colZeros = new Array(this.size).fill(0);
+    let colOnes = new Array(this.size).fill(0);
+    for (let i = 0; i < this.board.length; i++) {
+      let rowZeros = 0;
+      let rowOnes = 0;
+      for (let j = 0; j < this.board[i].length; j++) {
+        this.board[i][j] === "1"
+          ? rowOnes++ && colOnes[j]++
+          : rowZeros++ && colZeros[j]++;
+        if (rowZeros > 5 || rowOnes > 5 || colZeros[j] > 5 || colOnes[j] > 5) {
+          return false;
+        }
+      }
+    }
+    return true;
   }
 }

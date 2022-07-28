@@ -34,7 +34,6 @@ class Tents extends Game {
     switch (item) {
       case TENT:
         if (this.itemAdjacent(i, j, TENT) || this.itemDiagonal(i, j, TENT)) {
-          console.log("area already has tent nearby");
           response = false;
         }
         return response;
@@ -45,16 +44,9 @@ class Tents extends Game {
   checkCorrect() {
     if (
       !(
-        (this.attempt_final_column.every((item) =>
-          this.final_column.includes(item)
-        ) &&
-          this.final_column.every((item) =>
-            this.attempt_final_column.includes(item)
-          )) ||
-        (this.attempt_final_row.every((item) =>
-          this.final_row.includes(item)
-        ) &&
-          this.final_row.every((item) => this.attempt_final_row.includes(item)))
+        JSON.stringify(this.attempt_final_column) ==
+          JSON.stringify(this.final_column) &&
+        JSON.stringify(this.attempt_final_row) == JSON.stringify(this.final_row)
       )
     ) {
       return false;
@@ -62,9 +54,7 @@ class Tents extends Game {
     for (var i = 0; i < this.board.length; i++) {
       for (var j = 0; j < this.board[i].length; j++) {
         if (this.board[i][j] === TENT) {
-          console.log(`checking if tent at ${i},${j} is valid`);
           if (!this.isValidMove(i, j, TENT)) {
-            console.log(`found invalid`);
             return false;
           }
         }

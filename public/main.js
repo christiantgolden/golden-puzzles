@@ -122,6 +122,9 @@ console.log(queryStringArray);
 generateNewGame();
 
 function TENTSClickHandler(e) {
+  if (paused) {
+    return;
+  }
   const i = this.closest("tr").rowIndex;
   const j = this.cellIndex;
   console.log("remaining blanks: " + activeGame.remaining_blanks);
@@ -151,6 +154,9 @@ function TENTSClickHandler(e) {
     setGameSolved();
 }
 function MINESClickHandler(e) {
+  if (paused) {
+    return;
+  }
   let cellHasMine;
   console.log(this.innerHTML);
   switch (this.innerHTML) {
@@ -179,21 +185,30 @@ function MINESClickHandler(e) {
     setGameSolved();
 }
 function BINARYClickHandler(e) {
-  switch (this.innerText) {
+  if (paused) {
+    return;
+  }
+  const i = this.closest("tr").rowIndex;
+  const j = this.cellIndex;
+  switch (this.innerHTML) {
     case "0":
-      this.innerText = "1";
+      this.innerHTML = "1";
       break;
     case "1":
-      this.innerText = "";
-      activeGame.remaining_blanks--;
+      this.innerHTML = "";
+      activeGame.remaining_blanks++;
       break;
     case "":
-      this.innerText = "0";
-      activeGame.remaining_blanks++;
+      this.innerHTML = "0";
+      activeGame.remaining_blanks--;
       break;
     default:
       break;
   }
+  activeGame.board[i][j] = this.innerHTML;
+  activeGame.remaining_blanks === 0 &&
+    activeGame.checkCorrect() &&
+    setGameSolved();
 }
 
 const timer_tick = setInterval(function () {
