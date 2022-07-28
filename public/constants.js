@@ -89,7 +89,7 @@ const BOTTOM = (board, i, j) => {
   return board[i + 1] && board[i + 1][j];
 };
 const BOTTOM_LEFT = (board, i, j) => {
-  return board[i + 1] && board[i + 1][j + 1];
+  return board[i + 1] && board[i + 1][j - 1];
 };
 const LEFT = (board, i, j) => {
   return board[i] && board[i][j - 1];

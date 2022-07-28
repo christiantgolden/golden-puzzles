@@ -90,6 +90,7 @@ class Mines extends Game {
       game_table_html += `<tr>`;
       for (let c = 0; c < this.size; c++) {
         if (this.board[r][c].hasMine || this.board[r][c].minesNearby == 0) {
+          this.remaining_blanks++;
           game_table_html += `<td class='board' style='background-color:${BLANK_CELL_COLOR};width:${this.cell_width};
                                               height:${this.cell_height};
                                               font-size:${this.font_size}'></td>`;
@@ -112,5 +113,15 @@ class Mines extends Game {
     document
       .querySelectorAll("#game_table td")
       .forEach((e) => e.addEventListener("click", MINESClickHandler));
+  }
+  checkCorrect() {
+    for (let i = 0; i < this.solved_board.length; i++) {
+      for (let j = 0; j < this.solved_board[i].length; j++) {
+        if (this.solved_board[i][j].hasMine !== this.board[i][j].hasMine) {
+          return false;
+        }
+      }
+    }
+    return true;
   }
 }

@@ -40,7 +40,11 @@ class Game {
   unsolved_board;
   current_board;
   is_solved;
+  remaining_blanks;
+  has_invalid_cell;
   constructor(size) {
+    this.has_invalid_cell = false;
+    this.remaining_blanks = 0;
     this.difficulty =
       DIFFICULTY_MAP[document.getElementById("activediff").innerText];
     this.board = [""];
@@ -61,29 +65,11 @@ class Game {
     this.is_solved = false;
     this.generateBoard();
   }
-  check_correct() {
-    for (var i = 0; i < this.solved_board.length; i++) {
-      for (var j = 0; j < this.solved_board[i].length; j++) {
-        switch (activeGame.constructor.name) {
-          case "Mines":
-            if (this.solved_board[i][j].hasMine !== this.board[i][j].hasMine) {
-              return false;
-            }
-            break;
-          case "Tents":
-          default:
-            if (this.solved_board[i][j] !== this.board[i][j]) {
-              return false;
-            }
-            break;
-        }
-      }
-    }
-    pause();
-    document.getElementById("timer").style.color = SOLVED_COLOR;
-    document.getElementById("timer").classList.add("fa-beat-fade");
-    return true;
-  }
+  /*
+    REFACTOR #27
+      * check if each move valid regardless of initial solved board
+      * https://github.com/christiantgolden/golden-puzzles/issues/27
+  */
   displayInstructions() {
     const current_game = document.getElementById("active").innerText;
     let instructions_html = "";
@@ -96,6 +82,32 @@ class Game {
     this.board = this.board[0]
       .split("")
       .map((_, colIndex) => this.board.map((row) => row[colIndex]));
+  }
+  itemAdjacent(i, j, item) {
+    if (
+      (TOP(this.board, i, j) && TOP(this.board, i, j) == item) ||
+      (RIGHT(this.board, i, j) && RIGHT(this.board, i, j) == item) ||
+      (BOTTOM(this.board, i, j) && BOTTOM(this.board, i, j) == item) ||
+      (LEFT(this.board, i, j) && LEFT(this.board, i, j) == item)
+    ) {
+      return true;
+    }
+    return false;
+  }
+  itemDiagonal(i, j, item) {
+    if (
+      (TOP_LEFT(this.board, i, j) && TOP_LEFT(this.board, i, j) === item) ||
+      (TOP_RIGHT(this.board, i, j) && TOP_RIGHT(this.board, i, j) === item) ||
+      (BOTTOM_RIGHT(this.board, i, j) &&
+        BOTTOM_RIGHT(this.board, i, j) === item) ||
+      (BOTTOM_LEFT(this.board, i, j) && BOTTOM_LEFT(this.board, i, j) === item)
+    ) {
+      return true;
+    }
+    return false;
+  }
+  itemSurrounding(i, j, item) {
+    return this.itemAdjacent(i, j, item) && this.itemDiagonal(i, j, item);
   }
   randomize() {
     let random_operation =

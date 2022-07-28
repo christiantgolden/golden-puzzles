@@ -1,6 +1,12 @@
 class Tents extends Game {
+  final_row;
+  final_column;
   constructor() {
     super(10);
+    this.final_row = [];
+    this.final_column = [];
+    this.attempt_final_row = [];
+    this.attempt_final_column = [];
   }
   generateBoard() {
     for (let i = 0; i < this.size - 1; i++) {
@@ -8,41 +14,75 @@ class Tents extends Game {
       this.solved_board[i] = [];
       for (let j = 0; j < this.size - 1; j++) {
         let random_obj = Math.random();
-        if (
-          (TOP(this.board, i, j) && TOP(this.board, i, j) == TENT) ||
-          (RIGHT(this.board, i, j) && RIGHT(this.board, i, j) == TENT) ||
-          (BOTTOM(this.board, i, j) && BOTTOM(this.board, i, j) == TENT) ||
-          (LEFT(this.board, i, j) && LEFT(this.board, i, j) == TENT)
-        ) {
+        if (this.itemAdjacent(i, j, TENT)) {
           this.board[i][j] = TREE;
           this.solved_board[i][j] = TREE;
-        } else if (
-          (TOP_LEFT(this.board, i, j) && TOP_LEFT(this.board, i, j) == TENT) ||
-          (TOP_RIGHT(this.board, i, j) &&
-            TOP_RIGHT(this.board, i, j) == TENT) ||
-          (BOTTOM_RIGHT(this.board, i, j) &&
-            BOTTOM_RIGHT(this.board, i, j) == TENT) ||
-          (BOTTOM_LEFT(this.board, i, j) &&
-            BOTTOM_LEFT(this.board, i, j) == TENT)
-        ) {
+        } else if (this.itemDiagonal(i, j, TENT)) {
           this.board[i][j] = "";
+          this.remaining_blanks++;
           this.solved_board[i][j] = GRASS;
         } else {
           this.board[i][j] = random_obj > 0.5 ? TENT : "";
           this.solved_board[i][j] = random_obj > 0.5 ? TENT : GRASS;
+          this.remaining_blanks++;
         }
       }
     }
   }
+  isValidMove(i, j, item) {
+    let response = true;
+    switch (item) {
+      case TENT:
+        if (this.itemAdjacent(i, j, TENT) || this.itemDiagonal(i, j, TENT)) {
+          console.log("area already has tent nearby");
+          response = false;
+        }
+        return response;
+      default:
+        break;
+    }
+  }
+  checkCorrect() {
+    if (
+      !(
+        (this.attempt_final_column.every((item) =>
+          this.final_column.includes(item)
+        ) &&
+          this.final_column.every((item) =>
+            this.attempt_final_column.includes(item)
+          )) ||
+        (this.attempt_final_row.every((item) =>
+          this.final_row.includes(item)
+        ) &&
+          this.final_row.every((item) => this.attempt_final_row.includes(item)))
+      )
+    ) {
+      return false;
+    }
+    for (var i = 0; i < this.board.length; i++) {
+      for (var j = 0; j < this.board[i].length; j++) {
+        if (this.board[i][j] === TENT) {
+          console.log(`checking if tent at ${i},${j} is valid`);
+          if (!this.isValidMove(i, j, TENT)) {
+            console.log(`found invalid`);
+            return false;
+          }
+        }
+      }
+    }
+    return true;
+  }
   draw() {
     let game_table_html = `<div style='width:${this.table_width}'>`;
-    let final_row = new Array(this.size - 1).fill(0);
+    this.final_row = new Array(this.size - 1).fill(0);
+    this.attempt_final_row = new Array(this.size - 1).fill(0);
+    this.attempt_final_column = new Array(this.size - 1).fill(0);
     for (let r = 0; r < this.size - 1; r++) {
       game_table_html += "<tr>";
-      let rowTotal = 0;
+      this.final_column[r] = 0;
       for (let c = 0; c < this.size - 1; c++) {
-        this.board[r][c] == TENT && final_row[c]++;
-        this.board[r][c] == TENT && rowTotal++;
+        this.board[r][c] == TENT && this.final_row[c]++;
+        this.board[r][c] == TENT && this.final_column[r]++;
         game_table_html +=
           `<td class='board' style='background-color:${BLANK_CELL_COLOR};width:${this.cell_width};
                             height:${this.cell_height};
@@ -55,7 +95,7 @@ class Tents extends Game {
         `<td class='board' style='background-color:${FILLED_CELL_COLOR};width:${this.cell_width};
                             height:${this.cell_height};
                             font-size:${this.font_size}'>` +
-        rowTotal +
+        this.final_column[r] +
         "</td>" +
         "</tr>";
     }
@@ -65,7 +105,7 @@ class Tents extends Game {
         `<td class='board' style='background-color:${FILLED_CELL_COLOR};width:${this.cell_width};
                             height:${this.cell_height};
                             font-size:${this.font_size}'>` +
-        final_row[i] +
+        this.final_row[i] +
         "</td>";
     }
     final_row_html += "</tr>";

@@ -91,12 +91,6 @@ const printGame = () => {
   window.print();
 };
 
-const check_alert = () => {
-  alert(
-    "Sorry, this doesn't do anything yet, but will eventually turn opaque green upon successful completion of current puzzle"
-  );
-};
-
 //eventually this will allow users to specify game in url
 //also allow for passing in seed?
 //allow for passing in a board?
@@ -126,24 +120,35 @@ queryStringArray.forEach((i) => {
 console.log(queryStringArray);
 
 generateNewGame();
+
 function TENTSClickHandler(e) {
+  const i = this.closest("tr").rowIndex;
+  const j = this.cellIndex;
+  console.log("remaining blanks: " + activeGame.remaining_blanks);
   switch (this.innerHTML) {
     case GRASS:
       this.innerHTML = TENT;
+      activeGame.attempt_final_column[i]++;
+      activeGame.attempt_final_row[j]++;
       break;
     case TENT:
       this.innerHTML = "";
+      activeGame.remaining_blanks++;
+      activeGame.attempt_final_column[i]--;
+      activeGame.attempt_final_row[j]--;
       break;
     case "":
       this.innerHTML = GRASS;
+      activeGame.remaining_blanks--;
       break;
     default:
+      return;
       break;
   }
-  const i = this.closest("tr").rowIndex;
-  const j = this.cellIndex;
   activeGame.board[i][j] = this.innerHTML;
-  activeGame.check_correct();
+  activeGame.remaining_blanks === 0 &&
+    activeGame.checkCorrect() &&
+    setGameSolved();
 }
 function MINESClickHandler(e) {
   let cellHasMine;
@@ -155,10 +160,12 @@ function MINESClickHandler(e) {
       break;
     case PERSON_MINE:
       this.innerHTML = "";
+      activeGame.remaining_blanks++;
       cellHasMine = 3;
       break;
     case "":
       this.innerHTML = PERSON_SAFE;
+      activeGame.remaining_blanks--;
       cellHasMine = false;
       break;
     default:
@@ -166,13 +173,10 @@ function MINESClickHandler(e) {
   }
   const i = this.closest("tr").rowIndex;
   const j = this.cellIndex;
-  console.log("cellHasMine: " + cellHasMine);
-  console.log(
-    "activeGame.solved_board.cellHasMine[i][j]: " +
-      activeGame.solved_board[i][j].hasMine
-  );
   activeGame.board[i][j].hasMine = cellHasMine;
-  console.log(activeGame.check_correct());
+  activeGame.remaining_blanks === 0 &&
+    activeGame.checkCorrect() &&
+    setGameSolved();
 }
 function BINARYClickHandler(e) {
   switch (this.innerText) {
@@ -181,9 +185,11 @@ function BINARYClickHandler(e) {
       break;
     case "1":
       this.innerText = "";
+      activeGame.remaining_blanks--;
       break;
     case "":
       this.innerText = "0";
+      activeGame.remaining_blanks++;
       break;
     default:
       break;
@@ -252,3 +258,9 @@ const toggle_information = () => {
 
   window.onbeforeprint = beforePrint;
 })();
+
+const setGameSolved = () => {
+  pause();
+  document.getElementById("timer").style.color = SOLVED_COLOR;
+  document.getElementById("timer").classList.add("fa-beat-fade");
+};
