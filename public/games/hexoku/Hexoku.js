@@ -90,7 +90,8 @@ class Hexoku extends Game {
                             height:${this.cell_height};
                             font-size:${this.font_size}'>`;
         row_string_array[i] == " "
-          ? (game_table_html += `<input class='cell' style='font-size:${this.font_size}' maxlength=1'></input>`)
+          ? (game_table_html += `<input class='cell' style='font-size:${this.font_size}' maxlength=1'></input>`) &&
+            this.remaining_blanks++
           : (game_table_html += row_string_array[i]);
         game_table_html += `</td>`;
       }
