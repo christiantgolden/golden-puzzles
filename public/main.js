@@ -1,8 +1,8 @@
 //REFACTOR #29 - move these global variables and most/all of this code into an object of a Session class
-let activeGame = {};
-let prevGameIndex = 2;
-let activeGameIndex = 3;
-let nextGameIndex = 4;
+let activePuzzle = {};
+let prevPuzzleIndex = 2;
+let activePuzzleIndex = 3;
+let nextPuzzleIndex = 4;
 let now = new Date().getTime();
 let elapsed = now;
 let paused = false;
@@ -12,37 +12,39 @@ const resetTime = () => {
   document.getElementById("timer").innerText = "00:00:00";
   paused && pause();
 };
-const setActiveGame = (prevOrNext) => {
+const setActivePuzzle = (prevOrNext) => {
   paused && pause();
   resetTime();
-  const game = document.getElementById(prevOrNext).innerText;
-  for (const g in GAMES) {
-    if (GAMES[g].active) {
-      GAMES[g].active = false;
+  const puzzle = document.getElementById(prevOrNext).innerText;
+  for (const g in PUZZLES) {
+    if (PUZZLES[g].active) {
+      PUZZLES[g].active = false;
       switch (prevOrNext) {
         case "prev":
-          prevGameIndex = (prevGameIndex - 1) % AVAILABLE_GAMES.length;
-          activeGameIndex = (activeGameIndex - 1) % AVAILABLE_GAMES.length;
-          nextGameIndex = (nextGameIndex - 1) % AVAILABLE_GAMES.length;
+          prevPuzzleIndex = (prevPuzzleIndex - 1) % AVAILABLE_PUZZLES.length;
+          activePuzzleIndex =
+            (activePuzzleIndex - 1) % AVAILABLE_PUZZLES.length;
+          nextPuzzleIndex = (nextPuzzleIndex - 1) % AVAILABLE_PUZZLES.length;
           break;
         case "next":
-          prevGameIndex = (prevGameIndex + 1) % AVAILABLE_GAMES.length;
-          activeGameIndex = (activeGameIndex + 1) % AVAILABLE_GAMES.length;
-          nextGameIndex = (nextGameIndex + 1) % AVAILABLE_GAMES.length;
+          prevPuzzleIndex = (prevPuzzleIndex + 1) % AVAILABLE_PUZZLES.length;
+          activePuzzleIndex =
+            (activePuzzleIndex + 1) % AVAILABLE_PUZZLES.length;
+          nextPuzzleIndex = (nextPuzzleIndex + 1) % AVAILABLE_PUZZLES.length;
 
           break;
       }
       document.getElementById("prev").innerText =
-        AVAILABLE_GAMES.at(prevGameIndex);
+        AVAILABLE_PUZZLES.at(prevPuzzleIndex);
       document.getElementById("active").innerText =
-        AVAILABLE_GAMES.at(activeGameIndex);
+        AVAILABLE_PUZZLES.at(activePuzzleIndex);
       document.getElementById("next").innerText =
-        AVAILABLE_GAMES.at(nextGameIndex);
+        AVAILABLE_PUZZLES.at(nextPuzzleIndex);
     }
   }
-  GAMES[game].active = true;
-  document.getElementById("active").innerText = game.toUpperCase();
-  generateNewGame();
+  PUZZLES[puzzle].active = true;
+  document.getElementById("active").innerText = puzzle.toUpperCase();
+  generateNewPuzzle();
 };
 
 const setActiveDiff = (prevOrNext) => {
@@ -67,11 +69,11 @@ const setActiveDiff = (prevOrNext) => {
       document.getElementById("nextdiff").innerText = temp_diff;
       break;
   }
-  generateNewGame();
+  generateNewPuzzle();
 };
 
-const showGame = () => {
-  document.getElementById("game").style.setProperty("opacity", 1);
+const showPuzzle = () => {
+  document.getElementById("puzzle").style.setProperty("opacity", 1);
 };
 
 document
@@ -80,47 +82,25 @@ document
     event.preventDefault();
   });
 
-const generateNewGame = async () => {
+const generateNewPuzzle = async (puzzle = "", board = "", difficulty = "") => {
   paused && pause();
   resetTime();
-  activeGame = CreateGame();
-  activeGame.draw();
+  activePuzzle = CreatePuzzle(puzzle, board, difficulty);
+  activePuzzle.draw();
 };
 
-const printGame = () => {
+const printPuzzle = () => {
   !paused && pause();
   window.print();
 };
 
-//eventually this will allow users to specify game in url
+//eventually this will allow users to specify puzzle in url
 //also allow for passing in seed?
 //allow for passing in a board?
 //maybe allow user to obtain a hash of current board
 //which they can later pass in through url param
 //to retrieve prior board
-const queryString = window.location.search.replace("?", "");
-const queryStringArray = queryString.split("&");
-queryStringArray.forEach((i) => {
-  const key_val_pair = i.split("=");
-  console.log("Param: " + key_val_pair[0] + " = " + key_val_pair[1]);
-  if (key_val_pair[0]?.toUpperCase() == "GAME") {
-    switch (key_val_pair[1]?.toUpperCase()) {
-      case "HEXOKU":
-        console.log("User selected Hexoku");
-        break;
-      case "SUDOKU":
-        console.log("User selected Sudoku");
-        break;
-      case "TENTS":
-        console.log("User selected Tents");
-        break;
-    }
-  }
-});
-
-console.log(queryStringArray);
-
-generateNewGame();
+generateNewPuzzle();
 
 function TENTSClickHandler(e) {
   if (paused) {
@@ -131,27 +111,27 @@ function TENTSClickHandler(e) {
   switch (this.innerHTML) {
     case GRASS:
       this.innerHTML = TENT;
-      activeGame.attempt_final_column[i]++;
-      activeGame.attempt_final_row[j]++;
+      activePuzzle.attempt_final_column[i]++;
+      activePuzzle.attempt_final_row[j]++;
       break;
     case TENT:
       this.innerHTML = "";
-      activeGame.remaining_blanks++;
-      activeGame.attempt_final_column[i]--;
-      activeGame.attempt_final_row[j]--;
+      activePuzzle.remaining_blanks++;
+      activePuzzle.attempt_final_column[i]--;
+      activePuzzle.attempt_final_row[j]--;
       break;
     case "":
       this.innerHTML = GRASS;
-      activeGame.remaining_blanks--;
+      activePuzzle.remaining_blanks--;
       break;
     default:
       return;
       break;
   }
-  activeGame.board[i][j] = this.innerHTML;
-  activeGame.remaining_blanks === 0 &&
-    activeGame.checkCorrect() &&
-    setGameSolved();
+  activePuzzle.board[i][j] = this.innerHTML;
+  activePuzzle.remaining_blanks === 0 &&
+    activePuzzle.checkCorrect() &&
+    setPuzzleSolved();
 }
 function MINESClickHandler(e) {
   if (paused) {
@@ -166,12 +146,12 @@ function MINESClickHandler(e) {
       break;
     case PERSON_MINE:
       this.innerHTML = "";
-      activeGame.remaining_blanks++;
+      activePuzzle.remaining_blanks++;
       cellHasMine = 3;
       break;
     case "":
       this.innerHTML = PERSON_SAFE;
-      activeGame.remaining_blanks--;
+      activePuzzle.remaining_blanks--;
       cellHasMine = false;
       break;
     default:
@@ -179,10 +159,10 @@ function MINESClickHandler(e) {
   }
   const i = this.closest("tr").rowIndex;
   const j = this.cellIndex;
-  activeGame.board[i][j].hasMine = cellHasMine;
-  activeGame.remaining_blanks === 0 &&
-    activeGame.checkCorrect() &&
-    setGameSolved();
+  activePuzzle.board[i][j].hasMine = cellHasMine;
+  activePuzzle.remaining_blanks === 0 &&
+    activePuzzle.checkCorrect() &&
+    setPuzzleSolved();
 }
 function BINARYClickHandler(e) {
   if (paused) {
@@ -196,19 +176,19 @@ function BINARYClickHandler(e) {
       break;
     case "1":
       this.innerHTML = "";
-      activeGame.remaining_blanks++;
+      activePuzzle.remaining_blanks++;
       break;
     case "":
       this.innerHTML = "0";
-      activeGame.remaining_blanks--;
+      activePuzzle.remaining_blanks--;
       break;
     default:
       break;
   }
-  activeGame.board[i][j] = this.innerHTML;
-  activeGame.remaining_blanks === 0 &&
-    activeGame.checkCorrect() &&
-    setGameSolved();
+  activePuzzle.board[i][j] = this.innerHTML;
+  activePuzzle.remaining_blanks === 0 &&
+    activePuzzle.checkCorrect() &&
+    setPuzzleSolved();
 }
 
 const timer_tick = setInterval(function () {
@@ -274,33 +254,95 @@ const toggle_information = () => {
   window.onbeforeprint = beforePrint;
 })();
 
-const setGameSolved = () => {
+const setPuzzleSolved = () => {
   pause();
   document.getElementById("timer").style.color = SOLVED_COLOR;
   document.getElementById("timer").classList.add("fa-beat-fade");
 };
 
 function handleChangeInput(e) {
+  // sharePuzzle();
   switch (this.value) {
     case "":
-      activeGame.remaining_blanks++;
+      activePuzzle.remaining_blanks++;
       return;
     default:
-      activeGame.remaining_blanks--;
+      activePuzzle.remaining_blanks--;
       break;
   }
   const i = this.closest("tr").rowIndex;
   const j = this.parentElement.cellIndex;
 
-  !Array.isArray(activeGame.board[i]) &&
-    (activeGame.board[i] = activeGame.board[i].split(""));
-  activeGame.board[i][j] = this.value;
+  !Array.isArray(activePuzzle.board[i]) &&
+    (activePuzzle.board[i] = activePuzzle.board[i].split(""));
+  activePuzzle.board[i][j] = this.value;
 
-  activeGame.board[i] = activeGame.board[i]
+  activePuzzle.board[i] = activePuzzle.board[i]
     .join("")
-    .replace(activeGame.board[i].at(j), this.value);
+    .replace(activePuzzle.board[i].at(j), this.value);
 
-  activeGame.remaining_blanks === 0 &&
-    activeGame.checkCorrect(i, j, this.value) &&
-    setGameSolved();
+  activePuzzle.remaining_blanks === 0 &&
+    activePuzzle.checkCorrect(i, j, this.value) &&
+    setPuzzleSolved();
+}
+
+const queryString = window.location.search.replace("?", "");
+const queryStringArray = queryString.split("&");
+let urlPuzzle;
+queryStringArray.forEach((i) => {
+  const key_val_pair = i.split("=");
+  console.log("Param: " + key_val_pair[0] + " = " + key_val_pair[1]);
+  if (key_val_pair[0]?.toUpperCase() == "PUZZLE") {
+    switch (key_val_pair[1]?.toUpperCase()) {
+      case "HEXOKU":
+        urlPuzzle = "HEXOKU";
+        console.log("User selected Hexoku");
+        break;
+      case "SUDOKU":
+        urlPuzzle = "SUDOKU";
+        console.log("User selected Sudoku");
+        break;
+      case "TENTS":
+        urlPuzzle = "TENTS";
+        console.log("User selected Tents");
+        break;
+      case "MINES":
+        urlPuzzle = "MINES";
+        console.log("User selected Tents");
+        break;
+      case "BINARY":
+        urlPuzzle = "BINARY";
+        console.log("User selected Tents");
+        break;
+      case "BOXES":
+        urlPuzzle = "BOXES";
+        console.log("User selected Tents");
+        break;
+      case "BOX16":
+        urlPuzzle = "BOX16";
+        console.log("User selected Tents");
+        break;
+      default:
+        urlPuzzle = "SUDOKU";
+        break;
+    }
+  }
+});
+
+console.log(queryStringArray);
+
+async function sharePuzzle() {
+  const boardString = JSON.stringify(activePuzzle.board);
+  const shareData = {
+    title: activePuzzle.constructor.name,
+    text: "Check out this puzzle I either finished or am working on over at Golden Puzzles!",
+    url: `https:\\golden-puzzles.web.app/?PUZZLE=${activePuzzle.constructor.name}&BOARD=${boardString}&DIFFICULTY=${activePuzzle.difficulty}`,
+  };
+  try {
+    await navigator.share(shareData);
+    console.log("Puzzle shared successfully");
+  } catch (err) {
+    console.log(`Error: ${err}`);
+  }
+  console.log(shareData);
 }

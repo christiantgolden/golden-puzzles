@@ -1,4 +1,4 @@
-class Hexoku extends Game {
+class Hexoku extends Puzzle {
   constructor() {
     super(16);
   }
@@ -63,9 +63,9 @@ class Hexoku extends Game {
   }
   draw() {
     this.randomize();
-    let game_table_html = `<div style='width:${this.table_width}'>`;
+    let puzzle_table_html = `<div style='width:${this.table_width}'>`;
     for (let r = 0; r < this.size; r++) {
-      game_table_html += `<tr>`;
+      puzzle_table_html += `<tr>`;
       let row_string_array = this.unsolveRow(r, this.difficulty).split("");
       for (let i = 0; i < this.size; i++) {
         let bgColor = "";
@@ -85,19 +85,19 @@ class Hexoku extends Game {
         } else {
           bgColor = BLANK_CELL_COLOR;
         }
-        game_table_html += `<td class='board' style='background:${bgColor};
+        puzzle_table_html += `<td class='board' style='background:${bgColor};
                             width:${this.cell_width};
                             height:${this.cell_height};
                             font-size:${this.font_size}'>`;
         row_string_array[i] == " "
-          ? (game_table_html += `<input class='cell' style='font-size:${this.font_size}' maxlength=1'></input>`) &&
+          ? (puzzle_table_html += `<input class='cell' style='font-size:${this.font_size}' maxlength=1'></input>`) &&
             this.remaining_blanks++
-          : (game_table_html += row_string_array[i]);
-        game_table_html += `</td>`;
+          : (puzzle_table_html += row_string_array[i]);
+        puzzle_table_html += `</td>`;
       }
-      game_table_html += `</tr></div>`;
+      puzzle_table_html += `</tr></div>`;
     }
-    document.getElementById("game_table").innerHTML = game_table_html;
+    document.getElementById("puzzle_table").innerHTML = puzzle_table_html;
     this.displayInstructions();
     document
       .querySelectorAll("input")

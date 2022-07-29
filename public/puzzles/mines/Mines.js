@@ -1,4 +1,4 @@
-class Mines extends Game {
+class Mines extends Puzzle {
   constructor() {
     super(9);
   }
@@ -85,18 +85,18 @@ class Mines extends Game {
       this.board[i][j].incrementMinesNearby();
   }
   draw() {
-    let game_table_html = `<div style='width:${this.table_width}'>`;
+    let puzzle_table_html = `<div style='width:${this.table_width}'>`;
     for (let r = 0; r < this.size; r++) {
-      game_table_html += `<tr>`;
+      puzzle_table_html += `<tr>`;
       for (let c = 0; c < this.size; c++) {
         if (this.board[r][c].hasMine || this.board[r][c].minesNearby == 0) {
           this.remaining_blanks++;
-          game_table_html += `<td class='board' style='background-color:${BLANK_CELL_COLOR};width:${this.cell_width};
+          puzzle_table_html += `<td class='board' style='background-color:${BLANK_CELL_COLOR};width:${this.cell_width};
                                               height:${this.cell_height};
                                               font-size:${this.font_size}'></td>`;
           this.board[r][c].hasMine = 3;
         } else {
-          game_table_html +=
+          puzzle_table_html +=
             `<td class='board' style='background-color:${FILLED_CELL_COLOR};
                                               width:${this.cell_width};
                                               height:${this.cell_height};
@@ -105,13 +105,13 @@ class Mines extends Game {
             "</td>";
         }
       }
-      game_table_html += "</tr>";
+      puzzle_table_html += "</tr>";
     }
-    game_table_html += "</div>";
-    document.getElementById("game_table").innerHTML = game_table_html;
+    puzzle_table_html += "</div>";
+    document.getElementById("puzzle_table").innerHTML = puzzle_table_html;
     this.displayInstructions();
     document
-      .querySelectorAll("#game_table td")
+      .querySelectorAll("#puzzle_table td")
       .forEach((e) => e.addEventListener("click", MINESClickHandler));
   }
   checkCorrect() {

@@ -16,27 +16,27 @@
     <noscript><link rel="stylesheet" href="css.css" /></noscript>
     <script defer src="./assets/icons/all.js"></script>
     <script defer src="constants.js"></script>
-    <script defer src="./games/Game.js"></script>
-    <script defer src="./games/box16/Box16.js"></script>
-    <script defer src="./games/boxes/Boxes.js"></script>
-    <script defer src="./games/sudoku/Sudoku.js"></script>
-    <script defer src="./games/hexoku/Hexoku.js"></script>
-    <script defer src="./games/binary/Binary.js"></script>
-    <script defer src="./games/mines/Mines.js"></script>
-    <script defer src="./games/tents/Tents.js"></script>
+    <script defer src="./puzzles/Puzzle.js"></script>
+    <script defer src="./puzzles/box16/Box16.js"></script>
+    <script defer src="./puzzles/boxes/Boxes.js"></script>
+    <script defer src="./puzzles/sudoku/Sudoku.js"></script>
+    <script defer src="./puzzles/hexoku/Hexoku.js"></script>
+    <script defer src="./puzzles/binary/Binary.js"></script>
+    <script defer src="./puzzles/mines/Mines.js"></script>
+    <script defer src="./puzzles/tents/Tents.js"></script>
     <script defer src="main.js"></script>
   </head>
-  <body id="game" style="opacity: 0" onload="showGame()">
+  <body id="puzzle" style="opacity: 0" onload="showPuzzle()">
     <table class="navbar">
       <tr>
-        <td id="prev" onclick="setActiveGame('prev')">MINES</td>
+        <td id="prev" onclick="setActivePuzzle('prev')">MINES</td>
         <td id="active">HEXOKU</td>
-        <td id="next" onclick="setActiveGame('next')">BOXES</td>
+        <td id="next" onclick="setActivePuzzle('next')">BOXES</td>
       </tr>
     </table>
     <hr />
     <label id="timer" onclick="javascript:pause()">00:00:00</label>
-    <table id="game_table"></table>
+    <table id="puzzle_table"></table>
       <table class="diffbar">
       <tr>
         <td id="prevdiff" onclick="setActiveDiff('prevdiff')">EASY</td>
@@ -50,7 +50,7 @@
         ><i
           class="fa-solid fa-repeat"
           id="gen_button"
-          onclick="generateNewGame()"
+          onclick="generateNewPuzzle()"
         ></i
       ></a>
         <a
@@ -61,11 +61,12 @@
           ></i
         ></a>
         <a
-          ><i class="fa-solid fa-print" id="print" onclick="printGame()"></i
+          ><i class="fa-solid fa-print" id="print" onclick="printPuzzle()"></i
         ></a>
         <a href="https://www.buymeacoffee.com/christiangolden" target="_blank"
           ><i class="fa-solid fa-mug-saucer fa-beat-fade" id="donate" style="--fa-animation-duration: 3s; --fa-beat-fade-opacity: 0.8; --fa-beat-fade-scale: 1.025;"></i
         ></a>
+        <a href="#"><i class="fa-solid fa-share" onclick="sharePuzzle()"></i></a>
         <div></div>
       </form>
     </div>

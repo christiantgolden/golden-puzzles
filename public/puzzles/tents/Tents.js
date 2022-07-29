@@ -1,4 +1,4 @@
-class Tents extends Game {
+class Tents extends Puzzle {
   final_row;
   final_column;
   constructor() {
@@ -63,17 +63,17 @@ class Tents extends Game {
     return true;
   }
   draw() {
-    let game_table_html = `<div style='width:${this.table_width}'>`;
+    let puzzle_table_html = `<div style='width:${this.table_width}'>`;
     this.final_row = new Array(this.size - 1).fill(0);
     this.attempt_final_row = new Array(this.size - 1).fill(0);
     this.attempt_final_column = new Array(this.size - 1).fill(0);
     for (let r = 0; r < this.size - 1; r++) {
-      game_table_html += "<tr>";
+      puzzle_table_html += "<tr>";
       this.final_column[r] = 0;
       for (let c = 0; c < this.size - 1; c++) {
         this.board[r][c] == TENT && this.final_row[c]++;
         this.board[r][c] == TENT && this.final_column[r]++;
-        game_table_html +=
+        puzzle_table_html +=
           `<td class='board' style='background-color:${BLANK_CELL_COLOR};width:${this.cell_width};
                             height:${this.cell_height};
                             font-size:${this.font_size}'>` +
@@ -81,7 +81,7 @@ class Tents extends Game {
             this.board[r][c]) +
           "</td>";
       }
-      game_table_html +=
+      puzzle_table_html +=
         `<td class='board' style='background-color:${FILLED_CELL_COLOR};width:${this.cell_width};
                             height:${this.cell_height};
                             font-size:${this.font_size}'>` +
@@ -99,12 +99,12 @@ class Tents extends Game {
         "</td>";
     }
     final_row_html += "</tr>";
-    game_table_html += final_row_html;
-    game_table_html += "</div>";
-    document.getElementById("game_table").innerHTML = game_table_html;
+    puzzle_table_html += final_row_html;
+    puzzle_table_html += "</div>";
+    document.getElementById("puzzle_table").innerHTML = puzzle_table_html;
     this.displayInstructions();
     document
-      .querySelectorAll("#game_table td")
+      .querySelectorAll("#puzzle_table td")
       .forEach((e) => e.addEventListener("click", TENTSClickHandler));
   }
 }

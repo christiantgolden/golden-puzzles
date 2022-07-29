@@ -1,33 +1,33 @@
 /**
- * @description Game factory method
- * @returns new Game of specified type
+ * @description Puzzle factory method
+ * @returns new Puzzle of specified type
  */
-const CreateGame = () => {
-  for (const g in GAMES) {
-    if (GAMES[g].active) {
+const CreatePuzzle = (puzzle = "", board = "", difficulty = "") => {
+  for (const g in PUZZLES) {
+    if (PUZZLES[g].active) {
       switch (g) {
         case "SUDOKU":
-          return new Sudoku();
+          return new Sudoku(puzzle, board, difficulty);
         case "MINES":
-          return new Mines();
+          return new Mines(puzzle, board, difficulty);
         case "BINARY":
-          return new Binary();
+          return new Binary(puzzle, board, difficulty);
         case "TENTS":
-          return new Tents();
+          return new Tents(puzzle, board, difficulty);
         case "BOXES":
-          return new Boxes();
+          return new Boxes(puzzle, board, difficulty);
         case "BOX16":
-          return new Box16();
+          return new Box16(puzzle, board, difficulty);
         case "HEXOKU":
-          return new Hexoku();
+          return new Hexoku(puzzle, board, difficulty);
         default:
-          return new Tents();
+          return new Tents(puzzle, board, difficulty);
       }
     }
   }
 };
 
-class Game {
+class Puzzle {
   size;
   board;
   difficulty;
@@ -39,7 +39,7 @@ class Game {
   solved_board;
   remaining_blanks;
   flagged_cells;
-  constructor(size) {
+  constructor(size, puzzle = "HEXOKU", board = "", difficulty = "NORMAL") {
     this.flagged_cells = [];
     this.remaining_blanks = 0;
     this.difficulty =
@@ -47,23 +47,23 @@ class Game {
     this.board = [""];
     this.solved_board = [];
     this.size = size;
-    this.game_table = document.getElementById("game_table");
+    this.puzzle_table = document.getElementById("puzzle_table");
     this.table_width = Math.min(
       window.innerWidth,
       window.innerHeight * 0.6,
       500
     );
-    this.game_table.style.width = this.table_width * 0.95;
+    this.puzzle_table.style.width = this.table_width * 0.95;
     this.cell_width = this.table_width / this.size;
     this.cell_height = this.cell_width;
     this.font_size = this.cell_height / 2;
     this.generateBoard();
   }
   displayInstructions() {
-    const current_game = document.getElementById("active").innerText;
+    const current_puzzle = document.getElementById("active").innerText;
     let instructions_html = "";
-    for (let i = 0; i < GAME_INSTRUCTIONS[current_game].length; i++) {
-      instructions_html += GAME_INSTRUCTIONS[current_game][i] + "<br/>";
+    for (let i = 0; i < PUZZLE_INSTRUCTIONS[current_puzzle].length; i++) {
+      instructions_html += PUZZLE_INSTRUCTIONS[current_puzzle][i] + "<br/>";
     }
     document.getElementById("instructions").innerHTML = instructions_html;
   }

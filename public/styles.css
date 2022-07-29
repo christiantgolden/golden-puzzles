@@ -92,7 +92,7 @@ body {
   );
   height: 100%;
 }
-#game_table td:hover {
+#puzzle_table td:hover {
   outline: 1px solid white;
 }
 i:hover,
@@ -103,7 +103,7 @@ a:hover {
   opacity: 1;
   color: white;
 }
-#game_table {
+#puzzle_table {
   padding-bottom: 0rem;
   padding-top: 0.25rem;
 }

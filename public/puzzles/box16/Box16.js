@@ -1,6 +1,6 @@
-class Box16 extends Game {
-  constructor() {
-    super(9);
+class Box16 extends Puzzle {
+  constructor(board = "", difficulty = "", solved_board = []) {
+    super(9, board, difficulty, solved_board);
   }
   generateBoard() {
     this.generateRandomStart();
@@ -41,9 +41,9 @@ class Box16 extends Game {
   }
   draw() {
     this.randomize();
-    let game_table_html = `<div style='width:${this.table_width}'>`;
+    let puzzle_table_html = `<div style='width:${this.table_width}'>`;
     for (let r = 0; r < 9; r++) {
-      game_table_html += `<tr>`;
+      puzzle_table_html += `<tr>`;
       let row_string_array = !Array.isArray(this.board[r])
         ? this.board[r].split("")
         : this.board[r];
@@ -68,16 +68,16 @@ class Box16 extends Game {
         } else {
           cell_background = is_center ? "white" : BLANK_CELL_COLOR;
         }
-        game_table_html += `<td class='board' 
+        puzzle_table_html += `<td class='board' 
                             style='background:${cell_background};
                             width:${this.cell_width};
                             height:${this.cell_height};
                             font-size:${this.font_size}'>${temp_num}</td>`;
       }
-      game_table_html += "</tr>";
+      puzzle_table_html += "</tr>";
     }
-    game_table_html += "</div>";
-    document.getElementById("game_table").innerHTML = game_table_html;
+    puzzle_table_html += "</div>";
+    document.getElementById("puzzle_table").innerHTML = puzzle_table_html;
     this.displayInstructions();
     document
       .querySelectorAll("input")
