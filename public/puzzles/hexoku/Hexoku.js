@@ -43,10 +43,7 @@ class Hexoku extends Puzzle {
       "F",
     ];
     for (let n = 0; n < this.size; n++) {
-      this.board[0] += temp_num_array.splice(
-        Math.floor(Math.random() * (this.size - n)),
-        1
-      );
+      this.board[0] += temp_num_array.splice(randInRange(0, this.size - n), 1);
     }
   }
   unsolveRow(index, difficulty) {
@@ -55,7 +52,7 @@ class Hexoku extends Puzzle {
       : this.board[index];
     for (let d = 0; d < difficulty * 2; d++) {
       temp_board_row = temp_board_row.replace(
-        HEXOKU_NUMBERS[Math.floor(Math.random() * this.size)],
+        HEXOKU_NUMBERS[randInRange(0, this.size - 1)],
         " "
       );
     }

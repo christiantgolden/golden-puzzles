@@ -2,26 +2,26 @@
  * @description Puzzle factory method
  * @returns new Puzzle of specified type
  */
-const CreatePuzzle = (puzzle = "", board = "", difficulty = "") => {
+const CreatePuzzle = () => {
   for (const g in PUZZLES) {
     if (PUZZLES[g].active) {
       switch (g) {
         case "SUDOKU":
-          return new Sudoku(puzzle, board, difficulty);
+          return new Sudoku();
         case "MINES":
-          return new Mines(puzzle, board, difficulty);
+          return new Mines();
         case "BINARY":
-          return new Binary(puzzle, board, difficulty);
+          return new Binary();
         case "TENTS":
-          return new Tents(puzzle, board, difficulty);
+          return new Tents();
         case "BOXES":
-          return new Boxes(puzzle, board, difficulty);
+          return new Boxes();
         case "BOX16":
-          return new Box16(puzzle, board, difficulty);
+          return new Box16();
         case "HEXOKU":
-          return new Hexoku(puzzle, board, difficulty);
+          return new Hexoku();
         default:
-          return new Tents(puzzle, board, difficulty);
+          return new Tents();
       }
     }
   }
@@ -39,7 +39,7 @@ class Puzzle {
   solved_board;
   remaining_blanks;
   flagged_cells;
-  constructor(size, puzzle = "HEXOKU", board = "", difficulty = "NORMAL") {
+  constructor(size) {
     this.flagged_cells = [];
     this.remaining_blanks = 0;
     this.difficulty =
@@ -100,7 +100,7 @@ class Puzzle {
   }
   randomize() {
     let random_operation =
-      BOARD_OPERATIONS[Math.floor(Math.random() * BOARD_OPERATIONS.length)];
+      BOARD_OPERATIONS[randInRange(0, BOARD_OPERATIONS.length - 1)];
     switch (random_operation) {
       case "transpose":
         this.transpose();

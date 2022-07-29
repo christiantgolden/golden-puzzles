@@ -1,3 +1,4 @@
+const INITIAL_SEED = Math.floor(Math.random() * 11235813 + 1);
 const PUZZLES = {
   BINARY: { active: false, visible: false },
   MINES: { active: false, visible: false },

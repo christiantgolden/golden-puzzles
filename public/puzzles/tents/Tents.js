@@ -13,7 +13,7 @@ class Tents extends Puzzle {
       this.board[i] = [];
       this.solved_board[i] = [];
       for (let j = 0; j < this.size - 1; j++) {
-        let random_obj = Math.random();
+        let random_obj = mulberry32(seed++)();
         if (this.itemAdjacent(i, j, TENT)) {
           this.board[i][j] = TREE;
           this.solved_board[i][j] = TREE;

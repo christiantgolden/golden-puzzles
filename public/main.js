@@ -6,12 +6,92 @@ let nextPuzzleIndex = 4;
 let now = new Date().getTime();
 let elapsed = now;
 let paused = false;
+let seed = INITIAL_SEED;
+let sharing_seed = seed;
+
 const resetTime = () => {
   now = new Date().getTime();
   elapsed = now;
   document.getElementById("timer").innerText = "00:00:00";
   paused && pause();
 };
+
+// const queryString = window.location.search.replace("?", "");
+// const queryStringArray = queryString.split("&");
+
+// if (queryStringArray.length === 3) {
+//   setInitialPuzzle(queryStringArray[0]);
+//   setInitialSeed(queryStringArray[1]);
+//   setInitialDifficulty(queryStringArray[2]);
+// }
+// generateNewPuzzle();
+
+const setInitialSeed = (initial_seed) => {
+  seed = initial_seed;
+};
+
+const setInitialPuzzle = (puzzle) => {
+  console.log(puzzle);
+  for (const g in PUZZLES) {
+    if (PUZZLES[g].active) {
+      PUZZLES[g].active = false;
+      switch (puzzle) {
+        case "BINARY":
+          activePuzzleIndex = 0;
+          prevPuzzleIndex = 6;
+          nextPuzzleIndex = 1;
+          break;
+        case "TENTS":
+          activePuzzleIndex = 1;
+          prevPuzzleIndex = 0;
+          nextPuzzleIndex = 2;
+          break;
+
+        case "MINES":
+          activePuzzleIndex = 2;
+          prevPuzzleIndex = 1;
+          nextPuzzleIndex = 3;
+          break;
+
+        case "HEXOKU":
+          activePuzzleIndex = 3;
+          prevPuzzleIndex = 2;
+          nextPuzzleIndex = 4;
+          break;
+
+        case "BOXES":
+          activePuzzleIndex = 4;
+          prevPuzzleIndex = 3;
+          nextPuzzleIndex = 5;
+          break;
+
+        case "BOX16":
+          activePuzzleIndex = 5;
+          prevPuzzleIndex = 4;
+          nextPuzzleIndex = 6;
+          break;
+
+        case "SUDOKU":
+          activePuzzleIndex = 6;
+          prevPuzzleIndex = 5;
+          nextPuzzleIndex = 0;
+          break;
+
+        default:
+          break;
+      }
+      document.getElementById("prev").innerText =
+        AVAILABLE_PUZZLES.at(prevPuzzleIndex);
+      document.getElementById("active").innerText =
+        AVAILABLE_PUZZLES.at(activePuzzleIndex);
+      document.getElementById("next").innerText =
+        AVAILABLE_PUZZLES.at(nextPuzzleIndex);
+    }
+  }
+  PUZZLES[puzzle].active = true;
+  document.getElementById("active").innerText = puzzle.toUpperCase();
+};
+
 const setActivePuzzle = (prevOrNext) => {
   paused && pause();
   resetTime();
@@ -45,6 +125,28 @@ const setActivePuzzle = (prevOrNext) => {
   PUZZLES[puzzle].active = true;
   document.getElementById("active").innerText = puzzle.toUpperCase();
   generateNewPuzzle();
+};
+
+const setInitialDifficulty = (initial_diff) => {
+  switch (initial_diff) {
+    case 3: //easy
+      document.getElementById("prevdiff").innerText = "HARD";
+      document.getElementById("activediff").innerText = "EASY";
+      document.getElementById("nextdiff").innerText = "NORMAL";
+      break;
+    case 5:
+      document.getElementById("prevdiff").innerText = "EASY";
+      document.getElementById("activediff").innerText = "NORMAL";
+      document.getElementById("nextdiff").innerText = "HARD";
+      break;
+    case 8:
+      document.getElementById("prevdiff").innerText = "NORMAL";
+      document.getElementById("activediff").innerText = "HARD";
+      document.getElementById("nextdiff").innerText = "EASY";
+      break;
+    default:
+      break;
+  }
 };
 
 const setActiveDiff = (prevOrNext) => {
@@ -82,10 +184,11 @@ document
     event.preventDefault();
   });
 
-const generateNewPuzzle = async (puzzle = "", board = "", difficulty = "") => {
+const generateNewPuzzle = async () => {
+  sharing_seed = seed;
   paused && pause();
   resetTime();
-  activePuzzle = CreatePuzzle(puzzle, board, difficulty);
+  activePuzzle = CreatePuzzle();
   activePuzzle.draw();
 };
 
@@ -93,14 +196,6 @@ const printPuzzle = () => {
   !paused && pause();
   window.print();
 };
-
-//eventually this will allow users to specify puzzle in url
-//also allow for passing in seed?
-//allow for passing in a board?
-//maybe allow user to obtain a hash of current board
-//which they can later pass in through url param
-//to retrieve prior board
-generateNewPuzzle();
 
 function TENTSClickHandler(e) {
   if (paused) {
@@ -259,8 +354,22 @@ const setPuzzleSolved = () => {
   document.getElementById("timer").style.color = SOLVED_COLOR;
   document.getElementById("timer").classList.add("fa-beat-fade");
 };
+function mulberry32(a) {
+  return function () {
+    var t = (a += 0x6d2b79f5);
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function randInRange(a, b) {
+  return Math.floor(mulberry32(seed++)() * b + a);
+}
 
 function handleChangeInput(e) {
+  const randNum = randInRange(1, 9);
+  console.log("Random number: " + randNum);
   // sharePuzzle();
   switch (this.value) {
     case "":
@@ -285,58 +394,12 @@ function handleChangeInput(e) {
     activePuzzle.checkCorrect(i, j, this.value) &&
     setPuzzleSolved();
 }
-
-const queryString = window.location.search.replace("?", "");
-const queryStringArray = queryString.split("&");
-let urlPuzzle;
-queryStringArray.forEach((i) => {
-  const key_val_pair = i.split("=");
-  console.log("Param: " + key_val_pair[0] + " = " + key_val_pair[1]);
-  if (key_val_pair[0]?.toUpperCase() == "PUZZLE") {
-    switch (key_val_pair[1]?.toUpperCase()) {
-      case "HEXOKU":
-        urlPuzzle = "HEXOKU";
-        console.log("User selected Hexoku");
-        break;
-      case "SUDOKU":
-        urlPuzzle = "SUDOKU";
-        console.log("User selected Sudoku");
-        break;
-      case "TENTS":
-        urlPuzzle = "TENTS";
-        console.log("User selected Tents");
-        break;
-      case "MINES":
-        urlPuzzle = "MINES";
-        console.log("User selected Tents");
-        break;
-      case "BINARY":
-        urlPuzzle = "BINARY";
-        console.log("User selected Tents");
-        break;
-      case "BOXES":
-        urlPuzzle = "BOXES";
-        console.log("User selected Tents");
-        break;
-      case "BOX16":
-        urlPuzzle = "BOX16";
-        console.log("User selected Tents");
-        break;
-      default:
-        urlPuzzle = "SUDOKU";
-        break;
-    }
-  }
-});
-
-console.log(queryStringArray);
-
 async function sharePuzzle() {
   const boardString = JSON.stringify(activePuzzle.board);
   const shareData = {
     title: activePuzzle.constructor.name,
     text: "Check out this puzzle I either finished or am working on over at Golden Puzzles!",
-    url: `https:\\golden-puzzles.web.app/?PUZZLE=${activePuzzle.constructor.name}&BOARD=${boardString}&DIFFICULTY=${activePuzzle.difficulty}`,
+    url: `https:\\golden-puzzles.web.app/?${activePuzzle.constructor.name}&${sharing_seed}&${activePuzzle.difficulty}`,
   };
   try {
     await navigator.share(shareData);
@@ -346,3 +409,12 @@ async function sharePuzzle() {
   }
   console.log(shareData);
 }
+const queryString = window.location.search.replace("?", "");
+const queryStringArray = queryString.split("&");
+
+if (queryStringArray.length === 3) {
+  setInitialPuzzle(queryStringArray[0].toUpperCase());
+  setInitialSeed(queryStringArray[1]);
+  setInitialDifficulty(queryStringArray[2]);
+}
+generateNewPuzzle();

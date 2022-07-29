@@ -20,10 +20,7 @@ class Sudoku extends Puzzle {
   generateRandomStart() {
     let temp_num_array = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
     for (let n = 0; n < this.size; n++) {
-      this.board[0] += temp_num_array.splice(
-        Math.floor(Math.random() * (this.size - n)),
-        1
-      );
+      this.board[0] += temp_num_array.splice(randInRange(0, this.size - n), 1);
     }
   }
   unsolveRow(index, difficulty) {
@@ -32,7 +29,7 @@ class Sudoku extends Puzzle {
       : this.board[index];
     for (let d = 0; d < difficulty; d++) {
       temp_board_row = temp_board_row.replace(
-        SUDOKU_NUMBERS[Math.floor(Math.random() * this.size)],
+        SUDOKU_NUMBERS[randInRange(0, this.size)],
         " "
       );
     }

@@ -7,7 +7,7 @@ class Mines extends Puzzle {
       let tempRow = "";
       let randNums = [];
       for (let d = 0; d < this.difficulty; d++) {
-        randNums.push(Math.floor(Math.random() * 10));
+        randNums.push(randInRange(0, 9));
       }
       for (let c = 0; c < this.size; c++) {
         randNums.includes(c) ? (tempRow += " ") : (tempRow += this.board[i][c]);
@@ -22,7 +22,7 @@ class Mines extends Puzzle {
       this.board[i] = [];
       this.solved_board[i] = [];
       for (let j = 0; j < this.size; j++) {
-        const isMine = Math.random() > 0.8;
+        const isMine = mulberry32(seed++)() > 0.8;
         this.board[i][j] = {
           hasMine: isMine,
           hasZero: !isMine,

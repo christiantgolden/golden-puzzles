@@ -21,7 +21,7 @@ class Boxes extends Puzzle {
     let temp_num_array = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
     for (let n = 0; n < this.size; n++) {
       this.board[0] += temp_num_array.splice(
-        Math.floor(Math.random() * (this.size - n)),
+        randInRange(0, this.size - (n + 1)),
         1
       );
     }

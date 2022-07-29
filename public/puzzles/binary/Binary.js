@@ -9,7 +9,8 @@ class Binary extends Puzzle {
     let repeatingPattern = true;
     let previousRandBin;
     for (let c = 0; c < this.size / 2; c++) {
-      let randBin = Math.floor(Math.random() * 2);
+      let randBin = mulberry32(seed++)() > 0.5 ? 1 : 0;
+      console.log(mulberry32(seed++)() > 0.5 ? 1 : 0);
       c > 0 && previousRandBin != randBin && (repeatingPattern = false);
       previousRandBin = randBin;
       this.board[0] += randBin.toString();
@@ -40,7 +41,7 @@ class Binary extends Puzzle {
       let tempRow = "";
       let randNums = [];
       for (let d = 0; d < this.difficulty; d++) {
-        randNums.push(Math.floor(Math.random() * 10));
+        randNums.push(randInRange(0, 9));
       }
       for (let c = 0; c < this.size; c++) {
         randNums.includes(c) ? (tempRow += " ") : (tempRow += this.board[i][c]);

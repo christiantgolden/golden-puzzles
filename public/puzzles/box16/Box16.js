@@ -1,6 +1,6 @@
 class Box16 extends Puzzle {
-  constructor(board = "", difficulty = "", solved_board = []) {
-    super(9, board, difficulty, solved_board);
+  constructor() {
+    super(9);
   }
   generateBoard() {
     this.generateRandomStart();
@@ -20,10 +20,7 @@ class Box16 extends Puzzle {
   generateRandomStart() {
     let temp_num_array = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
     for (let n = 0; n < 9; n++) {
-      this.board[0] += temp_num_array.splice(
-        Math.floor(Math.random() * (9 - n)),
-        1
-      );
+      this.board[0] += temp_num_array.splice(randInRange(0, 8 - (n + 1)), 1);
     }
   }
   sumOfSurrounding(r, c) {
@@ -55,7 +52,7 @@ class Box16 extends Puzzle {
           temp_num = this.sumOfSurrounding(r, i);
           is_center = true;
         } else {
-          Math.random() > 2 / this.difficulty
+          mulberry32(seed++)() > 2 / this.difficulty
             ? (temp_num = `<input class='cell' maxlength=1 type='tel' style='font-size:${this.font_size}'></input>`) &&
               this.remaining_blanks++
             : (temp_num = row_string_array[i]);
