@@ -104,8 +104,8 @@ class Sudoku extends Game {
   }
   numAlreadyInBox(i, j, num) {
     let box = [];
-    this.isUpperLeftBox(i, j) &&
-      (box = [
+    if (this.isUpperLeftBox(i, j)) {
+      box = [
         this.board[0][0],
         this.board[0][1],
         this.board[0][2],
@@ -115,9 +115,9 @@ class Sudoku extends Game {
         this.board[2][0],
         this.board[2][1],
         this.board[2][2],
-      ]);
-    this.isUpperMiddleBox(i, j) &&
-      (box = [
+      ];
+    } else if (this.isUpperMiddleBox(i, j)) {
+      box = [
         this.board[0][3],
         this.board[0][4],
         this.board[0][5],
@@ -127,9 +127,9 @@ class Sudoku extends Game {
         this.board[2][3],
         this.board[2][4],
         this.board[2][5],
-      ]);
-    this.isUpperRightBox(i, j) &&
-      (box = [
+      ];
+    } else if (this.isUpperRightBox(i, j)) {
+      box = [
         this.board[0][6],
         this.board[0][7],
         this.board[0][8],
@@ -139,9 +139,9 @@ class Sudoku extends Game {
         this.board[2][6],
         this.board[2][7],
         this.board[2][8],
-      ]);
-    this.isMiddleLeftBox(i, j) &&
-      (box = [
+      ];
+    } else if (this.isMiddleLeftBox(i, j)) {
+      box = [
         this.board[3][0],
         this.board[3][1],
         this.board[3][2],
@@ -151,9 +151,9 @@ class Sudoku extends Game {
         this.board[5][0],
         this.board[5][1],
         this.board[5][2],
-      ]);
-    this.isMiddleMiddleBox(i, j) &&
-      (box = [
+      ];
+    } else if (this.isMiddleMiddleBox(i, j)) {
+      box = [
         this.board[3][3],
         this.board[3][4],
         this.board[3][5],
@@ -163,9 +163,9 @@ class Sudoku extends Game {
         this.board[5][3],
         this.board[5][4],
         this.board[5][5],
-      ]);
-    this.isMiddleRightBox(i, j) &&
-      (box = [
+      ];
+    } else if (this.isMiddleRightBox(i, j)) {
+      box = [
         this.board[3][6],
         this.board[3][7],
         this.board[3][8],
@@ -175,9 +175,9 @@ class Sudoku extends Game {
         this.board[5][6],
         this.board[5][7],
         this.board[5][8],
-      ]);
-    this.isBottomLeftBox(i, j) &&
-      (box = [
+      ];
+    } else if (this.isBottomLeftBox(i, j)) {
+      box = [
         this.board[6][0],
         this.board[6][1],
         this.board[6][2],
@@ -187,9 +187,9 @@ class Sudoku extends Game {
         this.board[8][0],
         this.board[8][1],
         this.board[8][2],
-      ]);
-    this.isBottomMiddleBox(i, j) &&
-      (box = [
+      ];
+    } else if (this.isBottomMiddleBox(i, j)) {
+      box = [
         this.board[6][3],
         this.board[6][4],
         this.board[6][5],
@@ -199,9 +199,9 @@ class Sudoku extends Game {
         this.board[8][3],
         this.board[8][4],
         this.board[8][5],
-      ]);
-    this.isBottomRightBox(i, j) &&
-      (box = [
+      ];
+    } else if (this.isBottomRightBox(i, j)) {
+      box = [
         this.board[6][6],
         this.board[6][7],
         this.board[6][8],
@@ -211,7 +211,8 @@ class Sudoku extends Game {
         this.board[8][6],
         this.board[8][7],
         this.board[8][8],
-      ]);
+      ];
+    }
     let countNum = 0;
     for (let i = 0; i < box.length; i++) {
       if (box[i] === num) {
