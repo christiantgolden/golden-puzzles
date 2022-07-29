@@ -289,7 +289,6 @@ function handleChangeInput(e) {
       activeGame.remaining_blanks--;
       break;
   }
-  console.log(activeGame.remaining_blanks);
   const i = this.closest("tr").rowIndex;
   const j = this.parentElement.cellIndex;
 
@@ -304,6 +303,4 @@ function handleChangeInput(e) {
   activeGame.remaining_blanks === 0 &&
     activeGame.checkCorrect(i, j, this.value) &&
     setGameSolved();
-
-  console.log(`you entered ${this.value} in cell ${i},${j}`);
 }
