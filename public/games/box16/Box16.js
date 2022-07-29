@@ -55,10 +55,10 @@ class Box16 extends Game {
           temp_num = this.sumOfSurrounding(r, i);
           is_center = true;
         } else {
-          temp_num =
-            Math.random() > 2 / this.difficulty
-              ? `<input class='cell' maxlength=1 type='tel' style='font-size:${this.font_size}'></input>`
-              : row_string_array[i];
+          Math.random() > 2 / this.difficulty
+            ? (temp_num = `<input class='cell' maxlength=1 type='tel' style='font-size:${this.font_size}'></input>`) &&
+              this.remaining_blanks++
+            : (temp_num = row_string_array[i]);
         }
         if (
           ((r < 3 || r > 5) && (i < 3 || i > 5)) ||
@@ -79,5 +79,15 @@ class Box16 extends Game {
     game_table_html += "</div>";
     document.getElementById("game_table").innerHTML = game_table_html;
     this.displayInstructions();
+    document
+      .querySelectorAll("input")
+      .forEach((e) => e.addEventListener("input", handleChangeInput));
+  }
+  checkCorrect(i, j, num) {
+    return !(
+      this.numAlreadyInBox(i, j, num) ||
+      this.numAlreadyInRow(i, j, num) ||
+      this.numAlreadyInColumn(i, j, num)
+    );
   }
 }
