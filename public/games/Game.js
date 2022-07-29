@@ -37,20 +37,15 @@ class Game {
   font_size;
   input_font_size;
   solved_board;
-  unsolved_board;
-  current_board;
-  is_solved;
   remaining_blanks;
-  has_invalid_cell;
+  flagged_cells;
   constructor(size) {
-    this.has_invalid_cell = false;
+    this.flagged_cells = [];
     this.remaining_blanks = 0;
     this.difficulty =
       DIFFICULTY_MAP[document.getElementById("activediff").innerText];
     this.board = [""];
     this.solved_board = [];
-    this.unsolved_board = [];
-    this.current_board = [];
     this.size = size;
     this.game_table = document.getElementById("game_table");
     this.table_width = Math.min(
@@ -62,7 +57,6 @@ class Game {
     this.cell_width = this.table_width / this.size;
     this.cell_height = this.cell_width;
     this.font_size = this.cell_height / 2;
-    this.is_solved = false;
     this.generateBoard();
   }
   /*

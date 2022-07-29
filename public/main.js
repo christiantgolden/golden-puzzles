@@ -1,3 +1,4 @@
+//REFACTOR #29 - move these global variables and most/all of this code into an object of a Session class
 let activeGame = {};
 let prevGameIndex = 2;
 let activeGameIndex = 3;
@@ -127,7 +128,6 @@ function TENTSClickHandler(e) {
   }
   const i = this.closest("tr").rowIndex;
   const j = this.cellIndex;
-  console.log("remaining blanks: " + activeGame.remaining_blanks);
   switch (this.innerHTML) {
     case GRASS:
       this.innerHTML = TENT;
@@ -279,3 +279,31 @@ const setGameSolved = () => {
   document.getElementById("timer").style.color = SOLVED_COLOR;
   document.getElementById("timer").classList.add("fa-beat-fade");
 };
+
+function handleChangeInput(e) {
+  switch (this.value) {
+    case "":
+      activeGame.remaining_blanks++;
+      return;
+    default:
+      activeGame.remaining_blanks--;
+      break;
+  }
+  console.log(activeGame.remaining_blanks);
+  const i = this.closest("tr").rowIndex;
+  const j = this.parentElement.cellIndex;
+
+  !Array.isArray(activeGame.board[i]) &&
+    (activeGame.board[i] = activeGame.board[i].split(""));
+  activeGame.board[i][j] = this.value;
+
+  activeGame.board[i] = activeGame.board[i]
+    .join("")
+    .replace(activeGame.board[i].at(j), this.value);
+
+  activeGame.remaining_blanks === 0 &&
+    activeGame.checkCorrect(i, j, this.value) &&
+    setGameSolved();
+
+  console.log(`you entered ${this.value} in cell ${i},${j}`);
+}
