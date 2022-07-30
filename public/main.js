@@ -416,6 +416,7 @@ window.ATL_JQ_PAGE_PROPS = $.extend(window.ATL_JQ_PAGE_PROPS, {
   },
   // ==== we add the code below to set the field values ====
   fieldValues: {
+    summary: `${activePuzzle.constructor.name}:${sharing_seed}:${activePuzzle.difficulty}`,
     customfield_10038: [
       `https://golden-puzzles.web.app?${activePuzzle.constructor.name}&${sharing_seed}&${activePuzzle.difficulty}`,
     ],
