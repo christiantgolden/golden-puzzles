@@ -36,6 +36,7 @@
     </table>
     <hr />
     <label id="timer" onclick="javascript:pause()">00:00:00</label>
+    <label id='counter-label'>Remaining Blanks: </label><label id="counter"></label>
     <table id="puzzle_table"></table>
       <table class="diffbar">
       <tr>
@@ -67,6 +68,7 @@
           ><i class="fa-solid fa-mug-saucer fa-beat-fade" id="donate" style="--fa-animation-duration: 3s; --fa-beat-fade-opacity: 0.8; --fa-beat-fade-scale: 1.025;"></i
         ></a>
         <a href="#"><i class="fa-solid fa-share" onclick="sharePuzzle()"></i></a>
+        <a><i class="fa-solid fa-exclamation" onclick="sendErrorPrompt()"></i></a>
         <div></div>
       </form>
     </div>

@@ -19,12 +19,12 @@ class Tents extends Puzzle {
           this.solved_board[i][j] = TREE;
         } else if (this.itemDiagonal(i, j, TENT)) {
           this.board[i][j] = "";
-          this.remaining_blanks++;
+          incrementRemainingBlanks();
           this.solved_board[i][j] = GRASS;
         } else {
           this.board[i][j] = random_obj > 0.5 ? TENT : "";
           this.solved_board[i][j] = random_obj > 0.5 ? TENT : GRASS;
-          this.remaining_blanks++;
+          incrementRemainingBlanks();
         }
       }
     }

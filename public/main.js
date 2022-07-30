@@ -164,6 +164,8 @@ const generateNewPuzzle = async () => {
   resetTime();
   activePuzzle = CreatePuzzle();
   activePuzzle.draw();
+  this.document.getElementById("counter").innerText =
+    activePuzzle.remaining_blanks;
 };
 
 const printPuzzle = () => {
@@ -185,13 +187,13 @@ function TENTSClickHandler(e) {
       break;
     case TENT:
       this.innerHTML = "";
-      activePuzzle.remaining_blanks++;
+      incrementRemainingBlanks();
       activePuzzle.attempt_final_column[i]--;
       activePuzzle.attempt_final_row[j]--;
       break;
     case "":
       this.innerHTML = GRASS;
-      activePuzzle.remaining_blanks--;
+      decrementRemainingBlanks();
       break;
     default:
       return;
@@ -215,12 +217,12 @@ function MINESClickHandler(e) {
       break;
     case PERSON_MINE:
       this.innerHTML = "";
-      activePuzzle.remaining_blanks++;
+      incrementRemainingBlanks();
       cellHasMine = 3;
       break;
     case "":
       this.innerHTML = PERSON_SAFE;
-      activePuzzle.remaining_blanks--;
+      decrementRemainingBlanks();
       cellHasMine = false;
       break;
     default:
@@ -245,11 +247,11 @@ function BINARYClickHandler(e) {
       break;
     case "1":
       this.innerHTML = "";
-      activePuzzle.remaining_blanks++;
+      incrementRemainingBlanks();
       break;
     case "":
       this.innerHTML = "0";
-      activePuzzle.remaining_blanks--;
+      decrementRemainingBlanks();
       break;
     default:
       break;
@@ -341,13 +343,27 @@ function randInRange(a, b) {
   return Math.floor(mulberry32(seed++)() * b + a);
 }
 
+function incrementRemainingBlanks() {
+  activePuzzle.remaining_blanks++;
+  displayRemainingBlanks();
+}
+
+function decrementRemainingBlanks() {
+  activePuzzle.remaining_blanks--;
+  displayRemainingBlanks();
+}
+
+function displayRemainingBlanks() {
+  document.getElementById("counter").innerText = activePuzzle.remaining_blanks;
+}
+
 function handleChangeInput(e) {
   switch (this.value) {
     case "":
-      activePuzzle.remaining_blanks++;
+      incrementRemainingBlanks();
       return;
     default:
-      activePuzzle.remaining_blanks--;
+      decrementRemainingBlanks();
       break;
   }
   const i = this.closest("tr").rowIndex;
@@ -380,6 +396,21 @@ async function sharePuzzle() {
   }
   console.log(shareData);
 }
+
+function sendErrorPrompt() {
+  let comment = prompt("What happened?", "error description");
+  sendErrorEmail(comment);
+}
+
+function sendErrorEmail(comment = "") {
+  // const date = new Date();
+  const body = `Error found in ${activePuzzle.constructor.name} puzzle using seed: ${sharing_seed} on difficulty: ${activePuzzle.difficulty}. ${comment}`;
+  const subject = `Golden Puzzles Error: ${new Date()}`;
+  window.open(
+    `mailto:christiantgolden@gmail.com?subject=${subject}&body=${body}`
+  );
+}
+
 const queryString = window.location.search.replace("?", "");
 const queryStringArray = queryString.split("&");
 

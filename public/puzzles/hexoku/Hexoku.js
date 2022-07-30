@@ -88,7 +88,7 @@ class Hexoku extends Puzzle {
                             font-size:${this.font_size}'>`;
         row_string_array[i] == " "
           ? (puzzle_table_html += `<input class='cell' style='font-size:${this.font_size}' maxlength=1'></input>`) &&
-            this.remaining_blanks++
+            incrementRemainingBlanks()
           : (puzzle_table_html += row_string_array[i]);
         puzzle_table_html += `</td>`;
       }

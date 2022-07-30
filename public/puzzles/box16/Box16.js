@@ -54,7 +54,7 @@ class Box16 extends Puzzle {
         } else {
           mulberry32(seed++)() > 2 / this.difficulty
             ? (temp_num = `<input class='cell' maxlength=1 type='tel' style='font-size:${this.font_size}'></input>`) &&
-              this.remaining_blanks++
+              incrementRemainingBlanks()
             : (temp_num = row_string_array[i]);
         }
         if (

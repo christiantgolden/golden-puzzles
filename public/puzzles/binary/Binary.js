@@ -81,7 +81,7 @@ class Binary extends Puzzle {
       puzzle_table_html += `<tr>`;
       for (let c = 0; c < this.size; c++) {
         if (this.board[r][c] == " ") {
-          this.remaining_blanks++;
+          incrementRemainingBlanks();
           puzzle_table_html += `<td class='board' style='background-color:${BLANK_CELL_COLOR};width:${this.cell_width};
                                               height:${this.cell_height};
                                               font-size:${this.font_size}'></input></td>`;
