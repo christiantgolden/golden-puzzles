@@ -399,7 +399,7 @@ async function sharePuzzle() {
   const shareData = {
     title: activePuzzle.constructor.name,
     text: "Check out this puzzle I either finished or am working on over at Golden Puzzles!",
-    url: `https:\\golden-puzzles.web.app/?${activePuzzle.constructor.name}&${sharing_seed}&${activePuzzle.difficulty}`,
+    url: `https://golden-puzzles.web.app?${activePuzzle.constructor.name}&${sharing_seed}&${activePuzzle.difficulty}`,
   };
   try {
     await navigator.share(shareData);
