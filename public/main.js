@@ -16,18 +16,62 @@ const resetTime = () => {
   paused && pause();
 };
 
-// const queryString = window.location.search.replace("?", "");
-// const queryStringArray = queryString.split("&");
-
-// if (queryStringArray.length === 3) {
-//   setInitialPuzzle(queryStringArray[0]);
-//   setInitialSeed(queryStringArray[1]);
-//   setInitialDifficulty(queryStringArray[2]);
-// }
-// generateNewPuzzle();
-
 const setInitialSeed = (initial_seed) => {
   seed = initial_seed;
+};
+
+const updatePuzzleIndices = (puzzle) => {
+  switch (puzzle) {
+    case "BINARY":
+      activePuzzleIndex = 0;
+      prevPuzzleIndex = 6;
+      nextPuzzleIndex = 1;
+      break;
+    case "TENTS":
+      activePuzzleIndex = 1;
+      prevPuzzleIndex = 0;
+      nextPuzzleIndex = 2;
+      break;
+
+    case "MINES":
+      activePuzzleIndex = 2;
+      prevPuzzleIndex = 1;
+      nextPuzzleIndex = 3;
+      break;
+
+    case "HEXOKU":
+      activePuzzleIndex = 3;
+      prevPuzzleIndex = 2;
+      nextPuzzleIndex = 4;
+      break;
+
+    case "BOXES":
+      activePuzzleIndex = 4;
+      prevPuzzleIndex = 3;
+      nextPuzzleIndex = 5;
+      break;
+
+    case "BOX16":
+      activePuzzleIndex = 5;
+      prevPuzzleIndex = 4;
+      nextPuzzleIndex = 6;
+      break;
+
+    case "SUDOKU":
+      activePuzzleIndex = 6;
+      prevPuzzleIndex = 5;
+      nextPuzzleIndex = 0;
+      break;
+
+    default:
+      break;
+  }
+  document.getElementById("prev").innerText =
+    AVAILABLE_PUZZLES[prevPuzzleIndex];
+  document.getElementById("active").innerText =
+    AVAILABLE_PUZZLES[activePuzzleIndex];
+  document.getElementById("next").innerText =
+    AVAILABLE_PUZZLES[nextPuzzleIndex];
 };
 
 const setInitialPuzzle = (puzzle) => {
@@ -35,57 +79,7 @@ const setInitialPuzzle = (puzzle) => {
   for (const g in PUZZLES) {
     if (PUZZLES[g].active) {
       PUZZLES[g].active = false;
-      switch (puzzle) {
-        case "BINARY":
-          activePuzzleIndex = 0;
-          prevPuzzleIndex = 6;
-          nextPuzzleIndex = 1;
-          break;
-        case "TENTS":
-          activePuzzleIndex = 1;
-          prevPuzzleIndex = 0;
-          nextPuzzleIndex = 2;
-          break;
-
-        case "MINES":
-          activePuzzleIndex = 2;
-          prevPuzzleIndex = 1;
-          nextPuzzleIndex = 3;
-          break;
-
-        case "HEXOKU":
-          activePuzzleIndex = 3;
-          prevPuzzleIndex = 2;
-          nextPuzzleIndex = 4;
-          break;
-
-        case "BOXES":
-          activePuzzleIndex = 4;
-          prevPuzzleIndex = 3;
-          nextPuzzleIndex = 5;
-          break;
-
-        case "BOX16":
-          activePuzzleIndex = 5;
-          prevPuzzleIndex = 4;
-          nextPuzzleIndex = 6;
-          break;
-
-        case "SUDOKU":
-          activePuzzleIndex = 6;
-          prevPuzzleIndex = 5;
-          nextPuzzleIndex = 0;
-          break;
-
-        default:
-          break;
-      }
-      document.getElementById("prev").innerText =
-        AVAILABLE_PUZZLES.at(prevPuzzleIndex);
-      document.getElementById("active").innerText =
-        AVAILABLE_PUZZLES.at(activePuzzleIndex);
-      document.getElementById("next").innerText =
-        AVAILABLE_PUZZLES.at(nextPuzzleIndex);
+      updatePuzzleIndices(puzzle);
     }
   }
   PUZZLES[puzzle].active = true;
@@ -99,27 +93,7 @@ const setActivePuzzle = (prevOrNext) => {
   for (const g in PUZZLES) {
     if (PUZZLES[g].active) {
       PUZZLES[g].active = false;
-      switch (prevOrNext) {
-        case "prev":
-          prevPuzzleIndex = (prevPuzzleIndex - 1) % AVAILABLE_PUZZLES.length;
-          activePuzzleIndex =
-            (activePuzzleIndex - 1) % AVAILABLE_PUZZLES.length;
-          nextPuzzleIndex = (nextPuzzleIndex - 1) % AVAILABLE_PUZZLES.length;
-          break;
-        case "next":
-          prevPuzzleIndex = (prevPuzzleIndex + 1) % AVAILABLE_PUZZLES.length;
-          activePuzzleIndex =
-            (activePuzzleIndex + 1) % AVAILABLE_PUZZLES.length;
-          nextPuzzleIndex = (nextPuzzleIndex + 1) % AVAILABLE_PUZZLES.length;
-
-          break;
-      }
-      document.getElementById("prev").innerText =
-        AVAILABLE_PUZZLES.at(prevPuzzleIndex);
-      document.getElementById("active").innerText =
-        AVAILABLE_PUZZLES.at(activePuzzleIndex);
-      document.getElementById("next").innerText =
-        AVAILABLE_PUZZLES.at(nextPuzzleIndex);
+      updatePuzzleIndices(puzzle);
     }
   }
   PUZZLES[puzzle].active = true;
@@ -129,7 +103,7 @@ const setActivePuzzle = (prevOrNext) => {
 
 const setInitialDifficulty = (initial_diff) => {
   switch (initial_diff) {
-    case 3: //easy
+    case 3:
       document.getElementById("prevdiff").innerText = "HARD";
       document.getElementById("activediff").innerText = "EASY";
       document.getElementById("nextdiff").innerText = "NORMAL";
@@ -368,9 +342,6 @@ function randInRange(a, b) {
 }
 
 function handleChangeInput(e) {
-  const randNum = randInRange(1, 9);
-  console.log("Random number: " + randNum);
-  // sharePuzzle();
   switch (this.value) {
     case "":
       activePuzzle.remaining_blanks++;
