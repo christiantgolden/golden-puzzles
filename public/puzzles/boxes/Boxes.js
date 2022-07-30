@@ -55,7 +55,7 @@ class Boxes extends Puzzle {
           temp_num = this.sumOfSurrounding(r, i);
           is_center = true;
         } else {
-          Math.random() > 2 / this.difficulty
+          mulberry32(seed++)() > 2 / this.difficulty
             ? (temp_num = `<input class='cell' maxlength=1 type='tel' style='font-size:${this.font_size}'></input>`) &&
               this.remaining_blanks++
             : (temp_num = row_string_array[i]);
