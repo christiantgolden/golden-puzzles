@@ -397,20 +397,6 @@ async function sharePuzzle() {
   console.log(shareData);
 }
 
-function sendErrorPrompt() {
-  let comment = prompt("What happened?", "error description");
-  sendErrorEmail(comment);
-}
-
-function sendErrorEmail(comment = "") {
-  // const date = new Date();
-  const body = `Error found in ${activePuzzle.constructor.name} puzzle using seed: ${sharing_seed} on difficulty: ${activePuzzle.difficulty}. ${comment}`;
-  const subject = `Golden Puzzles Error: ${new Date()}`;
-  window.open(
-    `mailto:christiantgolden@gmail.com?subject=${subject}&body=${body}`
-  );
-}
-
 const queryString = window.location.search.replace("?", "");
 const queryStringArray = queryString.split("&");
 
@@ -420,3 +406,18 @@ if (queryStringArray.length === 3) {
   setInitialDifficulty(queryStringArray[2]);
 }
 generateNewPuzzle();
+window.ATL_JQ_PAGE_PROPS = $.extend(window.ATL_JQ_PAGE_PROPS, {
+  // ==== custom trigger function ====
+  triggerFunction: function (showCollectorDialog) {
+    $("#report_bug").on("click", function (e) {
+      e.preventDefault();
+      showCollectorDialog();
+    });
+  },
+  // ==== we add the code below to set the field values ====
+  fieldValues: {
+    customfield_10038: [
+      `https://golden-puzzles.web.app?${activePuzzle.constructor.name}&${sharing_seed}&${activePuzzle.difficulty}`,
+    ],
+  },
+});
