@@ -4,9 +4,9 @@ const PUZZLES = {
   MINES: { active: false, visible: false },
   TENTS: { active: false, visible: false },
   BOXES: { active: false, visible: false },
-  SUDOKU: { active: false, visible: false },
+  SUDOKU: { active: true, visible: true },
   BOX16: { active: false, visible: false },
-  HEXOKU: { active: true, visible: true },
+  HEXOKU: { active: false, visible: false },
 };
 const BOARD_OPERATIONS = ["transpose", "reverse", "transpose-reverse", "none"];
 const BLANK_CELL_COLOR = "#c9c9c9";
@@ -15,12 +15,12 @@ const SOLVED_COLOR = "#25dd99";
 
 const AVAILABLE_PUZZLES = [
   "BINARY",
-  "TENTS",
   "MINES",
-  "HEXOKU",
+  "TENTS",
   "BOXES",
-  "BOX16",
   "SUDOKU",
+  "BOX16",
+  "HEXOKU",
 ];
 const DIFFICULTY_MAP = {
   EASY: 3,

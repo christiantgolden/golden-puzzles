@@ -21,7 +21,7 @@ const CreatePuzzle = () => {
         case "HEXOKU":
           return new Hexoku();
         default:
-          return new Tents();
+          break;
       }
     }
   }
@@ -259,12 +259,10 @@ class Puzzle {
       if (box[i] === num) {
         countNum++;
         if (countNum > 1) {
-          console.log("duplicate number in box");
           return true;
         }
       }
     }
-    console.log("first time that number was entered in box");
     return false;
   }
   numAlreadyInRow(i, j, num) {
@@ -273,12 +271,10 @@ class Puzzle {
       if (this.board[i][x] === num) {
         countNum++;
         if (countNum > 1) {
-          console.log("duplicate number in row");
           return true;
         }
       }
     }
-    console.log("first time that number was entered in row");
     return false;
   }
   numAlreadyInColumn(i, j, num) {
@@ -287,12 +283,10 @@ class Puzzle {
       if (this.board[x][j] === num) {
         countNum++;
         if (countNum > 1) {
-          console.log("duplicate number in column");
           return true;
         }
       }
     }
-    console.log("first time number entered in column");
     return false;
   }
 }

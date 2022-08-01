@@ -467,12 +467,10 @@ class Hexoku extends Puzzle {
       if (box[i] === num) {
         countNum++;
         if (countNum > 1) {
-          console.log("duplicate number in box");
           return true;
         }
       }
     }
-    console.log("first time that number was entered in box");
     return false;
   }
 }

@@ -1,14 +1,13 @@
 class Tents extends Puzzle {
-  final_row;
-  final_column;
   constructor() {
     super(10);
+  }
+  generateBoard() {
+    this.board = [];
     this.final_row = [];
     this.final_column = [];
     this.attempt_final_row = [];
     this.attempt_final_column = [];
-  }
-  generateBoard() {
     for (let i = 0; i < this.size - 1; i++) {
       this.board[i] = [];
       this.solved_board[i] = [];
@@ -19,12 +18,12 @@ class Tents extends Puzzle {
           this.solved_board[i][j] = TREE;
         } else if (this.itemDiagonal(i, j, TENT)) {
           this.board[i][j] = "";
-          incrementRemainingBlanks();
+          this.remaining_blanks++;
           this.solved_board[i][j] = GRASS;
         } else {
           this.board[i][j] = random_obj > 0.5 ? TENT : "";
           this.solved_board[i][j] = random_obj > 0.5 ? TENT : GRASS;
-          incrementRemainingBlanks();
+          this.remaining_blanks++;
         }
       }
     }

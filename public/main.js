@@ -1,8 +1,8 @@
 //REFACTOR #29 - move these global variables and most/all of this code into an object of a Session class
 let activePuzzle = {};
-let prevPuzzleIndex = 2;
-let activePuzzleIndex = 3;
-let nextPuzzleIndex = 4;
+let prevPuzzleIndex = 3;
+let activePuzzleIndex = 4;
+let nextPuzzleIndex = 5;
 let now = new Date().getTime();
 let elapsed = now;
 let paused = false;
@@ -27,25 +27,25 @@ const updatePuzzleIndices = (puzzle) => {
       prevPuzzleIndex = 6;
       nextPuzzleIndex = 1;
       break;
-    case "TENTS":
+    case "MINES":
       activePuzzleIndex = 1;
       prevPuzzleIndex = 0;
       nextPuzzleIndex = 2;
       break;
 
-    case "MINES":
+    case "TENTS":
       activePuzzleIndex = 2;
       prevPuzzleIndex = 1;
       nextPuzzleIndex = 3;
       break;
 
-    case "HEXOKU":
+    case "BOXES":
       activePuzzleIndex = 3;
       prevPuzzleIndex = 2;
       nextPuzzleIndex = 4;
       break;
 
-    case "BOXES":
+    case "SUDOKU":
       activePuzzleIndex = 4;
       prevPuzzleIndex = 3;
       nextPuzzleIndex = 5;
@@ -57,7 +57,7 @@ const updatePuzzleIndices = (puzzle) => {
       nextPuzzleIndex = 6;
       break;
 
-    case "SUDOKU":
+    case "HEXOKU":
       activePuzzleIndex = 6;
       prevPuzzleIndex = 5;
       nextPuzzleIndex = 0;
@@ -75,7 +75,6 @@ const updatePuzzleIndices = (puzzle) => {
 };
 
 const setInitialPuzzle = (puzzle) => {
-  console.log(puzzle);
   for (const g in PUZZLES) {
     if (PUZZLES[g].active) {
       PUZZLES[g].active = false;
@@ -188,7 +187,6 @@ function TENTSClickHandler(e) {
       decrementRemainingBlanks();
       break;
     default:
-      return;
       break;
   }
   activePuzzle.board[i][j] = this.innerHTML;
@@ -201,7 +199,6 @@ function MINESClickHandler(e) {
     return;
   }
   let cellHasMine;
-  console.log(this.innerHTML);
   switch (this.innerHTML) {
     case PERSON_SAFE:
       this.innerHTML = PERSON_MINE;
@@ -375,7 +372,6 @@ async function sharePuzzle() {
   };
   try {
     await navigator.share(shareData);
-    console.log("Puzzle shared successfully");
   } catch (err) {
     console.log(`Error: ${err}`);
   }

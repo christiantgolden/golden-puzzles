@@ -10,7 +10,6 @@ class Binary extends Puzzle {
     let previousRandBin;
     for (let c = 0; c < this.size / 2; c++) {
       let randBin = mulberry32(seed++)() > 0.5 ? 1 : 0;
-      console.log(mulberry32(seed++)() > 0.5 ? 1 : 0);
       c > 0 && previousRandBin != randBin && (repeatingPattern = false);
       previousRandBin = randBin;
       this.board[0] += randBin.toString();
