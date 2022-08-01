@@ -1,6 +1,8 @@
 @font-face {
   font-family: roboto;
-  src: url(assets/fonts/Roboto-Thin.ttf);
+  src: local("Pacifico Regular"), local("Pacifico-Regular"),
+    url(assets/fonts/Roboto-Thin.ttf);
+  font-display: swap;
 }
 * {
   font-family: roboto;
