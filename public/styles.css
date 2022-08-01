@@ -51,7 +51,9 @@ td input {
 }
 #prev:hover,
 #next:hover,
+#active:hover,
 #prevdiff:hover,
+#activediff:hover,
 #nextdiff:hover {
   cursor: pointer;
 }
@@ -70,7 +72,6 @@ form * {
   width: 80%;
   font-size: large;
   max-width: 500px;
-  display: none;
   opacity: 0.9;
   color: #222;
   max-width: 400px;

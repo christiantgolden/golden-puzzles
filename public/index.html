@@ -31,7 +31,7 @@
     <table class="navbar">
       <tr>
         <td id="prev" onclick="setActivePuzzle('prev')">MINES</td>
-        <td id="active">HEXOKU</td>
+        <td id="active" onclick="generateNewPuzzle()">HEXOKU</td>
         <td id="next" onclick="setActivePuzzle('next')">BOXES</td>
       </tr>
     </table>
@@ -41,33 +41,19 @@
       <table class="diffbar">
       <tr>
         <td id="prevdiff" onclick="setActiveDiff('prevdiff')">EASY</td>
-        <td id="activediff">NORMAL</td>
+        <td id="activediff" onclick="generateNewPuzzle()">NORMAL</td>
         <td id="nextdiff" onclick="setActiveDiff('nextdiff')">HARD</td>
       </tr>
     </table>
     <hr/>
     <form id="diff_time">
-      <a
-        ><i
-          class="fa-solid fa-repeat"
-          id="gen_button"
-          onclick="generateNewPuzzle()"
-        ></i
-      ></a>
-        <a
-          ><i
-            class="fa-solid fa-circle-question"
-            id="get_info"
-            onclick="toggle_information()"
-          ></i
-        ></a>
         <a
           ><i class="fa-solid fa-print" id="print" onclick="printPuzzle()"></i
         ></a>
         <a href="https://www.buymeacoffee.com/christiangolden" target="_blank"
-          ><i class="fa-solid fa-mug-saucer fa-beat-fade" id="donate" style="--fa-animation-duration: 3s; --fa-beat-fade-opacity: 0.8; --fa-beat-fade-scale: 1.025;"></i
+          ><i class="fa-solid fa-mug-saucer fa-beat-fade" id="donate" style="--fa-animation-duration: 4s; --fa-beat-fade-opacity: 0.75; --fa-beat-fade-scale: 1.025;"></i
         ></a>
-        <a href="#"><i class="fa-solid fa-share" onclick="sharePuzzle()"></i></a>
+        <a href="#"><i class="fa-solid fa-upload" onclick="sharePuzzle()"></i></a>
         <div></div>
       </form>
     </div>

@@ -152,12 +152,6 @@ const showPuzzle = () => {
   document.getElementById("puzzle").style.setProperty("opacity", 1);
 };
 
-document
-  .getElementById("gen_button")
-  .addEventListener("click", function (event) {
-    event.preventDefault();
-  });
-
 const generateNewPuzzle = async () => {
   sharing_seed = seed;
   paused && pause();
