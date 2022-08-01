@@ -164,8 +164,6 @@ const generateNewPuzzle = async () => {
   resetTime();
   activePuzzle = CreatePuzzle();
   activePuzzle.draw();
-  this.document.getElementById("counter").innerText =
-    activePuzzle.remaining_blanks;
 };
 
 const printPuzzle = () => {
@@ -345,16 +343,10 @@ function randInRange(a, b) {
 
 function incrementRemainingBlanks() {
   activePuzzle.remaining_blanks++;
-  displayRemainingBlanks();
 }
 
 function decrementRemainingBlanks() {
   activePuzzle.remaining_blanks--;
-  displayRemainingBlanks();
-}
-
-function displayRemainingBlanks() {
-  document.getElementById("counter").innerText = activePuzzle.remaining_blanks;
 }
 
 function handleChangeInput(e) {
@@ -382,7 +374,6 @@ function handleChangeInput(e) {
     setPuzzleSolved();
 }
 async function sharePuzzle() {
-  const boardString = JSON.stringify(activePuzzle.board);
   const shareData = {
     title: activePuzzle.constructor.name,
     text: "Check out this puzzle I either finished or am working on over at Golden Puzzles!",
@@ -406,19 +397,3 @@ if (queryStringArray.length === 3) {
   setInitialDifficulty(queryStringArray[2]);
 }
 generateNewPuzzle();
-window.ATL_JQ_PAGE_PROPS = $.extend(window.ATL_JQ_PAGE_PROPS, {
-  // ==== custom trigger function ====
-  triggerFunction: function (showCollectorDialog) {
-    $("#report_bug").on("click", function (e) {
-      e.preventDefault();
-      showCollectorDialog();
-    });
-  },
-  // ==== we add the code below to set the field values ====
-  fieldValues: {
-    summary: `${activePuzzle.constructor.name}:${sharing_seed}:${activePuzzle.difficulty}`,
-    customfield_10038: [
-      `https://golden-puzzles.web.app?${activePuzzle.constructor.name}&${sharing_seed}&${activePuzzle.difficulty}`,
-    ],
-  },
-});

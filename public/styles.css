@@ -111,15 +111,11 @@ hr {
   width: 75%;
   max-width: 400px;
 }
-#timer,
-#counter,
-#counter-label {
+#timer {
   color: #ffffffaa;
   font-size: larger;
 }
-#counter-label {
-  margin-left: 1rem;
-}
+
 @media print {
   * {
     print-color-adjust: exact !important;

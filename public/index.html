@@ -14,7 +14,6 @@
       onload="this.media='all'; this.onload = null"
     />
     <noscript><link rel="stylesheet" href="css.css" /></noscript>
-    <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script defer src="./assets/icons/all.js"></script>
     <script defer src="constants.js"></script>
     <script defer src="./puzzles/Puzzle.js"></script>
@@ -26,7 +25,6 @@
     <script defer src="./puzzles/mines/Mines.js"></script>
     <script defer src="./puzzles/tents/Tents.js"></script>
     <script defer src="main.js"></script>
-    	<script type="text/javascript" src="https://golden-puzzles.atlassian.net/s/d41d8cd98f00b204e9800998ecf8427e-T/azc3hx/b/8/c95134bc67d3a521bb3f4331beb9b804/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&collectorId=7aac99de"></script>
 
   </head>
   <body id="puzzle" style="opacity: 0" onload="showPuzzle()">
@@ -39,7 +37,6 @@
     </table>
     <hr />
     <label id="timer" onclick="javascript:pause()">00:00:00</label>
-    <label id='counter-label'>Remaining Blanks: </label><label id="counter"></label>
     <table id="puzzle_table"></table>
       <table class="diffbar">
       <tr>
@@ -71,7 +68,6 @@
           ><i class="fa-solid fa-mug-saucer fa-beat-fade" id="donate" style="--fa-animation-duration: 3s; --fa-beat-fade-opacity: 0.8; --fa-beat-fade-scale: 1.025;"></i
         ></a>
         <a href="#"><i class="fa-solid fa-share" onclick="sharePuzzle()"></i></a>
-        <a href="#"><i id="report_bug" class='fa-solid fa-bug'>Report feedback</i></a>
         <div></div>
       </form>
     </div>
