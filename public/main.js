@@ -155,6 +155,7 @@ const showPuzzle = () => {
 };
 
 const generateNewPuzzle = async () => {
+  close_information_modal();
   sharing_seed = seed;
   paused && pause();
   resetTime();
@@ -288,6 +289,11 @@ const pause = () => {
     document.getElementById("timer").style.opacity = 0.5;
   }
   paused = !paused;
+};
+
+const close_information_modal = () => {
+  this.document.getElementById("instructions").style.display == "block" &&
+    toggle_information();
 };
 
 document.addEventListener("visibilitychange", pause);

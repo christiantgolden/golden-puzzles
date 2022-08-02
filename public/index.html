@@ -6,9 +6,9 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1"
     />
     <title>Golden Puzzles</title>
-    <link rel="preload" href="assets/fonts/Roboto-Thin.ttf"/>
+    <link rel="preload" href="assets/fonts/Roboto-Thin.ttf" />
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
-    <link rel="stylesheet" href="./styles.css"/>
+    <link rel="stylesheet" href="./styles.css" />
     <script defer src="./assets/icons/all.js"></script>
     <script defer src="constants.js"></script>
     <script defer src="./puzzles/Puzzle.js"></script>
@@ -20,7 +20,6 @@
     <script defer src="./puzzles/mines/Mines.js"></script>
     <script defer src="./puzzles/tents/Tents.js"></script>
     <script defer src="main.js"></script>
-
   </head>
   <body id="puzzle" style="opacity: 0" onload="showPuzzle()">
     <table class="navbar">
@@ -31,27 +30,37 @@
       </tr>
     </table>
     <hr />
-    <label id="timer" onclick="javascript:pause()">00:00:00</label>
+    <label id="timer" onclick="pause()">00:00:00</label>
     <table id="puzzle_table"></table>
-      <table class="diffbar">
+    <table class="diffbar">
       <tr>
         <td id="prevdiff" onclick="setActiveDiff('prevdiff')">EASY</td>
         <td id="activediff" onclick="generateNewPuzzle()">NORMAL</td>
         <td id="nextdiff" onclick="setActiveDiff('nextdiff')">HARD</td>
       </tr>
     </table>
-    <hr/>
+    <hr />
     <form id="diff_time">
-        
-        <a href="https://www.buymeacoffee.com/christiangolden" target="_blank"
-          ><i class="fa-regular fa-credit-card fa-beat-fade" id="donate" style="--fa-animation-duration: 4s; --fa-beat-fade-opacity: 0.75; --fa-beat-fade-scale: 1.025;"></i
-        ></a><a
-          ><i class="fa-regular fa-circle-question" onclick="toggle_information()"></i
-        ></a>
-        <a href="#"><i class="fa-regular fa-copy" onclick="sharePuzzle()"></i></a>
-        <div></div>
-      </form>
-    </div>
+      <a href="https://www.buymeacoffee.com/christiangolden" target="_blank"
+        ><i
+          class="fa-regular fa-credit-card fa-beat-fade"
+          id="donate"
+          style="
+            --fa-animation-duration: 4s;
+            --fa-beat-fade-opacity: 0.75;
+            --fa-beat-fade-scale: 1.025;
+          "
+        ></i></a
+      ><a
+        ><i
+          class="fa-regular fa-circle-question"
+          onclick="toggle_information()"
+        ></i
+      ></a>
+      <a href="#"><i class="fa-regular fa-copy" onclick="sharePuzzle()"></i></a>
+      <!-- <div></div> -->
+    </form>
+    <!-- </div> -->
     <div id="instructions"></div>
     <!--Start of Firebase Hosting Stuff-->
     <script type="module">

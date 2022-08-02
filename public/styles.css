@@ -33,14 +33,14 @@ td input {
   columns: 1;
 }
 .navbar {
-  font-size: x-large;
+  font-size: xx-large;
   width: 24rem;
   color: rgba(255, 255, 255, 0.7);
   padding-top: 0.25rem;
 }
 .diffbar {
   padding-top: 0.5rem;
-  font-size: large;
+  font-size: x-large;
   width: 24rem;
   color: rgba(0, 0, 0, 0.7);
 }
@@ -61,7 +61,7 @@ td input {
 }
 form * {
   width: 3.2rem;
-  font-size: large;
+  font-size: x-large;
   opacity: 0.9;
   color: #222;
   margin-top: 1em;
@@ -72,18 +72,16 @@ form * {
 }
 #instructions {
   position: absolute;
-  width: 80%;
+  width: 64%;
   left: 0;
   right: 0;
-  bottom: 50%;
-  border: 1px solid black;
+  top: 16rem;
+  padding: 1rem;
+  color: #ddd;
   font-size: large;
-  max-width: 500px;
-  background-color: white;
-  opacity: 0.95;
-  color: #222;
-  max-width: 400px;
-  text-align: center;
+  background-color: #777;
+  max-width: 360px;
+  text-align: justify;
   display: none;
 }
 .tree,
@@ -122,7 +120,7 @@ hr {
 }
 #timer {
   color: #ffffffaa;
-  font-size: larger;
+  font-size: x-large;
 }
 
 @media print {
