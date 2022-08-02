@@ -294,8 +294,12 @@ document.addEventListener("visibilitychange", pause);
 
 const toggle_information = () => {
   this.document.getElementById("instructions").style.display == "block"
-    ? (this.document.getElementById("instructions").style.display = "none")
-    : (this.document.getElementById("instructions").style.display = "block");
+    ? (this.document.getElementById("instructions").style.display = "none") &&
+      paused &&
+      pause()
+    : (this.document.getElementById("instructions").style.display = "block") &&
+      !paused &&
+      pause();
 };
 
 (function () {

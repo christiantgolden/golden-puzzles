@@ -71,10 +71,16 @@ form * {
   cursor: pointer;
 }
 #instructions {
+  position: absolute;
   width: 80%;
+  left: 0;
+  right: 0;
+  bottom: 50%;
+  border: 1px solid black;
   font-size: large;
   max-width: 500px;
-  opacity: 0.9;
+  background-color: white;
+  opacity: 0.95;
   color: #222;
   max-width: 400px;
   text-align: center;
