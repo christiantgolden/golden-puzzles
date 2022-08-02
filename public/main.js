@@ -8,6 +8,9 @@ let elapsed = now;
 let paused = false;
 let seed = INITIAL_SEED;
 let sharing_seed = seed;
+let hours;
+let minutes;
+let seconds;
 
 const resetTime = () => {
   now = new Date().getTime();
@@ -256,11 +259,9 @@ const timer_tick = setInterval(function () {
     return;
   } else {
     elapsed = new Date().getTime() - now;
-    const hours = Math.floor(
-      (elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
-    const minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
+    hours = Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
+    seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
     document.getElementById("timer").innerText =
       hours.toString().padStart(2, "0") +
       ":" +
@@ -365,10 +366,18 @@ function handleChangeInput(e) {
     setPuzzleSolved();
 }
 async function sharePuzzle() {
+  const currentPuzzle = activePuzzle.constructor.name;
+  const status =
+    activePuzzle.remaining_blanks === 0
+      ? `completed in ${hours.toString().padStart(2, "0")}:${minutes
+          .toString()
+          .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`
+      : "am currently working on";
+  const currentDifficulty = REVERSE_DIFFICULTY_MAP[activePuzzle.difficulty];
   const shareData = {
     title: activePuzzle.constructor.name,
-    text: "Check out this puzzle I either finished or am working on over at Golden Puzzles!",
-    url: `https://golden-puzzles.web.app?${activePuzzle.constructor.name}&${sharing_seed}&${activePuzzle.difficulty}`,
+    text: `Check out this ${currentDifficulty} ${currentPuzzle} puzzle I ${status} over at Golden Puzzles!`,
+    url: `https://golden-puzzles.web.app?${currentPuzzle}&${sharing_seed}&${activePuzzle.difficulty}`,
   };
   try {
     await navigator.share(shareData);

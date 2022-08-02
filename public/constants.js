@@ -27,6 +27,11 @@ const DIFFICULTY_MAP = {
   NORMAL: 5,
   HARD: 8,
 };
+const REVERSE_DIFFICULTY_MAP = {
+  3: "EASY",
+  5: "NORMAL",
+  8: "HARD",
+};
 const SUDOKU_NUMBERS = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 const HEXOKU_NUMBERS = [
   "0",
