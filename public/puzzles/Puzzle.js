@@ -44,6 +44,7 @@ class Puzzle {
     this.remaining_blanks = 0;
     this.difficulty =
       DIFFICULTY_MAP[document.getElementById("activediff").innerText];
+    console.log("current difficulty: " + this.difficulty);
     this.board = [""];
     this.solved_board = [];
     this.size = size;

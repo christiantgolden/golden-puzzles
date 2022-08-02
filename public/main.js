@@ -105,17 +105,17 @@ const setActivePuzzle = (prevOrNext) => {
 
 const setInitialDifficulty = (initial_diff) => {
   switch (initial_diff) {
-    case 3:
+    case "3":
       document.getElementById("prevdiff").innerText = "HARD";
       document.getElementById("activediff").innerText = "EASY";
       document.getElementById("nextdiff").innerText = "NORMAL";
       break;
-    case 5:
+    case "5":
       document.getElementById("prevdiff").innerText = "EASY";
       document.getElementById("activediff").innerText = "NORMAL";
       document.getElementById("nextdiff").innerText = "HARD";
       break;
-    case 8:
+    case "8":
       document.getElementById("prevdiff").innerText = "NORMAL";
       document.getElementById("activediff").innerText = "HARD";
       document.getElementById("nextdiff").innerText = "EASY";
@@ -401,6 +401,7 @@ const queryString = window.location.search.replace("?", "");
 const queryStringArray = queryString.split("&");
 
 if (queryStringArray.length === 3) {
+  console.log("parsing url");
   setInitialPuzzle(queryStringArray[0].toUpperCase());
   setInitialSeed(queryStringArray[1]);
   setInitialDifficulty(queryStringArray[2]);
