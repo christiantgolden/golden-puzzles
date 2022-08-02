@@ -126,7 +126,7 @@ hr {
   position: absolute;
   left: 0;
   right: 0;
-  top: 40rem;
+  bottom: 4rem;
 }
 
 @media print {
