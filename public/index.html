@@ -32,34 +32,38 @@
     <hr />
     <label id="timer" onclick="pause()">00:00:00</label>
     <table id="puzzle_table"></table>
-    <table class="diffbar">
-      <tr>
-        <td id="prevdiff" onclick="setActiveDiff('prevdiff')">EASY</td>
-        <td id="activediff" onclick="generateNewPuzzle()">NORMAL</td>
-        <td id="nextdiff" onclick="setActiveDiff('nextdiff')">HARD</td>
-      </tr>
-    </table>
-    <hr />
-    <form id="diff_time">
-      <a href="https://www.buymeacoffee.com/christiangolden" target="_blank"
-        ><i
-          class="fa-regular fa-credit-card fa-beat-fade"
-          id="donate"
-          style="
-            --fa-animation-duration: 4s;
-            --fa-beat-fade-opacity: 0.75;
-            --fa-beat-fade-scale: 1.025;
-          "
-        ></i></a
-      ><a
-        ><i
-          class="fa-regular fa-circle-question"
-          onclick="toggle_information()"
-        ></i
-      ></a>
-      <a href="#"><i class="fa-regular fa-copy" onclick="sharePuzzle()"></i></a>
-      <!-- <div></div> -->
-    </form>
+    <div id="bottom">
+      <table class="diffbar">
+        <tr>
+          <td id="prevdiff" onclick="setActiveDiff('prevdiff')">EASY</td>
+          <td id="activediff" onclick="generateNewPuzzle()">NORMAL</td>
+          <td id="nextdiff" onclick="setActiveDiff('nextdiff')">HARD</td>
+        </tr>
+      </table>
+      <hr />
+      <form id="diff_time">
+        <a href="https://www.buymeacoffee.com/christiangolden" target="_blank"
+          ><i
+            class="fa-regular fa-credit-card fa-beat-fade"
+            id="donate"
+            style="
+              --fa-animation-duration: 4s;
+              --fa-beat-fade-opacity: 0.75;
+              --fa-beat-fade-scale: 1.025;
+            "
+          ></i></a
+        ><a
+          ><i
+            class="fa-regular fa-circle-question"
+            onclick="toggle_information()"
+          ></i
+        ></a>
+        <a href="#"
+          ><i class="fa-regular fa-copy" onclick="sharePuzzle()"></i
+        ></a>
+        <!-- <div></div> -->
+      </form>
+    </div>
     <!-- </div> -->
     <div id="instructions"></div>
     <!--Start of Firebase Hosting Stuff-->

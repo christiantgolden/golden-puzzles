@@ -352,14 +352,15 @@ function decrementRemainingBlanks() {
 }
 
 function handleChangeInput(e) {
-  switch (this.value) {
-    case "":
+  switch (this.value.toString().length) {
+    case 0:
       incrementRemainingBlanks();
       return;
     default:
       decrementRemainingBlanks();
       break;
   }
+  console.log("remaining blanks" + activePuzzle.remaining_blanks);
   const i = this.closest("tr").rowIndex;
   const j = this.parentElement.cellIndex;
 

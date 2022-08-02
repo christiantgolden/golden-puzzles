@@ -72,11 +72,17 @@ class Sudoku extends Puzzle {
       .querySelectorAll("input")
       .forEach((e) => e.addEventListener("input", handleChangeInput));
   }
-  checkCorrect(i, j, num) {
-    return !(
-      this.numAlreadyInBox(i, j, num) ||
-      this.numAlreadyInRow(i, j, num) ||
-      this.numAlreadyInColumn(i, j, num)
-    );
+  checkCorrect() {
+    let result = true;
+    for (let i = 0; i < this.size; i++) {
+      for (let j = 0; j < this.size; j++) {
+        result = !(
+          this.numAlreadyInBox(i, j, this.board[i][j]) ||
+          this.numAlreadyInRow(i, j, this.board[i][j]) ||
+          this.numAlreadyInColumn(i, j, this.board[i][j])
+        );
+      }
+    }
+    return result;
   }
 }

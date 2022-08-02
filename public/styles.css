@@ -40,7 +40,7 @@ td input {
 }
 .diffbar {
   padding-top: 0.5rem;
-  font-size: x-large;
+  font-size: larger;
   width: 24rem;
   color: rgba(0, 0, 0, 0.7);
 }
@@ -61,7 +61,7 @@ td input {
 }
 form * {
   width: 3.2rem;
-  font-size: x-large;
+  font-size: large;
   opacity: 0.9;
   color: #222;
   margin-top: 1em;
@@ -121,6 +121,12 @@ hr {
 #timer {
   color: #ffffffaa;
   font-size: x-large;
+}
+#bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 40rem;
 }
 
 @media print {
